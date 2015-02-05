@@ -4,19 +4,16 @@ Feature: Card Page
 
 
 	
-	@todo
-	Scenario Outline: Card page is present in direct links
-		When I open the card page of the card that has id <id>
-		Then I should see a header "h1" with text "<card_name>"
 
-		Examples: Cards
-			| id | card_name |
-			| 1	 | test		 |
+	@failing
+	Scenario: Card page is present in direct links
+		When I open the card page of the card that has id '1'
+		Then I should see a header 'h1' with text 'test'
 
 
-	@todo
+	@failing
 	Scenario: When browsing to an unknown card page
 
 		When I open the card page of a card that doesn't exist
 		Then I should see the card list page
-			And I should see a header "h1" with text "All Cards"
+			And I should see a header 'h1' with text 'All Cards'

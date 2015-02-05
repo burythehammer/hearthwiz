@@ -1,3 +1,3 @@
 When(/^I open the homepage$/) do
-	visit "http://localhost:3000/"
+	step "I open the page with url 'http://localhost:3000'"
 end

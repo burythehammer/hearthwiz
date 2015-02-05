@@ -15,17 +15,12 @@
   <tbody>
     <% @cards.each do |card| %>
       <tr>
-        <td><%= card.name %></td>
+        <td><%= link_to card.name, card %></td>
         <td><%= card.cost %></td>
         <td><%= card.rarity %></td>
-        <td><%= link_to 'Show', card %></td>
-        <td><%= link_to 'Edit', edit_card_path(card) %></td>
-        <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Card', new_card_path %>
