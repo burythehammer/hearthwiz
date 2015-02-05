@@ -14,3 +14,7 @@ Given(/^the server is running$/) do
 
 end
 
+When(/^I open the page with url \("(.*?)"\)$/) do |url|
+	Capybara.default_driver = :selenium
+	visit url
+end

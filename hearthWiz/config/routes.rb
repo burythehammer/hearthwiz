@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :cards
+  get 'dashboard/index'
+  root 'dashboard#index'
 
+
+  resources :cards
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

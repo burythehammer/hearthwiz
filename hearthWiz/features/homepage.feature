@@ -1,8 +1,8 @@
-Feature: Index Page
+Feature: Homepage
 	
 	User should be able to view the main page of the website.
 	
 	@complete
 	Scenario: hello world!
-		When I open the index page
+		When I open the homepage
 		Then I should see the text "Hello, world!" on the page
