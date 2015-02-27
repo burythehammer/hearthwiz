@@ -1,6 +1,3 @@
-
-
-
 When(/^I open the card page of the card that has id '(.*?)'$/) do |id|
 	 step "I open the page with url '/cards/#{id}/'"
 end
