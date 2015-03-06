@@ -1,4 +1,3 @@
-# BEFORE ALL
-Before do 
-  
-end 
+AfterConfiguration do |config|
+	load File.join(Rails.root, 'db', 'seeds.rb')
+end

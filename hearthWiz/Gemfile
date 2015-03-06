@@ -42,6 +42,8 @@ group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
 #  gem 'debugger'
 
+  gem 'database_cleaner'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -56,7 +58,6 @@ group :test do
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'rspec-expectations'
 

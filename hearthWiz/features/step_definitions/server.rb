@@ -18,3 +18,7 @@ When(/^I open the page with url '(.*?)'$/) do |url|
 	Capybara.default_driver = :selenium
 	visit url
 end
+
+Then(/^I should be redirected$/) do
+  pending # express the regexp above with the code you wish you had
+end

@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @card.name %>
-</p>
+
+<div class='title' header id='card_title'>
+	<h1> <%= @card.name %> </h1>
+</div>
+
+
+<div id="card_information">
 
 <p>
   <strong>Cost:</strong>
@@ -14,5 +17,6 @@
   <strong>Rarity:</strong>
   <%= @card.rarity %>
 </p>
+</div>
 
 <%= link_to 'Back', cards_path %>

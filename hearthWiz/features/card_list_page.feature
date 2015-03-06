@@ -11,11 +11,11 @@ Feature: Card List Page
 	@failing
 	Scenario: Card page can be navigated to from the card list page
 		When I open the card list index page
-			And I click the link to the card 'test'
+			And I click the link to the card 'Abomination'
 		Then I should be on the card page
-			And I should see a header 'h1' with text 'test'
+			And I should see a header 'h1' with text 'Abomination'
 
-	@failing
+	@complete
 	Scenario: Links are displayed for all cards
 		When I open the card list index page
-		Then I should see a link to the card 'test'
+		Then I should see a link to the card 'Faceless Manipulator'
