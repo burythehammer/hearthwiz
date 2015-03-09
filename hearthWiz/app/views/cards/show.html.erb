@@ -1,3 +1,7 @@
+<p>
+<%= link_to '<- Back to cards page', cards_path %>
+</p>
+
 <p id="notice"><%= notice %></p>
 
 <div class='page_title' id='card_title'>
@@ -12,13 +16,56 @@
 	</p>
 </div>
 
-<div id="card_information">
-
-<p>
-  <strong>Cost:</strong>
-  <%= @card.cost %>
-</p>
+<div class='description_text' id='card_description_text'>
+	<p>
+  		<strong>Description:</strong>  <em><%= @card.text %></em>
+	</p>
+	<p>
+  		<strong>Flavour:</strong> <em><%= @card.flavour %></em>
+	</p>
 
 </div>
 
-<%= link_to 'Back', cards_path %>
+<div class='flavour_text' id='card_flavour_text'>
+	<p>
+  		
+	</p>
+</div>
+
+<div id="card_information">
+
+	<table>
+		<% unless @card.card_type.empty? %>		
+			<tr>
+				<td><strong>Card type: </strong></td>
+				<td><%= @card.card_type %></td>	
+			</tr>
+		<% end %>
+
+		<% unless @card.cost.nil? %>		
+			<tr>
+				<td><strong>Cost: </strong></td>
+				<td><%= @card.cost %></td>	
+			</tr>
+		<% end %>
+
+		<% unless @card.health.nil? %>		
+			<tr>
+				<td><strong>Health: </strong></td>
+				<td><%= @card.health %></td>	
+			</tr>
+		<% end %>
+		
+		<% unless @card.attack.nil? %>		
+			<tr>
+				<td><strong>Attack: </strong></td>
+				<td><%= @card.attack %></td>	
+			</tr>
+		<% end %>
+
+
+	</table>
+
+
+</div>
+

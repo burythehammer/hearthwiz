@@ -6,4 +6,7 @@ class Card < ActiveRecord::Base
 	validates :cost, 
 		presence: true
 
+	validates :card_type,
+		presence: true
+
 end
