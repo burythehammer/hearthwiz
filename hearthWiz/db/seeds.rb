@@ -17,142 +17,55 @@ rescue NameError
 end
 
 
+def create_card_from_json_hash(card_hash)
 
-rarity_list = [
-  ["Free", "None", "#000000"],
-  ["Basic", "None", "#000000"],
-  ["Common", "White", "#000000"],
-  ["Rare", "Blue", "#0000FF"],
-  ["Epic", "Purple", "#990099"],
-  ["Legendary","Orange", "#FF9900"]
-]
+  puts card_hash["name"]
 
-rarity_list.each do |name, colour, hexcolour|
-  Rarity.create( name: name, colour: colour, hexcolour: hexcolour )
+  Card.create(name: card_hash["name"],
+    card_type: card_hash["type"],
+    faction: card_hash["faction"],
+    rarity_id: Rarity.find_by(name: card_hash["rarity"]).id,
+    cost: card_hash["cost"],
+    attack: card_hash["attack"],
+    health: card_hash["health"],
+    text: card_hash["text"],
+    flavour: card_hash["flavor"],
+    artist: card_hash["artist"],
+    collectible: card_hash["collectible"])
+
 end
 
-#new fancy json way of doing things
-#e.g. the proper way
+# seeds rarities from user defined list
+
+rarity_list = Array.new
+
+rarity_list << [name: "Free",      colour: "None",   hexcolour: "#000000"]
+rarity_list << [name: "Basic",     colour: "None",   hexcolour: "#000000"]
+rarity_list << [name: "Common",    colour: "Green",  hexcolour: "#1eff00"]
+rarity_list << [name: "Rare",      colour: "Blue",   hexcolour: "#0070dd"]
+rarity_list << [name: "Epic",      colour: "Purple", hexcolour: "#a335ee"]
+rarity_list << [name: "Legendary", colour: "Orange", hexcolour: "#ff8000"]
+
+rarity_list.each do |rarity|
+  Rarity.create(rarity)
+end
+
+# seeds cards from json file
 
 filepath = File.join(Rails.root, 'db', 'json', 'AllSets.json')
-
 fileContents = File.open(filepath).read
 card_sets = JSON.parse(fileContents)
 
-card_sets["Basic"].each do |c|
 
-  puts c["name"]
+card_sets_wanted = ["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"]
 
-  next if c["rarity"].nil? 
 
-  Card.create(name: c["name"],
-    card_type: c["type"],
-    faction: c["faction"],
-    rarity_id: Rarity.find_by(name: c["rarity"]).id,
-    cost: c["cost"],
-    attack: c["attack"],
-    health: c["health"],
-    text: c["text"],
-    flavour: c["flavor"],
-    artist: c["artist"],
-    collectible: c["collectible"])
+card_sets_wanted.each do |card_set|
 
+  puts "--------CREATING #{card_set} CARDS-----------"
+
+  card_sets["#{card_set}"].each do |c|  
+    next if c["rarity"].nil? #skips if rarity is nil. Bit of a fudge but will do for now
+    create_card_from_json_hash c
+  end
 end
-
-
-#old fashioned way of doing things
-=begin
-
-card_list = [
-  [ "Abusive Sergeant", 1, "Common" ],
-  [ "Acidic Swamp Ooze", 2, "Basic" ],
-  [ "Leeroy Jenkins", 5, "Legendary" ],
-  [ "Faceless Manipulator", 5, "Epic" ],
-  [ "Abomination", 5, "Rare" ]
-]
-
-card_list.each do |name, cost, rarity|
-  Card.create( name: name, cost: cost, rarity: rarity )
-end
-
-=end
-
-#slow way of doing things
-=begin
-
-Card.create( 
-  name: "Abusive Sergeant", 
-  card_type: "Minion",
-  text: "<strong>Battlecry:</strong> Give a minion +2 Attack this turn.",
-  mechanics: "[Battlecry]",
-  flavour: "ADD ME TO YOUR DECK, MAGGOT!",
-  artist: "Luca Zontini",
-  attack: 2,
-  health: 1,
-  collectible: true,
-  elite: false,
-  cost: 1,
-  faction: "Alliance",
-  rarity_id: Rarity.find_by(name: "Common").id)
-
-Card.create( 
-  name: "Acidic Swamp Ooze", 
-  cost: 2, 
-  card_type: "Minion",
-  text: "<strong>Battlecry:</strong> Destroy your opponent's weapon.",
-  mechanics: "[Battlecry]",
-  flavour: "Ooze loves flamenco. Don't ask.",
-  artist: "Chris Rahn",
-  attack: 3,
-  health: 2,
-  collectible: true,
-  elite: false,
-  faction: "Alliance",
-  rarity_id: Rarity.find_by(name: "Basic").id)
-  
-Card.create( 
-  name: "Leeroy Jenkins", 
-  cost: 5, 
-  rarity_id: Rarity.find_by(name: "Legendary").id,
-  card_type: "Minion",
-  text: "<strong>Charge. Battlecry:</strong> Summon two 1/1 Whelps for your opponent.",
-  mechanics: "[Battlecry, Charge, Summon]",
-  flavour: "At least he has angry chicken.",
-  artist: "Gabe from Penny Arcade",
-  attack: 6,
-  health: 2,
-  collectible: true,
-  elite: true,
-  faction: "Alliance")
-
-Card.create( 
-  name: "Faceless Manipulator", 
-  cost: 5, 
-  rarity_id: Rarity.find_by(name: "Epic").id,
-  card_type: "Minion",
-  text: "<strong>Battlecry:</strong> Choose a minion and become a copy of it.",
-  mechanics: "[Battlecry]",
-  flavour: "The Faceless Ones are servants of Yogg-Saron, and they feed on fear. Right now they are feeding on your fear of accidentally disenchanting all your good cards.",
-  artist: "Raymond Swanland",
-  attack: 3,
-  health: 3,
-  collectible: true,
-  elite: false,
-  faction: "Neutral")
-
-Card.create( 
-  name: "Abomination", 
-  cost: 5, 
-  rarity_id: Rarity.find_by(name: "Rare").id,
-  card_type: "Minion",
-  text: "Taunt. Deathrattle: Deal 2 damage to ALL characters.",
-  mechanics: "[Taunt, Deathrattle]",
-  flavour: "Abominations enjoy Fresh Meat and long walks on the beach.",
-  artist: "Alex Horley Orlandelli",
-  attack: 4,
-  health: 4,
-  collectible: true,
-  elite: false,
-  faction: "Neutral")
-
-=end
