@@ -16,6 +16,50 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+
+
+rarity_list = [
+  ["Free", "None", "#000000"],
+  ["Basic", "None", "#000000"],
+  ["Common", "White", "#000000"],
+  ["Rare", "Blue", "#0000FF"],
+  ["Epic", "Purple", "#990099"],
+  ["Legendary","Orange", "#FF9900"]
+]
+
+rarity_list.each do |name, colour, hexcolour|
+  Rarity.create( name: name, colour: colour, hexcolour: hexcolour )
+end
+
+#new fancy json way of doing things
+#e.g. the proper way
+
+filepath = File.join(Rails.root, 'db', 'json', 'AllSets.json')
+
+fileContents = File.open(filepath).read
+card_sets = JSON.parse(fileContents)
+
+card_sets["Basic"].each do |c|
+
+  puts c["name"]
+
+  next if c["rarity"].nil? 
+
+  Card.create(name: c["name"],
+    card_type: c["type"],
+    faction: c["faction"],
+    rarity_id: Rarity.find_by(name: c["rarity"]).id,
+    cost: c["cost"],
+    attack: c["attack"],
+    health: c["health"],
+    text: c["text"],
+    flavour: c["flavor"],
+    artist: c["artist"],
+    collectible: c["collectible"])
+
+end
+
+
 #old fashioned way of doing things
 =begin
 
@@ -33,17 +77,8 @@ end
 
 =end
 
-rarity_list = [
-  ["Basic", "None", "#000000"],
-  ["Common", "White", "#000000"],
-  ["Rare", "Blue", "#0000FF"],
-  ["Epic", "Purple", "#990099"],
-  ["Legendary","Orange", "#FF9900"]
-]
-
-rarity_list.each do |name, colour, hexcolour|
-  Rarity.create( name: name, colour: colour, hexcolour: hexcolour )
-end
+#slow way of doing things
+=begin
 
 Card.create( 
   name: "Abusive Sergeant", 
@@ -119,3 +154,5 @@ Card.create(
   collectible: true,
   elite: false,
   faction: "Neutral")
+
+=end
