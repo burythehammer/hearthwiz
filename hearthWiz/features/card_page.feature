@@ -3,12 +3,12 @@ Feature: Card Page
 	User should be able to view an individual card and its details.
 
 	@complete
-	Scenario: Card page is present in direct links
+	Scenario: Card page is present in direct id links
 
 	Given the card with id '1' exists
-		And the card with id '1' has the name 'Abusive Sergeant'
+		And the card with id '1' has the name 'Acidic Swamp Ooze'
 	When I directly open the card page of the card that has id '1'
-	Then I should be on the card page for 'Abusive Sergeant'
+	Then I should be on the card page for 'Acidic Swamp Ooze'
 
 
 	@complete
