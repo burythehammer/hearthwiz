@@ -22,7 +22,11 @@ class CardsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_card
         @card = Card.find(params[:id])
+        @rarity = Rarity.find(@card.rarity_id)
     end
+
+    
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params

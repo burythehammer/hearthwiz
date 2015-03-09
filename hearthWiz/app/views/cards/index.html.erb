@@ -20,11 +20,20 @@
   </thead>
 
   <tbody>
-    <% @cards.each do |card| %>
+    <% @cards.each do |card| 
+
+      rarity = Rarity.find(card.rarity_id) %>
+
       <tr>
-        <td><%= link_to card.name, card %></td>
+        <td> 
+          <%= link_to card.name, card %>
+        </td>
         <td><%= card.cost %></td>
-        <td><%= card.rarity %></td>
+        <td>
+          <font <%= "color= #{rarity.hexcolour}" %> >
+            <%= rarity.name %>
+          </font>
+        </td>
       </tr>
     <% end %>
   </tbody>

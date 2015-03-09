@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-
 <div class='page_title' id='card_title'>
 	<h1> <%= @card.name %> </h1>
 </div>
 
+<div class='page_subtitle' id='card_rarity'>
+	<p>
+		<font <%= "color= #{@rarity.hexcolour}" %> >
+  		<strong><%= @rarity.name %> card</strong>
+	  	</font>
+	</p>
+</div>
 
 <div id="card_information">
 
@@ -13,10 +19,6 @@
   <%= @card.cost %>
 </p>
 
-<p>
-  <strong>Rarity:</strong>
-  <%= @card.rarity %>
-</p>
 </div>
 
 <%= link_to 'Back', cards_path %>
