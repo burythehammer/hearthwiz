@@ -31,7 +31,9 @@ def create_card_from_json_hash(card_hash)
     text: card_hash["text"],
     flavour: card_hash["flavor"],
     artist: card_hash["artist"],
-    collectible: card_hash["collectible"])
+    collectible: card_hash["collectible"],
+    json_id: card_hash["id"],
+    how_to_get_gold: card_hash["howToGetGold"])
 
 end
 

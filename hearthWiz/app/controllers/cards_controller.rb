@@ -24,10 +24,7 @@ class CardsController < ApplicationController
         @card = Card.find(params[:id])
         @rarity = Rarity.find(@card.rarity_id)
     end
-
     
-
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
       params.require(:card).permit(:name, :cost, :rarity)
