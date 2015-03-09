@@ -4,10 +4,11 @@ Feature: Card Page
 
 	@complete
 	Scenario: Card page is present in direct links
+
 	Given the card with id '1' exists
 		And the card with id '1' has the name 'Abusive Sergeant'
-		When I directly open the card page of the card that has id '1'
-		Then I should see a header 'h1' with text 'Abusive Sergeant'
+	When I directly open the card page of the card that has id '1'
+	Then I should be on the card page for 'Abusive Sergeant'
 
 
 	@complete

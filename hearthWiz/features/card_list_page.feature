@@ -12,14 +12,12 @@ Feature: Card List Page
 		Given the card with name 'Abomination' exists
 		When I open the card list index page
 			And I click the link to the card 'Abomination'
-		Then I should be on the card page
-			And I should see a header 'h1' with text 'Abomination'
+		Then I should be on the card page for 'Abomination'
 
 	@complete
-	Scenario: Links are displayed for cards
+	Scenario: Links are displayed for cards and can be clicked
 		Given the card with name 'Faceless Manipulator' exists
 		When I open the card list index page
 		Then I should see a link to the card 'Faceless Manipulator'
-
-
-	
+		When I click the link to the card 'Faceless Manipulator'
+		Then I should be on the card page for 'Faceless Manipulator'
