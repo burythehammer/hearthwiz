@@ -1,6 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1>All Cards</h1>
+
+<% if flash[:error]  %>
+  <div id="error"><%= flash[:error] %></div>
+<% end %>
+
+<% if flash[:notice]  %>
+  <div id="notice"><%= flash[:notice] %></div>
+<% end %>
+
 
 <table>
   <thead>

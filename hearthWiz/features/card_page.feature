@@ -4,15 +4,16 @@ Feature: Card Page
 
 	@complete
 	Scenario: Card page is present in direct links
-		When I open the card page of the card that has id '1'
+	Given the card with id '1' exists
+		And the card with id '1' has the name 'Abusive Sergeant'
+		When I directly open the card page of the card that has id '1'
 		Then I should see a header 'h1' with text 'Abusive Sergeant'
 
 
-	@failing
+	@complete
 	Scenario: When browsing to an unknown card page
 
 	Given the card with id '10000' does not exist
-	When I open the incorrect card page of the card that has id '10000'
-	Then I should be redirected with an error
-		And I should see the card list page
-		And I should see a header 'h1' with text 'All Cards'
+	When I directly open the card page of the card that has id '10000'
+	Then I should see the card list page
+		And I should see an error stating that 'That card could not be found!'

@@ -10,15 +10,15 @@ Given(/^the server is running$/) do
 	  server_running = false
 	end
 
-	server_running should be_true
-
+	expect(server_running).to be_true
 end
+
 
 When(/^I open the page with url '(.*?)'$/) do |url|
 	Capybara.default_driver = :selenium
 	visit url
 end
 
-Then(/^I should be redirected$/) do
+Then(/^I should be redirected with an error$/) do
   pending # express the regexp above with the code you wish you had
 end

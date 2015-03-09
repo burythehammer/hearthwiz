@@ -1,4 +1,4 @@
-When(/^I open the card page of the card that has id '(.*?)'$/) do |id|
+When(/^I directly open the card page of the card that has id '(.*?)'$/) do |id|
 	 step "I open the page with url '/cards/#{id}/'"
 end
 
@@ -9,3 +9,8 @@ end
 Then(/^I should be on the card page with the id '(\d+)'$/) do |id|
 	expect(current_path).to match("/cards/#{id}")
 end
+
+When(/^I open the incorrect card page of the card that has id '(\d+)'$/) do |id|
+	 step "I open the page with url '/cards/#{id}/'"
+end
+
