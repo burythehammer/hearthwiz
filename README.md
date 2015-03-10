@@ -1,6 +1,6 @@
 # hearthWiz
 
-A light website for tracking and managing Hearthstone card collections, written in Ruby &amp; Rails.
+A light website for tracking and managing Hearthstone card collections, written in Ruby on Rails.
 
 A personal project intended to be deployed on my own website.
 
