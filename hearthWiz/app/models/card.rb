@@ -6,18 +6,17 @@ class Card < ActiveRecord::Base
 
 	validates :name, 
 		presence: true
-	
 
-
+=begin
 	validates :cost, 
 		presence: true,
 		:numericality => { :only_integer => true }
-
+=end
 
 
 	validates :card_type,
 		presence: true,
-		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment"] }
+		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment", "Hero", "Hero Power"] }
 
 	validates :rarity_id,
 		presence: true,

@@ -1,10 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 begin
   # start off entire run with with a full truncation
@@ -17,14 +12,23 @@ rescue NameError
 end
 
 
+#helper method to create a card from the json
 def create_card_from_json_hash(c)
-
   card = Card.new
+
+
   card[:name] = c["name"]
   card[:card_type] = c["type"]
+
+  begin
+    card[:rarity_id] = Rarity.find_by(name: c["rarity"]).id
+  rescue NoMethodError
+    card[:rarity_id] = Rarity.find_by(name: "Common").id
+  end
+
   card[:faction] = c["faction"]
-  card[:rarity_id] = Rarity.find_by(name: c["rarity"]).id
   card[:cost] = c["cost"]
+  card[:durability] = c["durability"]
   card[:attack] = c["attack"]
   card[:health] = c["health"]
   card[:text] = c["text"]
@@ -33,30 +37,10 @@ def create_card_from_json_hash(c)
   card[:collectible] = c["collectible"]
   card[:json_id] = c["id"]
   card[:how_to_get_gold] = c["howToGetGold"]
-
   card.save!
-
-
-=begin
-  Card.create(name: c["name"], 
-    card_type: c["type"],
-    faction: c["faction"],
-    rarity_id: Rarity.find_by(name: c["rarity"]).id,
-    cost: c["cost"],
-    attack: c["attack"],
-    health: c["health"],
-    text: c["text"],
-    flavour: c["flavor"],
-    artist: c["artist"],
-    collectible: c["collectible"],
-    json_id: c["id"],
-    how_to_get_gold: c["howToGetGold"])
-=end
-
 end
 
 # seeds rarities from user defined list
-
 rarity_list = Array.new
 
 rarity_list << [name: "Free",      colour: "None",   hexcolour: "#000000"]
@@ -71,15 +55,16 @@ rarity_list.each do |rarity|
 end
 
 # seeds cards from json file
-
 filepath = File.join(Rails.root, 'db', 'json', 'AllSets.enGB.json')
 fileContents = File.open(filepath).read
 card_sets = JSON.parse(fileContents)
 
 
+# card sets we want to add
 card_sets_wanted = ["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"]
 
 
+# iterates over first card sets, then over each card in that set
 card_sets_wanted.each do |card_set|
 
   puts "--------CREATING #{card_set} CARDS-----------"
@@ -87,11 +72,10 @@ card_sets_wanted.each do |card_set|
   card_sets["#{card_set}"].each do |c|
 
     begin  
-      next if c["rarity"].nil? #skips if rarity is nil. Bit of a fudge but will do for now
-      create_card_from_json_hash c
-      puts c["name"]
+      create_card_from_json_hash(c)
+      puts "." 
     rescue ActiveRecord::RecordInvalid
-      puts "could not create record #{c["name"]}"
+      puts "could not create card: #{c["name"]}"
     end
 
   end
