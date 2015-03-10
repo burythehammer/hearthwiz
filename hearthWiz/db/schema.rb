@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310094914) do
+ActiveRecord::Schema.define(version: 20150310154117) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20150310094914) do
   end
 
   add_index "cards", ["rarity_id"], name: "index_cards_on_rarity_id"
+
+  create_table "player_classes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "rarities", force: :cascade do |t|
     t.datetime "created_at",        null: false

@@ -12,7 +12,7 @@ Feature: Card List Page
 		Given the card with name 'Abomination' exists
 		When I open the card list index page
 			And I click the link to the card 'Abomination'
-		Then I should be on the card page for 'Abomination'
+		Then I should be on the card page for the card named 'Abomination'
 
 	@complete
 	Scenario: Links are displayed for cards and can be clicked
@@ -20,4 +20,4 @@ Feature: Card List Page
 		When I open the card list index page
 		Then I should see a link to the card 'Faceless Manipulator'
 		When I click the link to the card 'Faceless Manipulator'
-		Then I should be on the card page for 'Faceless Manipulator'
+		Then I should be on the card page for the card named 'Faceless Manipulator'

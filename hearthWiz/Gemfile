@@ -51,11 +51,13 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+
 end
 
 group :test do
 
-  gem 'capybara'
+  gem 'capybara'  
+  gem 'poltergeist'  # Capybara driver for phantom.js
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :player_classes
+
   get 'dashboard/index'
   root 'dashboard#index'
 
