@@ -15,6 +15,7 @@ end
 
 
 When(/^I open the page with url '(.*?)'$/) do |url|
-	Capybara.default_driver = :selenium
+#	Capybara.default_driver = :selenium
+	Capybara.default_driver = :poltergeist
 	visit url
 end

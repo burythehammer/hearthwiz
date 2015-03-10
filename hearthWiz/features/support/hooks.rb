@@ -1,3 +1,10 @@
 AfterConfiguration do |config|
-	load File.join(Rails.root, 'db', 'seeds.rb')
+	require File.join(Rails.root, 'db', 'seeds.rb')
+end
+
+
+After do |scenario|
+  if scenario.failed?
+    save_page
+  end
 end
