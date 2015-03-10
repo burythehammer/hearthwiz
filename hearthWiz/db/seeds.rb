@@ -17,23 +17,41 @@ rescue NameError
 end
 
 
-def create_card_from_json_hash(card_hash)
+def create_card_from_json_hash(c)
 
-  puts card_hash["name"]
+=begin
+  card = Card.new
+  card[:name] = c["name"]
+  card[:card_type] = c["name"]
+  card[:faction] = c["name"]
+  card[:rarity_id] = c["name"]
+  card[:cost] = c["name"]
+  card[:attack] = c["name"]
+  card[:health] = c["name"]
+  card[:text] = c["name"]
+  card[:flavour] = c["name"]
+  card[:artist] = c["name"]
+  card[:collectible] = c["name"]
+  card[:json_id] = c["name"]
+  card[:how_to_get_gold] = c["name"]
 
-  Card.create(name: card_hash["name"],
-    card_type: card_hash["type"],
-    faction: card_hash["faction"],
-    rarity_id: Rarity.find_by(name: card_hash["rarity"]).id,
-    cost: card_hash["cost"],
-    attack: card_hash["attack"],
-    health: card_hash["health"],
-    text: card_hash["text"],
-    flavour: card_hash["flavor"],
-    artist: card_hash["artist"],
-    collectible: card_hash["collectible"],
-    json_id: card_hash["id"],
-    how_to_get_gold: card_hash["howToGetGold"])
+  card.save!
+=end
+
+
+  Card.create(name: c["name"], 
+    card_type: c["type"],
+    faction: c["faction"],
+    rarity_id: Rarity.find_by(name: c["rarity"]).id,
+    cost: c["cost"],
+    attack: c["attack"],
+    health: c["health"],
+    text: c["text"],
+    flavour: c["flavor"],
+    artist: c["artist"],
+    collectible: c["collectible"],
+    json_id: c["id"],
+    how_to_get_gold: c["howToGetGold"])
 
 end
 
@@ -66,8 +84,17 @@ card_sets_wanted.each do |card_set|
 
   puts "--------CREATING #{card_set} CARDS-----------"
 
-  card_sets["#{card_set}"].each do |c|  
-    next if c["rarity"].nil? #skips if rarity is nil. Bit of a fudge but will do for now
-    create_card_from_json_hash c
+  card_sets["#{card_set}"].each do |c|
+    puts c["name"]
+
+    begin  
+      next if c["rarity"].nil? #skips if rarity is nil. Bit of a fudge but will do for now
+      create_card_from_json_hash c
+    rescue ActiveRecord::RecordInvalid
+      puts "could not create record #{c["rarity"]}"
+    end
+
   end
+
+
 end

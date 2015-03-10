@@ -3,7 +3,8 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all.sort_by(&:cost)
+    @cards = Card.where(collectible: true).where.not(card_type: "Hero")
+    @cards = @cards.sort_by {|c| [c.cost, c.name] }
   end
 
   # GET /cards/1

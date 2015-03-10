@@ -1,5 +1,7 @@
 class Card < ActiveRecord::Base
 
+=begin
+
 	validates :name, 
 		presence: true
 	
@@ -8,8 +10,8 @@ class Card < ActiveRecord::Base
 		:numericality => { :only_integer => true }
 
 	validates :card_type,
-		presence: true,
-		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment"] }
+		presence: true
+#		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment"] }
 
 
 	validates :rarity_id,
@@ -19,7 +21,7 @@ class Card < ActiveRecord::Base
 	validates :faction,
 	:inclusion => { :in => ["Alliance", "Horde", "Neutral"] }
 
-=begin
+
 	validates :text
 
 	validates :mechanics
@@ -27,8 +29,6 @@ class Card < ActiveRecord::Base
 	validates :flavour
 
 	validates :artist
-=end
-
 
 	validates :attack,
 	:numericality => { :only_integer => true }
@@ -50,5 +50,7 @@ class Card < ActiveRecord::Base
 	:numericality => { :only_integer => true }
 
 #	validates :how_to_get_gold
+
+=end
 
 end
