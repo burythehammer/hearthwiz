@@ -1,35 +1,44 @@
 class Card < ActiveRecord::Base
 
-=begin
+	belongs_to :rarities
+	validates_associated :rarities
+
 
 	validates :name, 
 		presence: true
 	
+
+
 	validates :cost, 
 		presence: true,
 		:numericality => { :only_integer => true }
 
-	validates :card_type,
-		presence: true
-#		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment"] }
 
+
+	validates :card_type,
+		presence: true,
+		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment"] }
 
 	validates :rarity_id,
 		presence: true,
 		:numericality => { :only_integer => true }
-	
+
+
+=begin
 	validates :faction,
 	:inclusion => { :in => ["Alliance", "Horde", "Neutral"] }
+=end
 
 
-	validates :text
+#	validates :text
 
-	validates :mechanics
+#	validates :mechanics
 
-	validates :flavour
+#	validates :flavour
 
-	validates :artist
+#	validates :artist
 
+=begin
 	validates :attack,
 	:numericality => { :only_integer => true }
 
@@ -48,9 +57,10 @@ class Card < ActiveRecord::Base
 
 	validates :durability,
 	:numericality => { :only_integer => true }
+=end
+
 
 #	validates :how_to_get_gold
 
-=end
 
 end

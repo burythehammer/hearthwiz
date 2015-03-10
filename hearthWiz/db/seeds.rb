@@ -19,26 +19,25 @@ end
 
 def create_card_from_json_hash(c)
 
-=begin
   card = Card.new
   card[:name] = c["name"]
-  card[:card_type] = c["name"]
-  card[:faction] = c["name"]
-  card[:rarity_id] = c["name"]
-  card[:cost] = c["name"]
-  card[:attack] = c["name"]
-  card[:health] = c["name"]
-  card[:text] = c["name"]
-  card[:flavour] = c["name"]
-  card[:artist] = c["name"]
-  card[:collectible] = c["name"]
-  card[:json_id] = c["name"]
-  card[:how_to_get_gold] = c["name"]
+  card[:card_type] = c["type"]
+  card[:faction] = c["faction"]
+  card[:rarity_id] = Rarity.find_by(name: c["rarity"]).id
+  card[:cost] = c["cost"]
+  card[:attack] = c["attack"]
+  card[:health] = c["health"]
+  card[:text] = c["text"]
+  card[:flavour] = c["flavor"]
+  card[:artist] = c["artist"]
+  card[:collectible] = c["collectible"]
+  card[:json_id] = c["id"]
+  card[:how_to_get_gold] = c["howToGetGold"]
 
   card.save!
-=end
 
 
+=begin
   Card.create(name: c["name"], 
     card_type: c["type"],
     faction: c["faction"],
@@ -52,6 +51,7 @@ def create_card_from_json_hash(c)
     collectible: c["collectible"],
     json_id: c["id"],
     how_to_get_gold: c["howToGetGold"])
+=end
 
 end
 
@@ -85,13 +85,13 @@ card_sets_wanted.each do |card_set|
   puts "--------CREATING #{card_set} CARDS-----------"
 
   card_sets["#{card_set}"].each do |c|
-    puts c["name"]
 
     begin  
       next if c["rarity"].nil? #skips if rarity is nil. Bit of a fudge but will do for now
       create_card_from_json_hash c
+      puts c["name"]
     rescue ActiveRecord::RecordInvalid
-      puts "could not create record #{c["rarity"]}"
+      puts "could not create record #{c["name"]}"
     end
 
   end
