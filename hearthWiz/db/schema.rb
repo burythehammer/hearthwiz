@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309233943) do
+ActiveRecord::Schema.define(version: 20150310094914) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -37,11 +37,13 @@ ActiveRecord::Schema.define(version: 20150309233943) do
   add_index "cards", ["rarity_id"], name: "index_cards_on_rarity_id"
 
   create_table "rarities", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "name"
     t.string   "colour"
     t.string   "hexcolour"
+    t.integer  "craft_cost"
+    t.integer  "disenchant_reward"
   end
 
   create_table "users", force: :cascade do |t|

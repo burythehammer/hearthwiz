@@ -43,10 +43,10 @@ rarity_list = Array.new
 
 rarity_list << [name: "Free",      colour: "None",   hexcolour: "#000000"]
 rarity_list << [name: "Basic",     colour: "None",   hexcolour: "#000000"]
-rarity_list << [name: "Common",    colour: "Green",  hexcolour: "#1eff00"]
-rarity_list << [name: "Rare",      colour: "Blue",   hexcolour: "#0070dd"]
-rarity_list << [name: "Epic",      colour: "Purple", hexcolour: "#a335ee"]
-rarity_list << [name: "Legendary", colour: "Orange", hexcolour: "#ff8000"]
+rarity_list << [name: "Common",    colour: "Green",  hexcolour: "#1eff00", craft_cost: 40,    disenchant_reward: 5]
+rarity_list << [name: "Rare",      colour: "Blue",   hexcolour: "#0070dd", craft_cost: 100,   disenchant_reward: 20]
+rarity_list << [name: "Epic",      colour: "Purple", hexcolour: "#a335ee", craft_cost: 400,   disenchant_reward: 100]
+rarity_list << [name: "Legendary", colour: "Orange", hexcolour: "#ff8000", craft_cost: 1600,  disenchant_reward: 400]
 
 rarity_list.each do |rarity|
   Rarity.create(rarity)
@@ -54,7 +54,7 @@ end
 
 # seeds cards from json file
 
-filepath = File.join(Rails.root, 'db', 'json', 'AllSets.json')
+filepath = File.join(Rails.root, 'db', 'json', 'AllSets.enGB.json')
 fileContents = File.open(filepath).read
 card_sets = JSON.parse(fileContents)
 
