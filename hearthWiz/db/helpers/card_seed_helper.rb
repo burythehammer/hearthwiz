@@ -36,14 +36,6 @@ def create_card_from_json_hash(c)
 	
 	card[:name] = c["name"]
 	card[:card_type] = c["type"]
-
-	# raises an error if the rarity is not supplied - catches this and assumes the card is 'common'
-	begin
-	card[:rarity_id] = Rarity.find_by(name: c["rarity"]).id
-	rescue NoMethodError
-	card[:rarity_id] = Rarity.find_by(name: "Common").id
-	end
-
 	card[:faction] = c["faction"]
 	card[:cost] = c["cost"]
 	card[:durability] = c["durability"]
@@ -52,9 +44,30 @@ def create_card_from_json_hash(c)
 	card[:text] = ActionView::Base.full_sanitizer.sanitize(c["text"])
 	card[:flavour] = ActionView::Base.full_sanitizer.sanitize(c["flavor"])
 	card[:artist] = c["artist"]
-	card[:collectible] = c["collectible"]
 	card[:json_id] = c["id"]
 	card[:how_to_get_gold] = c["howToGetGold"]
+
+	# could use ternary but this is more readable
+	if c["collectible"].nil? || ["Enchantment", "Hero", "Hero Power"].include?(c["type"])
+		card[:collectible] = false
+	else
+		card[:collectible] = c["collectible"]
+	end
+
+	# sometimes rarity is not supplied - rescues this and supplies 'common' default
+	begin
+		card[:rarity_id] = Rarity.find_by(name: c["rarity"]).id
+	rescue NoMethodError
+		card[:rarity_id] = Rarity.find_by(name: "Common").id
+	end
+
+	# sometimes player class not supplied, rescues and supplies 'neutral' default
+	begin
+		card[:player_class_id] = PlayerClass.find_by(name: c["playerClass"]).id
+	rescue NoMethodError
+		card[:player_class_id] = PlayerClass.find_by(name: "Neutral").id
+	end
+
 	card.save!
 	return card
 end

@@ -16,6 +16,6 @@ def seed_classes
   class_list << [name: "Warrior",	hero: "Garrosh Hellscream", 	colour: "Tan", 			hexcolour: "#C79C6E"]
 
   class_list.each do |player_class|
-    Player_Class.create(player_class)
+    PlayerClass.create(player_class)
   end
 end

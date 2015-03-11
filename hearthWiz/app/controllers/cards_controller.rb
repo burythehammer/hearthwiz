@@ -17,9 +17,6 @@ class CardsController < ApplicationController
       flash[:error] = 'That card ID could not be found!'
       redirect_to action: "index"
     end
-
-    
-    
   end
 
   def show_by_name
@@ -30,11 +27,10 @@ class CardsController < ApplicationController
       flash[:error] = 'That card name could not be found!'
       redirect_to action: "index"
     end
-
-
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_card
         @card = Card.find(params[:id])
@@ -47,6 +43,6 @@ class CardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
       params.require(:card).permit(:name, :cost, :rarity)
-    end
+cucu    end
 
 end
