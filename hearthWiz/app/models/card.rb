@@ -80,6 +80,10 @@ class Card < ActiveRecord::Base
     	return !self.getCraftCost.nil?
     end
 
+	def getRarity
+		return Rarity.find(self.rarity_id)
+	end
+
     def getRarityName
       	return self.getRarity.name
     end
@@ -100,9 +104,7 @@ class Card < ActiveRecord::Base
     	return self.getRarity.craft_cost
     end
 
-	def getRarity
-		return Rarity.find(self.rarity_id)
-	end
+
 
     def getCardQuickInfo
 		quickInfo = Hash.new
