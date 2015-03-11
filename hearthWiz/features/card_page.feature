@@ -5,9 +5,9 @@ Feature: Card Page
 	@complete
 	Scenario: Card page is present in direct id links
 
-	Given the card with id '787' exists
-		And the card with id '787' has the name 'Crackle'
-	When I directly open the card page for the card with id '787'
+	Given the card with id 'GVG_038' exists
+		And the card with id 'GVG_038' has the name 'Crackle'
+	When I directly open the card page for the card with id 'GVG_038'
 	Then I should be on the card page for the card named 'Crackle'
 
 	@complete
@@ -22,7 +22,7 @@ Feature: Card Page
 	@complete
 	Scenario: When browsing to an unknown card page
 
-	Given the card with id '12345678' does not exist
-	When I directly open the card page for the card with id '12345678'
+	Given the card with id 'SDKSLDPAO' does not exist
+	When I directly open the card page for the card with id 'SDKSLDPAO'
 	Then I should see the card list page
 		And I should see an error stating that 'That card could not be found!'

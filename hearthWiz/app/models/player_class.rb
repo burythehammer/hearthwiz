@@ -1,2 +1,2 @@
-class PlayerClass < ActiveRecord::Base
+class Player_Class < ActiveRecord::Base
 end
