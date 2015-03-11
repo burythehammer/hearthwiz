@@ -18,15 +18,14 @@
 
 <div class='description_text' id='card_description_text'>
 	<p>
-  		<strong>Description:</strong>  <em><%= 
-	ActionView::Base.full_sanitizer.sanitize(@card.text) %></em>
-	</p>	
+  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
+  	</p>	
 
 </div>
 
 <div class='flavour_text' id='card_flavour_text'>
 	<p>
-  		<strong>Flavour:</strong> <em><%= raw ActionView::Base.full_sanitizer.sanitize(@card.flavour) %></em>
+  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
 	</p>
 </div>
 

@@ -14,28 +14,53 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Cost</th>
+      <th>Name</th>
+      <th>Type</th>
       <th>Rarity</th>
-      <th colspan="3"></th>
+      <th>Attack</th>
+      <th>Health</th>
+      <th>Durability</th>
+      <th>Text</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @cards.each do |card| 
-
-      rarity = Rarity.find(card.rarity_id) %>
+    <% @cards.each do |card| %>
 
       <tr>
+        <td>
+          <%= card.cost %>
+        </td>
         <td> 
           <%= link_to card.name, card %>
         </td>
-        <td><%= card.cost %></td>
+        <td> 
+          <%= card.card_type %>
+        </td>
+
         <td>
-          <font <%= "color= #{rarity.hexcolour}" %> >
-            <%= rarity.name %>
+          <font <%= "color= " + card.getRarityHexColour %> >
+           <%= card.getRarityName %>
           </font>
         </td>
+
+        <td> 
+          <%= card.attack %>
+        </td>
+        
+        <td> 
+          <%= card.health %>
+        </td>
+
+        <td> 
+          <%= card.durability %>
+        </td>
+
+        <td> 
+          <%= raw card.text %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>

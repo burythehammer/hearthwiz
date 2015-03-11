@@ -49,8 +49,8 @@ def create_card_from_json_hash(c)
 	card[:durability] = c["durability"]
 	card[:attack] = c["attack"]
 	card[:health] = c["health"]
-	card[:text] = c["text"]
-	card[:flavour] = c["flavor"]
+	card[:text] = ActionView::Base.full_sanitizer.sanitize(c["text"])
+	card[:flavour] = ActionView::Base.full_sanitizer.sanitize(c["flavor"])
 	card[:artist] = c["artist"]
 	card[:collectible] = c["collectible"]
 	card[:json_id] = c["id"]
