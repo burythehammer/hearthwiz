@@ -106,6 +106,14 @@ class Card < ActiveRecord::Base
     	return self.getRarity.craft_cost
     end
 
+    def getIdPath
+    	return "cards/id/" + self.json_id
+    end
+
+    def getNamePath
+    	return "cards/name/" + self.name
+    end
+
 
 
     def getCardQuickInfo

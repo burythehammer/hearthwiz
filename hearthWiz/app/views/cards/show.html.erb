@@ -16,6 +16,18 @@
 	</p>
 </div>
 
+
+<div class='card_images' id='card_portrait'>
+
+<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/original/#{@card.json_id}.png" %>' style="float:left;">
+
+<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
+
+</div>
+
+
+
+
 <div class='description_text' id='card_description_text'>
 	<p>
   		<strong>Description:</strong>  <em><%= raw @card.text %></em>	

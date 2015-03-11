@@ -1,5 +1,5 @@
 When(/^I directly open the card page for the card with id '(.+)'$/) do |card_id|
-	 step "I open the page with url '/cards/#{card_id}/'"
+	 step "I open the page with url '/cards/id/#{card_id}/'"
 end
 
 When(/^I directly open the card page for the card named '(.+)'$/) do |card_name|
