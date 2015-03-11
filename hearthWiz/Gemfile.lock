@@ -233,6 +233,7 @@ DEPENDENCIES
   capistrano-rails
   capybara
   coffee-rails (~> 4.1.0)
+  colorize
   cucumber-rails
   database_cleaner
   factory_girl_rails
