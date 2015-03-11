@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311134656) do
+ActiveRecord::Schema.define(version: 20150311185406) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
     t.integer  "cost"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "rarity_id"
     t.string   "card_type"
     t.string   "faction"
@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(version: 20150311134656) do
     t.string   "artist"
     t.integer  "attack"
     t.integer  "health"
-    t.boolean  "collectible"
+    t.boolean  "collectible",                default: false
     t.boolean  "elite"
     t.integer  "durability"
     t.string   "how_to_get_gold"
     t.string   "json_id",         limit: 10
+    t.integer  "player_class_id"
   end
 
   add_index "cards", ["json_id"], name: "index_cards_on_json_id", unique: true
