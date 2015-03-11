@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
 
-  resources :cards, :only => [:show, :index]
+  get 'cards', to: 'cards#index'
+  get 'cards/id/:id', to: 'cards#show_by_id'
+  get 'cards/name/:name', to: 'cards#show_by_name'
+
+
+  #resources :cards, :only => [:show, :index]
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
