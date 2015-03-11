@@ -14,8 +14,9 @@ def seed_cards
     card_sets["#{card_set}"].each do |c|
 
       begin  
-        create_card_from_json_hash(c)
-        print "." 
+        card = create_card_from_json_hash(c)
+        printCardSeed(card.getRarityColour)
+
       rescue ActiveRecord::RecordInvalid
         print "\n" + "could not create card: #{c["name"]}" + "\n" 
       end
@@ -55,11 +56,8 @@ def create_card_from_json_hash(c)
 	card[:json_id] = c["id"]
 	card[:how_to_get_gold] = c["howToGetGold"]
 	card.save!
+	return card
 end
-
-
-
-
 
 # parses cards from json file, returns hash
 def parse_cards_json
@@ -67,4 +65,11 @@ def parse_cards_json
   fileContents = File.open(filepath).read
   card_sets = JSON.parse(fileContents)
   return card_sets
+end
+
+def printCardSeed(colour)
+    print "C".colorize(:color => :white) if colour == "White" 
+	print "R".colorize(:color => :blue) if colour == "Blue" 
+	print "E".colorize(:color => :purple) if colour == "Purple" 
+	print "L".colorize(:color => :orange) if colour == "Orange" 
 end

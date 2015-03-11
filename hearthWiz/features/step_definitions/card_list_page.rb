@@ -12,5 +12,6 @@ Then(/^I should see a link to the card '(.*?)'$/) do |card_name|
 end
 
 Then(/^I should see the card list page$/) do
-  	expect(current_path).to eq('/cards')
+	expect(page).to have_css('div#all_cards_title', :text == "All Cards")
 end
+

@@ -19,7 +19,7 @@ Feature: Card Page
 	Then I should be on the card page for the card named 'Crackle'
 		And the card page should tell me that the card has the type 'Spell'
 
-	@complete @debug
+	@complete
 	Scenario: When browsing to an unknown card page
 
 	Given the card with id '12345678' does not exist
