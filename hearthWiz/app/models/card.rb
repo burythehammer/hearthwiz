@@ -1,9 +1,11 @@
 class Card < ActiveRecord::Base
 
-	belongs_to :rarities
-	validates_associated :rarities
+	self.primary_key = :json_id
 
-	belongs_to :player_classes
+	belongs_to :rarity, :class_name => "Rarity", :foreign_key => "rarity_id"
+	validates_associated :rarity
+
+	belongs_to :player_classes, :class_name => "Player_Class", :foreign_key => "player_class_id"
 	validates_associated :player_classes
 
 
