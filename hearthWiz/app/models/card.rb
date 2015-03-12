@@ -12,37 +12,11 @@ class Card < ActiveRecord::Base
 
 
 
-=begin
-		
-
-		validates :faction,
-			:inclusion => { :in =>  }
-
-	#	validates :text
-
 	#	validates :mechanics
 
 	#	validates :flavour
-
 	#	validates :artist
-
 	#	validates :how_to_get_gold
-
-		validates :attack,
-		:numericality => { :only_integer => true }
-
-		validates :health,
-		:numericality => { :only_integer => true }
-
-		validates :collectible,
-		:inclusion => {:in => [true, false]}
-
-		validates :json_id,
-		presence: true,
-		uniqueness: true
-
-		
-=end
 
 	validates :json_id,
 		presence: true,
@@ -67,67 +41,39 @@ class Card < ActiveRecord::Base
 		:inclusion => { in: [true, false]}
 
 
-case :card_type
+	case :card_type
 
-when "Weapon"
-	validates :durability, :cost,
-		presence: true,
-		:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
+		when "Weapon"
+			validates :durability, :cost,
+				presence: true,
+				:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
 
-when "Minion"
-	validates :health, :attack, :cost,
-		presence: true,
-		:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
-	validates :elite,
-		:inclusion => {:in => [true, false]}
+		when "Minion"
+			validates :health, :attack, :cost,
+				presence: true,
+				:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
+			validates :elite,
+				presence: true,
+				:inclusion => {in: [true, false]}
 
-when "Spell"
-	validates :cost,
-		presence: true,
-		:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
-end
-
-=begin
-
-	validate :playable_cards_cannot_have_nil_costs,
-		:mana_cost_cannot_be_negative,
-		:faction_is_alliance_horde_neutral
+		when "Spell"
+			validates :cost,
+				presence: true,
+				:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
 
 
-	# COST ASSERTIONS #
+		when "Enchantment"
+			validates :collectible,
+				presence: true,
+				:inclusion => {in: [false]}
 
-	def playable_cards_cannot_have_nil_costs
-		if collectible? && self.cost.nil?
-			errors.add(:cost, "cannot be nil!")
-			return false
-		else 
-			return true
-		end
-	end
-
-	def mana_cost_cannot_be_negative
-		if collectible? && !self.cost.nil? && self.cost < 0
-			errors.add(:cost, "cannot be negative!")
-			return false
-		else 
-			return true
-		end
 	end
 
 
-=end	
 
-
-
-	# FACTION ASSERTIONS #
-	
-	def faction_is_alliance_horde_neutral
-
-		if self.faction? && !["Alliance", "Horde", "Neutral"].include?(self.faction)
-			errors.add(:faction, "can only be Alliance, Horde or Neutral!")
-	
-		end
-	end
+	validates :faction,
+				:inclusion => { in: ["Horde","Alliance","Neutral"] },
+				allow_nil: true
 
 
 	# QUERIES #
@@ -136,63 +82,63 @@ end
 		return :collectible
 	end
 
-  	def weapon?
-  	    return self.card_type == "Weapon"
-    end
+		def weapon?
+		    return self.card_type == "Weapon"
+	end
 
-    def minion?
-  	    return self.card_type == "Minion"
-    end
+	def minion?
+		    return self.card_type == "Minion"
+	end
 
-    def disenchantable?
+	def disenchantable?
 		return !self.getDisenchantValue.nil?
-    end
+	end
 
-    def craftable?
-    	return !self.getCraftCost.nil?
-    end
+	def craftable?
+		return !self.getCraftCost.nil?
+	end
 
-    def faction?
-    	return !self.faction.nil?
-    end
+	def faction?
+		return !self.faction.nil?
+	end
 
 
-    # GETTERS #
+	# GETTERS #
 
 	def getRarity
 		return Rarity.find(self.rarity_id)
 	end
 
-    def getRarityName
-      	return self.getRarity.name
-    end
+	def getRarityName
+	  	return self.getRarity.name
+	end
 
-    def getRarityColour
-    	return self.getRarity.colour
-    end
+	def getRarityColour
+		return self.getRarity.colour
+	end
 
-    def getRarityHexColour
-    	return self.getRarity.hexcolour
-    end
+	def getRarityHexColour
+		return self.getRarity.hexcolour
+	end
 
-    def getDisenchantValue
-    	return self.getRarity.disenchant_reward
-    end
+	def getDisenchantValue
+		return self.getRarity.disenchant_reward
+	end
 
 	def getCraftCost
-    	return self.getRarity.craft_cost
-    end
+		return self.getRarity.craft_cost
+	end
 
-    def getIdPath
-    	return "cards/id/" + self.json_id
-    end
+	def getIdPath
+		return "cards/id/" + self.json_id
+	end
 
-    def getNamePath
-    	return "cards/name/" + self.name
-    end
+	def getNamePath
+		return "cards/name/" + self.name
+	end
 
 
-    def getCardQuickInfo
+	def getCardQuickInfo
 		quickInfo = Hash.new
 
 		quickInfo[:cost] = self[:cost]
@@ -202,6 +148,6 @@ end
 		quickInfo[:disenchant] = self.getDisenchantValue if disenchantable?
 		quickInfo[:craft] = self.getCraftCost if craftable?
 		quickInfo[:durability] = self.durability if weapon?
-    end
+	end
 
 end
