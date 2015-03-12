@@ -13,12 +13,13 @@ def seed_cards
 
     card_sets["#{card_set}"].each do |c|
 
+    card = Card.new
+
       begin  
         card = create_card_from_json_hash(c)
         printCardSeed(card.getRarityColour)
-
       rescue ActiveRecord::RecordInvalid
-        print "\n" + "could not create card: #{c["name"]}" + "\n" 
+        puts "did not create card: #{c["name"]}" + "\n"
       end
 
     end
@@ -48,11 +49,9 @@ def create_card_from_json_hash(c)
 	card[:how_to_get_gold] = c["howToGetGold"]
 
 	# could use ternary but this is more readable
-	if c["collectible"].nil? || ["Enchantment", "Hero", "Hero Power"].include?(c["type"])
-		card[:collectible] = false
-	else
-		card[:collectible] = c["collectible"]
-	end
+	c["collectible"] = false if c["collectible"].nil? 
+
+	card[:collectible] = c["collectible"]
 
 	# sometimes rarity is not supplied - rescues this and supplies 'common' default
 	begin
@@ -67,6 +66,14 @@ def create_card_from_json_hash(c)
 	rescue NoMethodError
 		card[:player_class_id] = PlayerClass.find_by(name: "Neutral").id
 	end
+
+	if !card.valid?
+        card.errors.each do |key, value|
+			puts c["name"]
+			puts "#{key} not valid, error: #{value}" 
+		end
+	end
+
 
 	card.save!
 	return card
