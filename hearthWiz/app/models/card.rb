@@ -4,9 +4,11 @@ class Card < ActiveRecord::Base
 
 	belongs_to :rarity, :class_name => "Rarity", :foreign_key => "rarity_id"
 	validates_associated :rarity
+	validates :rarity, presence: true
 
-	belongs_to :player_classes, :class_name => "PlayerClass", :foreign_key => "player_class_id"
-	validates_associated :player_classes
+	belongs_to :player_class, :class_name => "PlayerClass", :foreign_key => "player_class_id"
+	validates_associated :player_class
+	validates :player_class, presence: true
 
 
 
@@ -39,35 +41,57 @@ class Card < ActiveRecord::Base
 		presence: true,
 		uniqueness: true
 
-		validates :elite,
-		:inclusion => {:in => [true, false]}
-
-		validates :durability,
-		:numericality => { :only_integer => true }
-
-
+		
 =end
+
+	validates :json_id,
+		presence: true,
+		uniqueness: true
 
 	validates :name, 
 		presence: true
 
 	validates :card_type,
 		presence: true,
-		:inclusion => { :in => ["Minion", "Spell", "Weapon", "Enchantment", "Hero", "Hero Power"] }
+		:inclusion => { in: ["Minion", "Spell", "Weapon", "Enchantment", "Hero", "Hero Power"] }
 
 	validates :rarity_id,
 		presence: true,
-		:numericality => { :only_integer => true }
+		:numericality => { only_integer: true }
+
+	validates :player_class_id,
+		presence: true,
+		:numericality => { only_integer: true }
 
 	validates :collectible,
+		:inclusion => { in: [true, false]}
+
+
+case :card_type
+
+when "Weapon"
+	validates :durability, :cost,
 		presence: true,
-		:inclusion => { :in => [true, false]}
+		:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
+
+when "Minion"
+	validates :health, :attack, :cost,
+		presence: true,
+		:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
+	validates :elite,
+		:inclusion => {:in => [true, false]}
+
+when "Spell"
+	validates :cost,
+		presence: true,
+		:numericality => { only_integer: true, greater_than_or_equal_to: 0 }
+end
+
+=begin
 
 	validate :playable_cards_cannot_have_nil_costs,
 		:mana_cost_cannot_be_negative,
 		:faction_is_alliance_horde_neutral
-
-
 
 
 	# COST ASSERTIONS #
@@ -75,15 +99,25 @@ class Card < ActiveRecord::Base
 	def playable_cards_cannot_have_nil_costs
 		if collectible? && self.cost.nil?
 			errors.add(:cost, "cannot be nil!")
+			return false
+		else 
+			return true
 		end
 	end
 
 	def mana_cost_cannot_be_negative
 		if collectible? && !self.cost.nil? && self.cost < 0
 			errors.add(:cost, "cannot be negative!")
-			print "error"
+			return false
+		else 
+			return true
 		end
 	end
+
+
+=end	
+
+
 
 	# FACTION ASSERTIONS #
 	
