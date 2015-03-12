@@ -27,54 +27,43 @@
 
 
 
-
-<div class='description_text' id='card_description_text'>
-	<p>
-  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
-  	</p>	
-
-</div>
-
-<div class='flavour_text' id='card_flavour_text'>
-	<p>
-  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
-	</p>
-</div>
-
 <div id="card_information">
 
-	<table>
-		<% unless @card.card_type.empty? %>		
-			<tr>
-				<td><strong>Card type: </strong></td>
-				<td id='card_type'><%= @card.card_type %></td>	
-			</tr>
-		<% end %>
+	<div id='card_text'>
+		<p>
+	  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
+	  	</p>	
 
-		<% unless @card.cost.nil? %>		
-			<tr>
-				<td><strong>Cost: </strong></td>
-				<td id='card_cost'><%= @card.cost %></td>	
-			</tr>
-		<% end %>
+	</div>
 
-		<% unless @card.health.nil? %>		
-			<tr>
-				<td><strong>Health: </strong></td>
-				<td id='card_health'><%= @card.health %></td>	
-			</tr>
-		<% end %>
+	<div id='card_flavour_text'>
+		<p>
+	  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
+		</p>
+	</div>
+
+	<div id='card_type'>
+		<strong>Card type: </strong> <%= @card.card_type %>
+	</div>	
+
+	<div id='card_mana_cost'>
+		<strong>Cost: </strong>	<%= @card.cost %>
+	</div>	
+
+	<div id='card_health'>
+		<strong>Health: </strong><%= @card.health %>
+	</div>	
+
+	<div id='card_attack'>
+		<strong>Attack: </strong><%= @card.attack %>
+	</div>	
+
+	<div id='card_durability'>
+		<strong>Durability: </strong><%= @card.durability %>
+	</div>	
+
+			
 		
-		<% unless @card.attack.nil? %>		
-			<tr>
-				<td><strong>Attack: </strong></td>
-				<td id='card_attack'><%= @card.attack %></td>	
-			</tr>
-		<% end %>
-
-
-	</table>
 
 
 </div>
-

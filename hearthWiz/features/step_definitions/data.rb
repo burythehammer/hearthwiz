@@ -13,8 +13,12 @@ end
 
 
 Given(/^the card with name '(.+)' exists$/) do |card_name|
-	card = Card.find_by!(name: card_name)
-	expect(card[:name]).to eq(card_name) 
+
+	expect {
+		card = Card.find_by!(name: card_name)
+		expect(card[:name]).to eq(card_name) 
+	}.to_not raise_error
+
 end
 
 
@@ -24,7 +28,7 @@ Given(/^the card with id '(.+)' has the name '(.+)'$/) do |card_id, card_name|
 end
 
 
-Given(/^the card with name '(.+)' has the card type '(.+)'$/) do |card_name, card_type|
+Given(/^the '(.+)' card has the card type '(.+)'$/) do |card_name, card_type|
 	card = Card.find_by!(name: card_name)
 	expect(card[:card_type]).to eq(card_type)
 end
