@@ -1,15 +1,13 @@
-# seeds all cards
-def seed_cards
+
+# takes an array of the card sets wanted to be parsed
+def seed_cards(card_sets_wanted)
 
   card_sets = parse_cards_json
-
-  # card sets we want to add
-  card_sets_wanted = ["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"]
 
   # iterates over card sets, then over each card in that set
   card_sets_wanted.each do |card_set|
 
-    print "\n" + "#{card_set} cards" + "\n" 
+    print "\n" + "#{card_set} cards: total #{card_sets[card_set].size}" + "\n" 
 
     card_sets["#{card_set}"].each do |c|
 
@@ -27,6 +25,20 @@ def seed_cards
     print "\n"
 
   end
+
+end
+
+
+
+
+
+def seed_all_cards
+  seed_cards(["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"])
+end
+
+def seed_test_cards
+	# naxxramas is a pretty small set so we can test with only these
+	seed_cards(["Curse of Naxxramas"])
 end
 
 
@@ -93,3 +105,4 @@ def printCardSeed(colour)
 	print "E".colorize(:color => :purple) if colour == "Purple" 
 	print "L".colorize(:color => :orange) if colour == "Orange" 
 end
+
