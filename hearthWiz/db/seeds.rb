@@ -1,9 +1,1 @@
-#loads entire helpers directory
-Dir[File.join(Rails.root, 'db', 'helpers', '*.rb')].each {|file| require file }
-
-clean_database
-seed_rarities
-seed_classes
-
-seed_test_cards
-#seed_all_cards
+load(File.join(Rails.root, 'db', 'seeds', "#{Rails.env.downcase}.rb"))

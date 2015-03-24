@@ -30,9 +30,11 @@ end
 
 
 
+def seed_development_cards
+  seed_cards(["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"])
+end
 
-
-def seed_all_cards
+def seed_production_cards
   seed_cards(["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"])
 end
 

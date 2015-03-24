@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311185406) do
+ActiveRecord::Schema.define(version: 20150324125054) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150311185406) do
     t.boolean  "elite",           limit: 1
     t.integer  "durability",      limit: 4
     t.string   "how_to_get_gold", limit: 255
-    t.string   "json_id",         limit: 10
+    t.string   "json_id",         limit: 100
     t.integer  "player_class_id", limit: 4
   end
 
