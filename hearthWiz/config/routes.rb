@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :card_sets
+
   resources :player_classes
 
   get 'dashboard/index'
