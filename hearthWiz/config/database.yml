@@ -16,7 +16,7 @@ development:
   <<: *default
   database: hearthWizDev
   username: root
-  password:
+  password: 
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -31,7 +31,9 @@ test: &test
 
 production:
   <<: *default
-  database: FIND_OUT_DATABASE
+  database: burytheh_hearthwiz
+  username: burytheh_hearthw
+  password: g6H2NJ11Tcmt
 
 cucumber:
   <<: *test
