@@ -10,10 +10,10 @@ class Card < ActiveRecord::Base
 	validates_associated :player_class
 	validates :player_class, presence: true
 
-
+	belongs_to :card_set, :class_name => "CardSet", :foreign_key => "card_card_id"
+	validates_associated :card_set
 
 	#	validates :mechanics
-
 	#	validates :flavour
 	#	validates :artist
 	#	validates :how_to_get_gold
@@ -39,6 +39,10 @@ class Card < ActiveRecord::Base
 
 	validates :collectible,
 		:inclusion => { in: [true, false]}
+
+	validates :card_set_id,
+		presence: true,
+		:numericality => { only_integer: true }
 
 
 	case :card_type
@@ -70,7 +74,6 @@ class Card < ActiveRecord::Base
 	end
 
 
-
 	validates :faction,
 				:inclusion => { in: ["Horde","Alliance","Neutral"] },
 				allow_nil: true
@@ -82,12 +85,12 @@ class Card < ActiveRecord::Base
 		return :collectible
 	end
 
-		def weapon?
-		    return self.card_type == "Weapon"
+	def weapon?
+	    return self.card_type == "Weapon"
 	end
 
 	def minion?
-		    return self.card_type == "Minion"
+	    return self.card_type == "Minion"
 	end
 
 	def disenchantable?
@@ -101,7 +104,6 @@ class Card < ActiveRecord::Base
 	def faction?
 		return !self.faction.nil?
 	end
-
 
 	# GETTERS #
 
@@ -119,6 +121,15 @@ class Card < ActiveRecord::Base
 
 	def getRarityHexColour
 		return self.getRarity.hexcolour
+	end
+
+
+	def getCardSet
+		return CardSet.find(self.card_set_id)
+	end
+
+	def getCardSetName
+		return self.getCardSet.name
 	end
 
 	def getDisenchantValue

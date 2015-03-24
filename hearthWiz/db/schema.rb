@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324125054) do
+ActiveRecord::Schema.define(version: 20150324174804) do
+
+  create_table "card_sets", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name",       limit: 100
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -33,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150324125054) do
     t.string   "how_to_get_gold", limit: 255
     t.string   "json_id",         limit: 100
     t.integer  "player_class_id", limit: 4
+    t.integer  "card_set_id",     limit: 4,                   null: false
   end
 
   add_index "cards", ["json_id"], name: "index_cards_on_json_id", unique: true, using: :btree

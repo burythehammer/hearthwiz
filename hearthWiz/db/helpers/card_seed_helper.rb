@@ -13,6 +13,8 @@ def seed_cards(card_sets_wanted)
 
     card = Card.new
 
+    c["card_set"] = card_set
+
       begin  
         card = create_card_from_json_hash(c)
         printCardSeed(card.getRarityColour)
@@ -29,21 +31,6 @@ def seed_cards(card_sets_wanted)
 end
 
 
-
-def seed_development_cards
-  seed_cards(["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"])
-end
-
-def seed_production_cards
-  seed_cards(["Basic","Classic","Curse of Naxxramas", "Goblins vs Gnomes", "Promotion", "Reward"])
-end
-
-def seed_test_cards
-	# naxxramas is a pretty small set so we can test with only these
-	seed_cards(["Curse of Naxxramas"])
-end
-
-
 # create a card from the json hash
 def create_card_from_json_hash(c)
 
@@ -51,6 +38,7 @@ def create_card_from_json_hash(c)
 	
 	card[:name] = c["name"]
 	card[:card_type] = c["type"]
+	card[:card_set_id] = CardSet.find_by(name: c["card_set"]).id
 	card[:faction] = c["faction"]
 	card[:cost] = c["cost"]
 	card[:durability] = c["durability"]
@@ -81,13 +69,13 @@ def create_card_from_json_hash(c)
 		card[:player_class_id] = PlayerClass.find_by(name: "Neutral").id
 	end
 
+
 	if !card.valid?
         card.errors.each do |key, value|
 			puts c["name"]
 			puts "#{key} not valid, error: #{value}" 
 		end
 	end
-
 
 	card.save!
 	return card

@@ -18,6 +18,7 @@
       <th>Name</th>
       <th>Type</th>
       <th>Rarity</th>
+      <th>Set</th>
       <th>Attack</th>
       <th>Health</th>
       <th>Durability</th>
@@ -27,41 +28,45 @@
 
   <tbody>
     <% @cards.each do |card| %>
+      <div id= "<%= "#{card.name}" %>" >
+        <tr>
+          <td>
+            <%= card.cost %>
+          </td>
+          <td> 
+            <%= link_to card.name, root_url + card.getIdPath %>
+          </td>
+          <td> 
+            <%= card.card_type %>
+          </td>
 
-      <tr>
-        <td>
-          <%= card.cost %>
-        </td>
-        <td> 
-          <%= link_to card.name, root_url + card.getNamePath %>
-        </td>
-        <td> 
-          <%= card.card_type %>
-        </td>
+          <td>
+            <font <%= "color= " + card.getRarityHexColour %> >
+             <%= card.getRarityName %>
+            </font>
+          </td>
 
-        <td>
-          <font <%= "color= " + card.getRarityHexColour %> >
-           <%= card.getRarityName %>
-          </font>
-        </td>
+           <td>
+             <%= card.getCardSetName %>
+          </td>
 
-        <td> 
-          <%= card.attack %>
-        </td>
-        
-        <td> 
-          <%= card.health %>
-        </td>
+          <td> 
+            <%= card.attack %>
+          </td>
+          
+          <td> 
+            <%= card.health %>
+          </td>
 
-        <td> 
-          <%= card.durability %>
-        </td>
+          <td> 
+            <%= card.durability %>
+          </td>
 
-        <td> 
-          <%= raw card.text %>
-        </td>
-
-      </tr>
+          <td> 
+            <%= raw card.text %>
+          </td>
+        </tr>
+      </div>
     <% end %>
   </tbody>
 </table>
