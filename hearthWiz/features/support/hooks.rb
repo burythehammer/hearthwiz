@@ -1,5 +1,5 @@
 AfterConfiguration do |config|
-	require File.join(Rails.root, 'db', 'seed_test.rb')
+	require File.join(Rails.root, 'db', 'seeds.rb')
 end
 
 
