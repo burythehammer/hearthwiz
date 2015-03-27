@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   def index
     @cards = Card.where(collectible: true).where.not('cards.cost' => nil)
     @cards = @cards.sort_by {|c| [c.cost, c.name] }
+    @card_grid = initialize_grid(Card)
   end
 
   # GET /cards/1

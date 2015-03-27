@@ -27,10 +27,13 @@ gem 'colorize'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# database
+# postgres database
 gem 'pg'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
+
+gem 'datagrid'
+gem 'wice_grid'
 
 # Use Capistrano for deployment
 #gem 'capistrano-rails', group: :development

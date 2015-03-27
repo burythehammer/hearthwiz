@@ -16,7 +16,7 @@ test:
   password: test
   host: localhost
 
-development:
+production:
   adapter: postgresql
   host: localhost
   username: user

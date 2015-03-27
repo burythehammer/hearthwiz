@@ -11,6 +11,22 @@
 <% end %>
 
 
+<%= 
+    grid(@card_grid) do |g|
+       g.column name: 'Name' do |p|
+         p.name
+       end
+       g.column name: 'Text' do |p|
+         p.text
+       end
+    end
+ %>
+
+
+
+
+
+
 <table>
   <thead>
     <tr>
