@@ -5,3 +5,4 @@ class CreateCardSets < ActiveRecord::Migration
 	  end
   end
 end
+
