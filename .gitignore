@@ -9,7 +9,7 @@
 /config/database.yml
 
 # ignore secrets
-/config/secrets.yml
+#/config/secrets.yml
 
 # Ignore bundler config.
 /.bundle
