@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: hearthwiz_dev
+  pool: 5
+  username: tester
+  password: test
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: hearthwiz_test
+  pool: 5
+  username: tester
+  password: test
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: hearthwiz_prod
+  pool: 5
+  username: ENV['DB_USERNAME']
+  password: ENV['DB_PASSWORD']
+
