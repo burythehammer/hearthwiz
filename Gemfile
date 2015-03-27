@@ -3,10 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
-gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -28,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'json'
 gem 'factory_girl_rails'
+
+# prettifies seeding
 gem 'colorize'
 
 # Use ActiveModel has_secure_password
@@ -36,8 +34,12 @@ gem 'colorize'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+
+# database
+gem 'pg'
+
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+#gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +51,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
 
+#  gem 'sqlite3'
 end
 
 group :test do
