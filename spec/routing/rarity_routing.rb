@@ -1,17 +1,15 @@
 require "rails_helper"
 
-RSpec.describe PlayerClassesController, type: :routing do
+RSpec.describe RaritiesController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/cards/classes").to route_to("player_classes#index")
+      expect(:get => "/player_classes").to route_to("player_classes#index")
     end
     
     it "routes to #show" do
-      expect(:get => "/cards/class/classname").to route_to("player_classes#show", :name => "classname")
+      expect(:get => "/player_classes/1").to route_to("player_classes#show", :id => "1")
     end
-
-    # make sure resources don't work
 
     it "doesn't route to #new" do
       expect(:get => "/player_classes/new").not_to be_routable

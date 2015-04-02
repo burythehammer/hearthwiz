@@ -4,31 +4,33 @@ RSpec.describe CardSetsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/card_sets").to route_to("card_sets#index")
+      expect(:get => "/cards/sets").to route_to("card_sets#index")
     end
-
-    it "routes to #new" do
-      expect(:get => "/card_sets/new").to route_to("card_sets#new")
-    end
-
+    
     it "routes to #show" do
-      expect(:get => "/card_sets/1").to route_to("card_sets#show", :id => "1")
+      expect(:get => "/cards/set/set_name").to route_to("card_sets#show", :name => "set_name")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/card_sets/1/edit").to route_to("card_sets#edit", :id => "1")
+    # make sure resources aren't set up
+
+    it "doesn't route to #new" do
+      expect(:get => "/card_sets/new").not_to be_routable
     end
 
-    it "routes to #create" do
-      expect(:post => "/card_sets").to route_to("card_sets#create")
+    it "doesn't route to #edit" do
+      expect(:get => "/card_sets/1/edit").not_to be_routable
     end
 
-    it "routes to #update" do
-      expect(:put => "/card_sets/1").to route_to("card_sets#update", :id => "1")
+    it "doesn't route to #create" do
+      expect(:post => "/card_sets").not_to be_routable
     end
 
-    it "routes to #destroy" do
-      expect(:delete => "/card_sets/1").to route_to("card_sets#destroy", :id => "1")
+    it "doesn't route to #update" do
+      expect(:put => "/card_sets/1").not_to be_routable
+    end
+
+    it "doesn't route to #destroy" do
+      expect(:delete => "/card_sets/1").not_to be_routable
     end
 
   end
