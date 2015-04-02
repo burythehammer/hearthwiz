@@ -13,78 +13,33 @@
 
 <%= 
     grid(@card_grid) do |g|
-       g.column name: 'Name' do |p|
-         p.name
-       end
-       g.column name: 'Text' do |p|
-         p.text
-       end
+      
+      g.row_attributes do
+          {style:   'background-color: rgb(60, 60, 60);'}
+      end
+
+      g.column name: 'Cost', attribute: 'cost'
+
+      g.column name: 'Name', attribute: 'name' do |card|
+          card.name
+      end
+
+      g.column name: 'Type', attribute: 'card_type' do |card|
+          card.card_type
+      end
+
+      g.column name: 'Rarity', attribute: 'rarity_id' do |card|
+          card.getRarityName
+      end
+
+      g.column name: 'Set', attribute: 'card_set_id' do |card|
+          card.getCardSetName
+      end
+
+      g.column name: 'Attack', attribute: 'attack'
+      g.column name: 'Health', attribute: 'health'
+      g.column name: 'Durability', attribute: 'durability'
+      g.column name: 'Text', attribute: 'text', filter: false, ordering: false
+    
     end
  %>
-
-
-
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Cost</th>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Rarity</th>
-      <th>Set</th>
-      <th>Attack</th>
-      <th>Health</th>
-      <th>Durability</th>
-      <th>Text</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cards.each do |card| %>
-      <div id= "<%= "#{card.name}" %>" >
-        <tr>
-          <td>
-            <%= card.cost %>
-          </td>
-          <td> 
-            <%= link_to card.name, root_url + card.getIdPath %>
-          </td>
-          <td> 
-            <%= card.card_type %>
-          </td>
-
-          <td>
-            <font <%= "color= " + card.getRarityHexColour %> >
-             <%= card.getRarityName %>
-            </font>
-          </td>
-
-           <td>
-             <%= card.getCardSetName %>
-          </td>
-
-          <td> 
-            <%= card.attack %>
-          </td>
-          
-          <td> 
-            <%= card.health %>
-          </td>
-
-          <td> 
-            <%= card.durability %>
-          </td>
-
-          <td> 
-            <%= raw card.text %>
-          </td>
-        </tr>
-      </div>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
