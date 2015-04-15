@@ -4,7 +4,6 @@ def seed_classes
   class_list = Array.new
 
   class_list << [name: "Neutral"]
-
   class_list << [name: "Druid",		hero: "Malfurion Stormrage",	colour: "Orange",  		hexcolour: "#FF7D0A"]
   class_list << [name: "Hunter",	hero: "Rexxar",   				colour: "Green",   		hexcolour: "#ABD473"]
   class_list << [name: "Mage",		hero: "Jaina Proudmoore", 		colour: "Light blue",   hexcolour: "#69CCF0"]

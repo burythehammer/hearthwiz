@@ -83,7 +83,7 @@ end
 
 # parses cards from json file, returns hash
 def parse_cards_json
-  filepath = File.join(Rails.root, 'db', 'json', 'AllSets.enGB.json')
+  filepath = File.join(Rails.root, 'db', 'json', 'AllSets.enUS.json')
   fileContents = File.open(filepath).read
   card_sets = JSON.parse(fileContents)
   return card_sets
