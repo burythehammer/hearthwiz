@@ -1,0 +1,74 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+$roboto-slab: 'Roboto Slab', serif;   
+$open-sans: 'Open Sans', sans-serif;
+$dark-grey: #383838;
+$grey: #484848;
+$white: #eeeeee;
+$electric-blue: #37fdfc;
+
+html{
+	background-color: $dark-grey;
+
+	.container{
+		background-color: $dark-grey;
+	    font-family: $open-sans;
+		color: $white;
+
+		a, a:visited{
+		color: $electric-blue;
+		}
+
+		a:visited {
+			color: $electric-blue;
+		}
+	}
+}
+
+
+.page-title-area{
+
+	width: 50%;
+	margin: 0 auto;
+
+	.page-title {
+		font-family: $roboto-slab;
+		font-size: 10px;
+		text-align: center;
+		font-weight: bold;
+
+	}
+
+	 padding-top: 25px;
+	 padding-right: 50px;
+	 padding-bottom: 25px;
+	 padding-left: 50px;
+}
+
+
+
+.header{
+	
+	height: 80px;
+	background-color: $dark-grey;
+
+	.header_title {
+		line-height: 80px;
+		font-family: $roboto-slab;
+		font-size: 40px;
+		color: $electric-blue;
+		text-align: center;
+	}
+
+}
+
+.footer{
+
+	height: 30px;
+
+	.built-by{
+		text-align: center;
+		line-height: 30px;
+	}
+
+}
