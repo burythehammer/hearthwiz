@@ -21,7 +21,7 @@
       g.column name: 'Cost', attribute: 'cost', filter: false
 
       g.column name: 'Name', attribute: 'name', filter: false do |card|
-          link_to card.name, card.getNamePath
+          link_to card.name, root_url + card.getIdPath
       end
 
       g.column name: 'Type', attribute: 'card_type', filter: false do |card|
