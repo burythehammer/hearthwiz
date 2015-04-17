@@ -8,6 +8,7 @@ $white: #eeeeee;
 $electric-blue: #37fdfc;
 
 $header-height: 50px;
+$footer-height: 30px;
 
 html{
 	background-color: $dark-grey;
@@ -27,8 +28,13 @@ html{
 	}
 }
 
+html, body {
+	height: 100%;
+}
+
 .body{
 	padding-top: $header-height;
+	padding-bottom: $footer-height;
 }
 
 .page-title-area{
@@ -50,12 +56,4 @@ html{
 		font-weight: bold;
 	}
 
-}
-
-
-a.fill-div {
-    display: block;
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
 }

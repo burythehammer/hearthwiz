@@ -1,66 +1,51 @@
-<%= link_to '<- Back to cards page', cards_path %>
-
 <p id="notice"><%= notice %></p>
 
 <div class='page-title-area'>
 
-	<div class='page-title' id='card_title'>
-		<%= @card.name %>
-	</div>
-
-	<div class='subtitle' id='<%= @card.getRarityName %>'>
-		<p>
-	  		<%= @card.getRarityName %> card
-		</p>
-	</div>
+	<div class='page-title'><%= @card.name %></div>
+	<div class='page-subtitle'><%= @card.getRarityName %> card</div>
 
 </div>
 
 
-<div class='card_images' id='card_portrait'>
-
+<div class='card-images' id='card-portrait'>
 
 	<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
 
 </div>
 
 
-
 <div class="card-info-area">
-
-
-
-
 
 	<div class='card-info' id='card-text'>
   		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
 	</div>
 
-	<div class='card-info' id='card_flavour_text'>
+	<div class='card-info' id='card-flavour-text'>
   		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
 	</div>
 
-	<div class='card-info' id='card_set'>
+	<div class='card-info' id='card-set'>
 		<strong>Card set: </strong> <%= @card.getCardSetName %>
 	</div>	
 
-	<div class='card-info' id='card_type'>
+	<div class='card-info' id='card-type'>
 		<strong>Card type: </strong> <%= @card.card_type %>
 	</div>	
 
-	<div class='card-info' id='card_mana_cost'>
+	<div class='card-info' id='card-mana-cost'>
 		<strong>Cost: </strong>	<%= @card.cost %>
 	</div>	
 
-	<div class='card-info' id='card_health'>
+	<div class='card-info' id='card-health'>
 		<strong>Health: </strong><%= @card.health %>
 	</div>	
 
-	<div class='card-info' id='card_attack'>
+	<div class='card-info' id='card-attack'>
 		<strong>Attack: </strong><%= @card.attack %>
 	</div>
 
-	<div class='card-info' id='card_durability'>
+	<div class='card-info' id='card-durability'>
 		<strong>Durability: </strong><%= @card.durability %>
 	</div>	
 
