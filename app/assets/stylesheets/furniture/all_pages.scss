@@ -7,6 +7,8 @@ $grey: #484848;
 $white: #eeeeee;
 $electric-blue: #37fdfc;
 
+$header-height: 50px;
+
 html{
 	background-color: $dark-grey;
 
@@ -25,50 +27,27 @@ html{
 	}
 }
 
+.body{
+	padding-top: $header-height;
+}
 
 .page-title-area{
 
 	width: 50%;
 	margin: 0 auto;
 
+	color: $electric-blue;
+
+	padding-top: 25px;
+	padding-right: 50px;
+	padding-bottom: 25px;
+	padding-left: 50px;
+
 	.page-title {
 		font-family: $roboto-slab;
-		font-size: 10px;
+		font-size: 30px;
 		text-align: center;
 		font-weight: bold;
-
-	}
-
-	 padding-top: 25px;
-	 padding-right: 50px;
-	 padding-bottom: 25px;
-	 padding-left: 50px;
-}
-
-
-
-.header{
-	
-	height: 80px;
-	background-color: $dark-grey;
-
-	.header_title {
-		line-height: 80px;
-		font-family: $roboto-slab;
-		font-size: 40px;
-		color: $electric-blue;
-		text-align: center;
-	}
-
-}
-
-.footer{
-
-	height: 30px;
-
-	.built-by{
-		text-align: center;
-		line-height: 30px;
 	}
 
 }

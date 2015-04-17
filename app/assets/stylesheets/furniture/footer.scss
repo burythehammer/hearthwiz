@@ -1,0 +1,12 @@
+$footer-height: 30px;
+
+.footer{
+
+	height: $footer-height;
+
+	.built-by{
+		text-align: center;
+		line-height: $footer-height;
+	}
+
+}

@@ -4,6 +4,14 @@ $rare-blue: #0070dd;
 $epic-purple: #a335ee;
 $legendary-orange: #ff8000;
 
+#common{
+	font-color: $common-white;
+}
+
+#uncommon{
+	font-color: $uncommon-green;
+}
+
 #rare{
 	font-color: $rare-blue;
 }
