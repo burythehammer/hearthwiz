@@ -1,12 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
-
-$roboto-slab: 'Roboto Slab', serif;   
-$dark-grey: #383838;
-$grey: #484848;
-$white: #eeeeee;
-$electric-blue: #37fdfc;
-
-$header-height: 50px;
+// Utilities
+@import "utilities/variables";
 
 .header{
 	
