@@ -24,8 +24,19 @@ $legendary-orange: #ff8000;
 	font-color: $legendary-orange;
 }
 
-.card-info-area{
 
+#card-portrait{
+	position: relative;
+	top: -70px;
+
+	width: 300px;
+	height: 465px;
+
+	float: left;
+	padding-right: 30px;
+}
+
+.card-info-area{
 
     .card-info{
     	 padding-top: 10px;

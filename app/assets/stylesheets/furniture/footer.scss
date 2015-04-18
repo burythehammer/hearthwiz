@@ -5,10 +5,11 @@ $white: #eeeeee;
 
 	height: $footer-height;
     border-top: thin solid $white;
+    width: 100%;
 
 	padding-top: 20px;
 
-	.built-by{
+	#built-by{
 		text-align: center;
 		line-height: $footer-height;
 	}
