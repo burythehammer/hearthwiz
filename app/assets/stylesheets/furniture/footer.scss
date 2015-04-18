@@ -3,9 +3,14 @@ $white: #eeeeee;
 
 .footer{
 
+	position:absolute;
+
 	height: $footer-height;
     border-top: thin solid $white;
     width: 100%;
+
+	bottom:0;
+	left:0;
 
 	padding-top: 20px;
 
@@ -27,10 +32,3 @@ $white: #eeeeee;
 .footer, .push {
 	height: $footer-height; /* .push must be the same height as .footer */
 }
-
-/*
-
-Sticky Footer by Ryan Fait
-http://ryanfait.com/
-
-*/
