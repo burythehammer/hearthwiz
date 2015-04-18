@@ -13,7 +13,6 @@ wanted_card_sets =
 		"Promotion",
 		"Reward"]
 
-clean_database
 seed_rarities
 seed_classes
 seed_card_sets(wanted_card_sets)
