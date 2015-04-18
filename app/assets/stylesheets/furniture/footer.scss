@@ -1,0 +1,36 @@
+$footer-height: 30px;
+$white: #eeeeee;
+
+.footer{
+
+	height: $footer-height;
+    border-top: thin solid $white;
+    width: 100%;
+
+	padding-top: 20px;
+
+	#built-by{
+		text-align: center;
+		line-height: $footer-height;
+	}
+
+}
+
+* {
+	margin: 0;
+}
+
+.container {
+	min-height: 100%;
+	margin: 0 auto (-$footer-height); /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+	height: $footer-height; /* .push must be the same height as .footer */
+}
+
+/*
+
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+
+*/

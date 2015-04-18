@@ -1,5 +1,10 @@
-<div class="title" id="all_cards_title">
-  <h1>All Cards</h1>
+<div class="page-title-area">
+
+  <div class="page-title" id="all_cards_title">
+    All Cards
+  </div>
+
+
 </div>
 
 <% if flash[:error]  %>
@@ -10,81 +15,28 @@
   <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-
 <%= 
     grid(@card_grid) do |g|
-       g.column name: 'Name' do |p|
-         p.name
-       end
-       g.column name: 'Text' do |p|
-         p.text
-       end
+
+      g.column name: 'Cost', attribute: 'cost', filter: false
+
+      g.column name: 'Name', attribute: 'name', filter: false do |card|
+          link_to card.name, root_url + card.getIdPath
+      end
+
+      g.column name: 'Type', attribute: 'card_type', filter: false do |card|
+          card.card_type
+      end
+
+      g.column name: 'Rarity', attribute: 'rarity_id', filter: false do |card|
+          card.getRarityName
+      end
+
+      g.column name: 'Set', attribute: 'card_set_id', filter: false do |card|
+          card.getCardSetName
+      end
+      
+      g.column name: 'Text', attribute: 'text', filter: false, ordering: false
+    
     end
  %>
-
-
-
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Cost</th>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Rarity</th>
-      <th>Set</th>
-      <th>Attack</th>
-      <th>Health</th>
-      <th>Durability</th>
-      <th>Text</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cards.each do |card| %>
-      <div id= "<%= "#{card.name}" %>" >
-        <tr>
-          <td>
-            <%= card.cost %>
-          </td>
-          <td> 
-            <%= link_to card.name, root_url + card.getIdPath %>
-          </td>
-          <td> 
-            <%= card.card_type %>
-          </td>
-
-          <td>
-            <font <%= "color= " + card.getRarityHexColour %> >
-             <%= card.getRarityName %>
-            </font>
-          </td>
-
-           <td>
-             <%= card.getCardSetName %>
-          </td>
-
-          <td> 
-            <%= card.attack %>
-          </td>
-          
-          <td> 
-            <%= card.health %>
-          </td>
-
-          <td> 
-            <%= card.durability %>
-          </td>
-
-          <td> 
-            <%= raw card.text %>
-          </td>
-        </tr>
-      </div>
-    <% end %>
-  </tbody>
-</table>
-
-<br>

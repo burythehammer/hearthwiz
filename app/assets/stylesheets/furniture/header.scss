@@ -1,0 +1,50 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+$roboto-slab: 'Roboto Slab', serif;   
+$open-sans: 'Open Sans', sans-serif;
+$dark-grey: #383838;
+$grey: #484848;
+$white: #eeeeee;
+$electric-blue: #37fdfc;
+
+$header-height: 50px;
+
+.header{
+	
+	height: $header-height;
+	width: 100%;
+	background-color: $dark-grey;
+
+	position: fixed;
+
+    border-bottom: thin solid $white;
+
+	.header_title {
+		line-height: $header-height;
+		font-family: $roboto-slab;
+		font-size: 20px;
+		color: $electric-blue;
+		text-align: left;
+
+		padding-left: 20px;
+		padding-right: 20px;
+
+		float:left;
+
+	}
+
+	.header_title:hover{
+
+		background-color: $grey;
+
+	}
+
+	.menu {
+
+		.menu-item{
+			
+		}
+
+	}
+
+}

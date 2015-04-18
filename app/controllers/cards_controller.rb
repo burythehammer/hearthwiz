@@ -5,7 +5,15 @@ class CardsController < ApplicationController
   def index
     @cards = Card.where(collectible: true).where.not('cards.cost' => nil)
     @cards = @cards.sort_by {|c| [c.cost, c.name] }
-    @card_grid = initialize_grid(Card)
+    @card_grid = initialize_grid(
+
+          Card.where(collectible: true).where.not('cards.cost' => nil),
+          order:            'cards.cost',
+          order_direction:  'asc',
+          per_page:         50
+
+        )
+
   end
 
   # GET /cards/1
@@ -44,6 +52,6 @@ class CardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
       params.require(:card).permit(:name, :cost, :rarity)
-cucu    end
+    end
 
 end

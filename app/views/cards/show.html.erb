@@ -1,73 +1,52 @@
-<p>
-<%= link_to '<- Back to cards page', cards_path %>
-</p>
-
 <p id="notice"><%= notice %></p>
 
-<div class='page_title' id='card_title'>
-	<h1> <%= @card.name %> </h1>
-</div>
+<div class='page-title-area'>
 
-<div class='page_subtitle' id='card_rarity'>
-	<p>
-		<font <%= "color= #{@card.getRarityHexColour}" %> >
-  		<strong><%= @card.getRarityName %> card</strong>
-	  	</font>
-	</p>
-</div>
-
-
-<div class='card_images' id='card_portrait'>
-
-<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/original/#{@card.json_id}.png" %>' style="float:left;">
-
-<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
+	<div class='page-title'><%= @card.name %></div>
+	<div class='page-subtitle'><%= @card.getRarityName %> card</div>
 
 </div>
 
 
+<div id='card-portrait'>
 
-<div id="card_information">
+	<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
 
-	<div id='card_text'>
-		<p>
-	  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
-	  	</p>	
+</div>
 
+
+<div class="card-info-area">
+
+	<div class='card-info' id='card-text'>
+  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
 	</div>
 
-	<div id='card_flavour_text'>
-		<p>
-	  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
-		</p>
+	<div class='card-info' id='card-flavour-text'>
+  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
 	</div>
 
-	<div id='card_set'>
+	<div class='card-info' id='card-set'>
 		<strong>Card set: </strong> <%= @card.getCardSetName %>
 	</div>	
 
-	<div id='card_type'>
+	<div class='card-info' id='card-type'>
 		<strong>Card type: </strong> <%= @card.card_type %>
 	</div>	
 
-	<div id='card_mana_cost'>
+	<div class='card-info' id='card-mana-cost'>
 		<strong>Cost: </strong>	<%= @card.cost %>
 	</div>	
 
-	<div id='card_health'>
+	<div class='card-info' id='card-health'>
 		<strong>Health: </strong><%= @card.health %>
 	</div>	
 
-	<div id='card_attack'>
+	<div class='card-info' id='card-attack'>
 		<strong>Attack: </strong><%= @card.attack %>
-	</div>	
+	</div>
 
-	<div id='card_durability'>
+	<div class='card-info' id='card-durability'>
 		<strong>Durability: </strong><%= @card.durability %>
 	</div>	
-
-			
-		
-
 
 </div>
