@@ -37,9 +37,6 @@ gem 'colorize'
 
 gem 'rails_12factor', group: :production
 
-gem 'datagrid'
-gem 'wice_grid'
-
 gem 'normalize-rails'
 
 # Use Capistrano for deployment

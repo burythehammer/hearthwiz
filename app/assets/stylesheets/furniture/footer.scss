@@ -1,19 +1,19 @@
-$footer-height: 30px;
-$white: #eeeeee;
+// Utilities
+@import "utilities/variables";
 
 .footer{
 
-	height: $footer-height;
     border-top: thin solid $white;
-    width: 100%;
-
-	padding-top: 20px;
+	width:100%;
+	height: $footer-height;
+	position:absolute;
+	bottom:0;
+	left:0;
 
 	#built-by{
 		text-align: center;
 		line-height: $footer-height;
 	}
-
 }
 
 * {
@@ -27,10 +27,3 @@ $white: #eeeeee;
 .footer, .push {
 	height: $footer-height; /* .push must be the same height as .footer */
 }
-
-/*
-
-Sticky Footer by Ryan Fait
-http://ryanfait.com/
-
-*/
