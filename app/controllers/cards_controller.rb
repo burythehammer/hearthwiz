@@ -5,15 +5,6 @@ class CardsController < ApplicationController
   def index
     @cards = Card.where(collectible: true).where.not('cards.cost' => nil)
     @cards = @cards.sort_by {|c| [c.cost, c.name] }
-    @card_grid = initialize_grid(
-
-          Card.where(collectible: true).where.not('cards.cost' => nil),
-          order:            'cards.cost',
-          order_direction:  'asc',
-          per_page:         50
-
-        )
-
   end
 
   # GET /cards/1

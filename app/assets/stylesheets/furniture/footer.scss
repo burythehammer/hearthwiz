@@ -1,5 +1,5 @@
-$footer-height: 30px;
-$white: #eeeeee;
+// Utilities
+@import "utilities/variables";
 
 .footer{
 
@@ -18,7 +18,6 @@ $white: #eeeeee;
 		text-align: center;
 		line-height: $footer-height;
 	}
-
 }
 
 * {

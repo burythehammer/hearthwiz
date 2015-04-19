@@ -4,7 +4,6 @@
     All Cards
   </div>
 
-
 </div>
 
 <% if flash[:error]  %>
@@ -15,28 +14,15 @@
   <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= 
-    grid(@card_grid) do |g|
+<div class="card-area">
+<ul class="cards">
 
-      g.column name: 'Cost', attribute: 'cost', filter: false
+<% @cards.each do |card|%>
+   <li class="card-block" id='<%=card.name%>' onclick="location.href='<%= root_url + card.getPath %>';" style="cursor: pointer;">
+            <div class='card-block-name'><%= card.name %></div>
+            <div class='card-block-info'><%= "#{card.getRarityName} #{card.card_type}"%></div>
+    </li>
+<% end %>
 
-      g.column name: 'Name', attribute: 'name', filter: false do |card|
-          link_to card.name, root_url + card.getIdPath
-      end
-
-      g.column name: 'Type', attribute: 'card_type', filter: false do |card|
-          card.card_type
-      end
-
-      g.column name: 'Rarity', attribute: 'rarity_id', filter: false do |card|
-          card.getRarityName
-      end
-
-      g.column name: 'Set', attribute: 'card_set_id', filter: false do |card|
-          card.getCardSetName
-      end
-      
-      g.column name: 'Text', attribute: 'text', filter: false, ordering: false
-    
-    end
- %>
+</ul>
+</div>
