@@ -5,4 +5,4 @@ Feature: Homepage
 	@complete @debug
 	Scenario: Hello world!
 		When I open the homepage
-		Then I should see the text 'Hello, world!' on the page
+		Then I should see the text 'HearthWiz' on the page
