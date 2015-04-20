@@ -49,6 +49,7 @@ def create_card_from_json_hash(c)
 	card[:artist] = c["artist"]
 	card[:json_id] = c["id"]
 	card[:how_to_get_gold] = c["howToGetGold"]
+	card[:race] = c["race"]
 
 	# could use ternary but this is more readable
 	c["collectible"] = false if c["collectible"].nil? 
