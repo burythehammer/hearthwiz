@@ -3,7 +3,7 @@
 <div class='page-title-area'>
 
 	<div class='page-title'><%= @card.name %></div>
-	<div class='page-subtitle' id='<%=@card.getRarityName.downcase%>'><%= @card.getRarityName + ' ' + @card.card_type%> </div>
+	<div class='page-subtitle'><span class=<%= "#{@card.getRarityName.downcase}-text" %>><%= @card.getRarityName + ' ' + @card.card_type%></span> </div>
 
 </div>
 
