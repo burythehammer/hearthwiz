@@ -22,19 +22,19 @@
 
 
 	<div class='card-info' id='card-mana-cost'>
-		<span class='card-info-key'>Cost: </span>	<%= @card.cost %> mana
+		<span class='card-info-key'>Cost: </span>	<%= @card.cost %> <%= image_tag "icons/Mana_icon.png" %>
 	</div>
 
 
 	<% if @card.minion? %>
 		<div class='card-info' id='card-health'>
-			<span class='card-info-key'>Health: </span><%= @card.health %>
+			<span class='card-info-key'>Health: </span><%= @card.health %> <%= image_tag "icons/Health_icon.png" %>
 		</div>	
 	<% end %>
 
 	<% if @card.minion? %>
 		<div class='card-info' id='card-attack'>
-			<span class='card-info-key'>Attack: </span><%= @card.attack %>
+			<span class='card-info-key'>Attack: </span><%= @card.attack %> <%= image_tag "icons/Attack_icon.png" %>
 		</div>
 	<% end %>
 
