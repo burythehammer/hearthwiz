@@ -3,15 +3,13 @@
 <div class='page-title-area'>
 
 	<div class='page-title'><%= @card.name %></div>
-	<div class='page-subtitle'><%= @card.getRarityName %> card</div>
+	<div class='page-subtitle'><%= @card.getRarityName + " " + @card.card_type%> </div>
 
 </div>
 
 
 <div id='card-portrait'>
-
 	<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
-
 </div>
 
 
@@ -27,10 +25,6 @@
 
 	<div class='card-info' id='card-set'>
 		<strong>Card set: </strong> <%= @card.getCardSetName %>
-	</div>	
-
-	<div class='card-info' id='card-type'>
-		<strong>Card type: </strong> <%= @card.card_type %>
 	</div>	
 
 	<div class='card-info' id='card-mana-cost'>
