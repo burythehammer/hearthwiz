@@ -1,0 +1,71 @@
+// Utilities
+@import "utilities/variables";
+
+.quick-info-area {
+    
+    float: right;
+    font-size: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    position: relative;
+    top: -50px;
+
+    #card-portrait-area {
+        #card-portrait {
+            position: relative;
+            padding-right: 30px;
+            width: 300px;
+            height: 465px;
+            float: right;
+            position: relative;
+            // images have transparency so shifted upwards
+            top: -55px;
+        }
+    }
+
+    .quick-info-title{
+        text-align: center;
+        padding-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .card-info {
+        line-height: 20px;
+
+        span.card-info-key{
+            font-weight: bold;
+        }
+
+        .card-info-value{
+
+        }
+    }
+}
+
+
+.card-description-area{
+
+    padding-right: 50px;
+
+}
+
+#common, #free {
+    color: $common-white;
+}
+
+#uncommon {
+    color: $uncommon-green;
+}
+
+#rare {
+    color: $rare-blue;
+}
+
+#epic {
+    color: $epic-purple;
+}
+
+#legendary {
+    color: $legendary-orange;
+}

@@ -1,46 +1,56 @@
-<p id="notice"><%= notice %></p>
+<p id='notice'><%= notice %></p>
 
 <div class='page-title-area'>
 
 	<div class='page-title'><%= @card.name %></div>
-	<div class='page-subtitle'><%= @card.getRarityName + " " + @card.card_type%> </div>
+	<div class='page-subtitle' id='<%=@card.getRarityName.downcase%>'><%= @card.getRarityName + ' ' + @card.card_type%> </div>
 
 </div>
 
+<div class='quick-info-area'>
 
-<div id='card-portrait'>
-	<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
-</div>
-
-
-<div class="card-info-area">
-
-	<div class='card-info' id='card-text'>
-  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
+	<div class='card-portrait-area' >
+		<img class='card-portrait' src='<%= "http://wow.zamimg.	com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style='float:left;' id='<%= @card.name %>-portrait' alt='<%= @card.name %> card portrait'>
 	</div>
 
-	<div class='card-info' id='card-flavour-text'>
-  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
-	</div>
+
+	<div class='quick-info-title'>Quick Info</div>
 
 	<div class='card-info' id='card-set'>
-		<strong>Card set: </strong> <%= @card.getCardSetName %>
+		<span class='card-info-key'>Card set: </span><span> <%= @card.getCardSetName %>
 	</div>	
+
 
 	<div class='card-info' id='card-mana-cost'>
-		<strong>Cost: </strong>	<%= @card.cost %>
-	</div>	
-
-	<div class='card-info' id='card-health'>
-		<strong>Health: </strong><%= @card.health %>
-	</div>	
-
-	<div class='card-info' id='card-attack'>
-		<strong>Attack: </strong><%= @card.attack %>
+		<span class='card-info-key'>Cost: </span>	<%= @card.cost %> mana
 	</div>
 
-	<div class='card-info' id='card-durability'>
-		<strong>Durability: </strong><%= @card.durability %>
-	</div>	
+
+	<% if @card.minion? %>
+		<div class='card-info' id='card-health'>
+			<span class='card-info-key'>Health: </span><%= @card.health %>
+		</div>	
+	<% end %>
+
+	<% if @card.minion? %>
+		<div class='card-info' id='card-attack'>
+			<span class='card-info-key'>Attack: </span><%= @card.attack %>
+		</div>
+	<% end %>
+
+	<% if @card.weapon? %>
+		<div class='card-info' id='card-durability'>
+			<span class='card-info-key'>Durability: </span><%= @card.durability %>
+		</div>	
+	<% end %>
 
 </div>
+
+<div class='card-description-area'>
+	<div class='card-flavour-text'>
+  		<span>Flavour:</span> <em><%= raw @card.flavour %></em>
+	</div>	
+</div>
+
+
+

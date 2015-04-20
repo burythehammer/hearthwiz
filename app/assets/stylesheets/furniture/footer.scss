@@ -1,29 +1,30 @@
 // Utilities
 @import "utilities/variables";
 
-.footer{
-
+.footer {
     border-top: thin solid $white;
-	width:100%;
-	height: $footer-height;
-	position:absolute;
-	bottom:0;
-	left:0;
-
-	#built-by{
-		text-align: center;
-		line-height: $footer-height;
-	}
+    width: 100%;
+    height: $footer-height;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    #built-by {
+        text-align: center;
+        line-height: $footer-height;
+    }
 }
 
 * {
-	margin: 0;
+    margin: 0;
 }
 
 .container {
-	min-height: 100%;
-	margin: 0 auto (-$footer-height); /* the bottom margin is the negative value of the footer's height */
+    min-height: 100%;
+    margin: 0 auto (-$footer-height);
+    /* the bottom margin is the negative value of the footer's height */
 }
+
 .footer, .push {
-	height: $footer-height; /* .push must be the same height as .footer */
+    height: $footer-height;
+    /* .push must be the same height as .footer */
 }

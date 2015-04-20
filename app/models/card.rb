@@ -93,6 +93,10 @@ class Card < ActiveRecord::Base
     return self.card_type == "Minion"
   end
 
+  def spell?
+    return self.card_type == "Spell"
+  end
+
   def disenchantable?
     return !self.getDisenchantValue.nil?
   end
