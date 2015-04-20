@@ -3,7 +3,7 @@
 <div class='page-title-area'>
 
 	<div class='page-title'><%= @card.name %></div>
-	<div class='page-subtitle'><span class=<%= "#{@card.getRarityName.downcase}-text" %>><%= @card.getRarityName + ' ' + @card.card_type%></span> </div>
+	<div class='page-subtitle'><span class=<%= "#{@card.getRarityName.downcase}-text" %>><%= @card.getShortDescription%></span> </div>
 
 </div>
 
@@ -18,8 +18,11 @@
 
 	<div class='card-info' id='card-set'>
 		<span class='card-info-key'>Card set: </span><span> <%= @card.getCardSetName %>
-	</div>	
+	</div>
 
+	<div class='card-info' id='card-class'>
+		<span class='card-info-key'>Class: </span><span> <%= @card.getClass %>
+	</div>
 
 	<div class='card-info' id='card-mana-cost'>
 		<span class='card-info-key'>Cost: </span>	<%= @card.cost %> <%= image_tag "icons/Mana_icon.png" %>
@@ -40,7 +43,7 @@
 
 	<% if @card.weapon? %>
 		<div class='card-info' id='card-durability'>
-			<span class='card-info-key'>Durability: </span><%= @card.durability %>
+			<span class='card-info-key'>Durability: </span><%= @card.durability %> <%= image_tag "icons/Attack_icon.png" %>
 		</div>	
 	<% end %>
 
