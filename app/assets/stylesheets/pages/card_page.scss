@@ -11,16 +11,20 @@
     position: relative;
     top: -50px;
 
-    #card-portrait-area {
-        #card-portrait {
+    .card-portrait-area {
+
+        width: 300px;
+        height: 465px;
+        float: right;
+
+        // images have transparency so shifted upwards
+        top: -55px;
+
+        
+        .card-portrait {
             position: relative;
             padding-right: 30px;
-            width: 300px;
-            height: 465px;
-            float: right;
-            position: relative;
-            // images have transparency so shifted upwards
-            top: -55px;
+
         }
     }
 
@@ -44,10 +48,11 @@
 }
 
 
-.card-description-area{
+.card-flavour-text{
 
-    padding-right: 50px;
+    padding: 50px;
+    font-style: italic;
+    text-align: center;
 
 }
-
 

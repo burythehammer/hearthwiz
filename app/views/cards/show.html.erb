@@ -1,4 +1,4 @@
-<p id='notice'><%= notice %></p>
+<p class='notice'><%= notice %></p>
 
 <div class='page-title-area'>
 
@@ -14,14 +14,19 @@
 	</div>
 
 
-	<div class='quick-info-title'>Quick Info</div>
+	<div class='card-flavour-text'>
+  		"<%= raw @card.flavour %>"
+	</div>	
 
 	<div class='card-info' id='card-set'>
 		<span class='card-info-key'>Card set: </span><span> <%= @card.getCardSetName %>
 	</div>
 
 	<div class='card-info' id='card-class'>
-		<span class='card-info-key'>Class: </span><span> <%= @card.getClass %>
+		<span class='card-info-key'>Class: </span> 
+		<span class='<%= @card.getClass.downcase %>-text'> 
+			<%= @card.getClass %> 
+		</span>
 	</div>
 
 	<div class='card-info' id='card-mana-cost'>
@@ -47,9 +52,7 @@
 </div>
 
 <div class='card-description-area'>
-	<div class='card-flavour-text'>
-  		<span>Flavour:</span> <em><%= raw @card.flavour %></em>
-	</div>	
+
 </div>
 
 

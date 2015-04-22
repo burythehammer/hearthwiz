@@ -15,13 +15,14 @@ html {
         font-family: $open-sans;
         color: $white;
 
+        min-height: 1000px;
+
         a, a:visited, a:active{
             background-color: transparent;
             text-decoration: none;
         }
 
         a:not([class]), a:visited:not([class]), a:active:not([class]){
-
             color: $electric-blue;
         }
     }
@@ -59,24 +60,3 @@ html {
     }
 }
 
-.free-text, .common-text, 
-a.free-link, a.common-link, 
-a.free-link:visited,  a.common-link:visited {
-    color: $common-white;
-}
-
-.uncommon-text, a.uncommon-link, a.uncommon-link:visited {
-    color: $uncommon-green;
-}
-
-.rare-text, a.rare-link, a.rare-link:visited {
-    color: $rare-blue;
-}
-
-.epic-text, a.epic-link, a.epic-link:visited {
-    color: $epic-purple;
-}
-
-.legendary-text, a.legendary-link, a.legendary-link:visited {
-    color: $legendary-orange;
-}

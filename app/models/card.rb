@@ -120,7 +120,7 @@ class Card < ActiveRecord::Base
   end
 
   def getClass
-    return PlayerClass.find(self.player_class).name
+    return PlayerClass.find(self.player_class.id).name
   end
 
   def getRarityColour
