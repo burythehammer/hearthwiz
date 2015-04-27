@@ -15,7 +15,6 @@ html {
         font-family: $open-sans;
         color: $white;
 
-        min-height: 1000px;
 
         a, a:visited, a:active{
             background-color: transparent;
@@ -35,7 +34,8 @@ html {
 
 .body {
     padding-top: $header-height;
-    padding-bottom: $footer-height;
+    padding-bottom: $footer-height;    
+    overflow: hidden;
 }
 
 .page-title-area {

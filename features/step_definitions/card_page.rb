@@ -15,34 +15,39 @@ Then(/^I should be on the path for the card with the id '(.+)'$/) do |card_id|
 	expect(current_path).to match("/cards/id/#{card_id}")
 end
 
-Then(/^the card page tells me it is the type '(.+)'$/) do |card_type|
-	expect(page).to have_css('div#card-type', :text == card_type)
+Then(/^the page subtitle says it is the type '(.+)'$/) do |card_type|
+	expect(page).to have_css('div.page-subtitle', :text == card_type)
 end
 
-Then(/^the card page displays the card text '(.*)'$/) do |card_text|
-	expect(page).to have_css('div#card-text', :text == card_text)  
+Then(/^the page subtitle says it is the rarity '(.+)'$/) do |rarity|
+  expect(page).to have_css('div.page-subtitle', :text == rarity)  
 end
 
-Then(/^the card page displays the flavour text '(.*)'$/) do |flavour_text|
+Then(/^the card portrait displays the alt text '(.*)'$/) do |card_text|
+	expect(page).to have_css('img.card-portrait', :alt == card_text)  
+end
+
+Then(/^the quick info displays the flavour text '(.*)'$/) do |flavour_text|
 	expect(page).to have_css('div#card-flavour-text', :text == flavour_text)  
 end
 
-Then(/^the card page tells me it costs '(\d+)' mana$/) do |mana|
+Then(/^the quick info says the card class is '(.*)'$/) do |card_class|
+	expect(page).to have_css('div#card-class', :text == card_class)  
+end
+
+Then(/^the quick info says it costs '(\d+)' mana$/) do |mana|
 	expect(page).to have_css('div#card-mana-cost', :text == mana)  
 end
 
-Then(/^the card page tells me it has '(\d+)' health$/) do |health|
+Then(/^the quick info says it has '(\d+)' health$/) do |health|
 	expect(page).to have_css('div#card-health', :text == health)  
 end
 
-Then(/^the card page tells me it has '(\d+)' durability$/) do |durability|
+Then(/^the quick info says it has '(\d+)' durability$/) do |durability|
 	expect(page).to have_css('div#card-durability', :text == durability)  
 end
 
-Then(/^the card page tells me it has '(\d+)' attack$/) do |attack|
+Then(/^the quick info says it has '(\d+)' attack$/) do |attack|
   expect(page).to have_css('div#card-attack', :text == attack)  
 end
 
-Then(/^the page subtitle tells me it is the rarity '(.+)'$/) do |rarity|
-  expect(page).to have_css('div.page-subtitle', :text == rarity)  
-end
