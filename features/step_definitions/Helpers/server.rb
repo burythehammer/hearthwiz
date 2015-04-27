@@ -19,3 +19,7 @@ When(/^I open the page with url '(.*?)'$/) do |url|
 	Capybara.default_driver = :poltergeist
 	visit url
 end
+
+Then(/^I should be on the path '(.*)'$/) do |path|
+	expect(current_path).to eq(path)
+end

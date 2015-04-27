@@ -13,22 +13,30 @@ end
 
 
 Given(/^the card with name '(.+)' exists$/) do |card_name|
-
 	expect {
 		card = Card.find_by!(name: card_name)
 		expect(card[:name]).to eq(card_name) 
 	}.to_not raise_error
-
 end
 
 
-Given(/^the card with id '(.+)' has the name '(.+)'$/) do |card_id, card_name|
+Given(/^the card with id '(.+)' has name '(.+)'$/) do |card_id, card_name|
 	card = Card.find(card_id)
 	expect(card[:name]).to eq(card_name) 
 end
 
-
-Given(/^the '(.+)' card has the card type '(.+)'$/) do |card_name, card_type|
+Given(/^the '(.+)' card has type '(.+)'$/) do |card_name, card_type|
 	card = Card.find_by!(name: card_name)
 	expect(card[:card_type]).to eq(card_type)
+end
+
+Given(/^the '(.+)' card has rarity '(.+)'$/) do |card_name, card_rarity|
+	card = Card.find_by!(name: card_name)
+	expect(card.getRarityName).to eq(card_rarity)
+end
+
+
+Given(/^the '(.+)' card has class '(.+)'$/) do |card_name, card_class|
+	card = Card.find_by!(name: card_name)
+	expect(card.getClass).to eq(card_class)
 end

@@ -1,6 +1,12 @@
-When(/^I open the card list index page$/) do
+When(/^I open the card list page$/) do
   step "I open the page with url '/cards'"
 end
+
+Then(/^I should be on the card list page$/) do
+  step "I should be on the path '#{cards_path}'"
+  expect(page).to have_css('div#all_cards_title', :text == "All Cards")
+end
+
 
 When(/^I click the link to the card '(.*?)'$/) do |card_name|
   	step "I should see the link '#{card_name}'"
@@ -9,10 +15,6 @@ end
 
 Then(/^I should see a link to the card '(.*?)'$/) do |card_name|
 	step "I should see the link '#{card_name}'"
-end
-
-Then(/^I should see the card list page$/) do
-	expect(page).to have_css('div#all_cards_title', :text == "All Cards")
 end
 
 Then(/^the card list page tells me '(.*)' costs '(\d+)' mana$/) do |card_name, mana_cost|
