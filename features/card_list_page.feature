@@ -16,7 +16,7 @@ Feature: Card List Page
 		When I click the link to the card 'Deathlord'
 		Then I should be on the 'Deathlord' card page
 
-	@todo
+	@complete
 	Scenario: Card information is shown underneath a card
 		Given the card with name 'Deathlord' exists
 			And the 'Deathlord' card has type 'Minion'

@@ -6,7 +6,7 @@ Feature: Card Page
 	Scenario: Card page is present in direct id links
 
 	Given the card with id 'FP1_009' exists
-		And the card with id 'FP1_009' has the name 'Deathlord'
+		And the card with id 'FP1_009' is named 'Deathlord'
 	When I open the card page for the card with id 'FP1_009'
 	Then I should be on the 'Deathlord' card page
 

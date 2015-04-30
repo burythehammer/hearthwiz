@@ -20,7 +20,7 @@ Given(/^the card with name '(.+)' exists$/) do |card_name|
 end
 
 
-Given(/^the card with id '(.+)' has name '(.+)'$/) do |card_id, card_name|
+Given(/^the card with id '(.+)' is named '(.+)'$/) do |card_id, card_name|
 	card = Card.find(card_id)
 	expect(card[:name]).to eq(card_name) 
 end
