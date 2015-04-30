@@ -14,14 +14,11 @@ html {
         background-color: $dark-grey;
         font-family: $open-sans;
         color: $white;
-
-
-        a, a:visited, a:active{
+        a, a:visited, a:active {
             background-color: transparent;
             text-decoration: none;
         }
-
-        a:not([class]), a:visited:not([class]), a:active:not([class]){
+        a:not([class]), a:visited:not([class]), a:active:not([class]) {
             color: $electric-blue;
         }
     }
@@ -34,7 +31,7 @@ html {
 
 .body {
     padding-top: $header-height;
-    padding-bottom: $footer-height;    
+    padding-bottom: $footer-height;
     overflow: hidden;
 }
 
@@ -59,4 +56,3 @@ html {
         padding-bottom: 5px;
     }
 }
-

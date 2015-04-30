@@ -2,58 +2,40 @@
 @import "utilities/variables";
 
 .quick-info-area {
-    
     float: right;
     font-size: 15px;
     padding-left: 50px;
     padding-right: 50px;
     max-width: 306px;
-
     position: relative;
     top: -50px;
-
     .card-portrait-area {
-
         width: 300px;
         height: 465px;
         float: right;
-
         // images have transparency so shifted upwards
         top: -55px;
-
-        
         .card-portrait {
             position: relative;
             padding-right: 30px;
-
         }
     }
-
-    .quick-info-title{
+    .quick-info-title {
         text-align: center;
         padding-bottom: 20px;
         font-weight: 700;
     }
-
     .quick-info {
         line-height: 20px;
-
-        span.quick-info-key{
+        span.quick-info-key {
             font-weight: bold;
         }
-
-        .quick-info-value{
-
-        }
+        .quick-info-value {}
     }
 }
 
-
-#card-flavour-text{
-
+#card-flavour-text {
     padding-bottom: 25px;
     font-style: italic;
     text-align: center;
-
 }
-

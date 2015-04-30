@@ -21,4 +21,3 @@ A personal project intended to be deployed on my own website.
 - Some sort of deck import function from popular websites
 - Quick ways to add hearthstone cards from your collection (search as you type?)
 - Tracking of how much dust you have
-- AJAXification of above features

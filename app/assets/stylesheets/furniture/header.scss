@@ -7,6 +7,7 @@
     background-color: $dark-grey;
     position: fixed;
     border-bottom: thin solid $white;
+    z-index: 1000;
     .nav-item {
         line-height: $header-height;
         font-family: $roboto-slab;
@@ -19,12 +20,7 @@
     .nav-item:hover {
         background-color: $grey;
     }
-    #nav-title {
+    #nav-homepage {
         color: $electric-blue;
     }
-    .menu {
-        .menu-item {}
-    }
-
-    z-index: 1000;
 }
