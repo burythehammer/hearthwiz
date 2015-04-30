@@ -3,65 +3,60 @@
 
 html,
 body {
-	margin:0;
-	padding:0;
-	height:100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-html{
-	background-color: $dark-grey;
+html {
+    background-color: $dark-grey;
+    .container {
+        background-color: $dark-grey;
+        font-family: $open-sans;
+        color: $white;
 
-	.container{
-		background-color: $dark-grey;
-	    font-family: $open-sans;
-		color: $white;
 
-		a, a:visited{
-		color: $electric-blue;
-		background-color: transparent;
-		text-decoration: none;
-		}
+        a, a:visited, a:active{
+            background-color: transparent;
+            text-decoration: none;
+        }
 
-		a:visited {
-			color: $electric-blue;
-		}
-	}
+        a:not([class]), a:visited:not([class]), a:active:not([class]){
+            color: $electric-blue;
+        }
+    }
 }
 
 .container {
-	min-height:100%;
-	position:relative;
+    min-height: 100%;
+    position: relative;
 }
 
-.body{
-	padding-top: $header-height;
-	padding-bottom: $footer-height;
+.body {
+    padding-top: $header-height;
+    padding-bottom: $footer-height;    
+    overflow: hidden;
 }
 
-.page-title-area{
-
-	width: 50%;
-	margin: 0 auto;
-
-	color: $electric-blue;
-	padding-bottom: 10px;
-
-	.page-title {
-		font-family: $roboto-slab;
-		font-size: 30px;
-		text-align: center;
-		font-weight: bold;
-		height: 40px;
-		line-height: 40px;
-		padding: 10px;
-		padding-bottom: 5px;
-
-	}
-
-	.page-subtitle{
-		text-align: center;
-		padding-top: 5px;
-		padding-bottom: 5px;
-	}
-
+.page-title-area {
+    width: 50%;
+    margin: 0 auto;
+    color: $electric-blue;
+    padding-bottom: 10px;
+    .page-title {
+        font-family: $roboto-slab;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+        height: 40px;
+        line-height: 40px;
+        padding: 10px;
+        padding-bottom: 5px;
+    }
+    .page-subtitle {
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 }
+

@@ -18,9 +18,18 @@
 <ul class="cards">
 
 <% @cards.each do |card|%>
-   <li class="card-block" id='<%=card.name%>' onclick="location.href='<%= root_url + card.getPath %>';" style="cursor: pointer;">
-            <div class='card-block-name'><%= link_to card.name, root_url + card.getPath %></div>
-            <div class='card-block-info'><%= "#{card.getRarityName} #{card.card_type}"%></div>
+   <li class="card-block" id='<%=card.name%>-block' onclick="location.href='<%= root_url + card.getPath %>';" style="cursor: pointer;">
+            <div class='card-block-name'>
+            		<%= link_to card.name, root_url + card.getPath %>
+            </div>
+
+            <div class='card-block-info' id='<%=card.name%>-info'>	
+            		<span class=<%= "#{card.getRarityName.downcase}-text" %>><%= card.getShortDescription %></span>
+            </div>
+
+            <div class='card-block-stats'>
+                
+            </div>
     </li>
 <% end %>
 

@@ -1,52 +1,66 @@
-<p id="notice"><%= notice %></p>
+<p class='notice'><%= notice %></p>
 
 <div class='page-title-area'>
 
 	<div class='page-title'><%= @card.name %></div>
-	<div class='page-subtitle'><%= @card.getRarityName %> card</div>
+	<div class='page-subtitle'><span class=<%= "#{@card.getRarityName.downcase}-text" %>><%= @card.getShortDescription%></span> </div>
+
+</div>
+
+<div class='quick-info-area'>
+
+<table>
+<tr><td align="center">
+		<img class='card-portrait' src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style='text-align:center;'  id='<%= @card.name %>-portrait' alt='<%= @card.text %>'>
+</td></tr>
+
+<tr><td>
+
+	<div class='quick-info' id='card-flavour-text'>
+  		"<%= raw @card.flavour %>"
+	</div>	
+
+	<div class='quick-info' id='card-set'>
+		<span class='quick-info-key'>Card set: </span><span> <%= @card.getCardSetName %>
+	</div>
+
+	<div class='quick-info' id='card-class'>
+		<span class='quick-info-key'>Class: </span> 
+		<span class='<%= @card.getClass.downcase %>-text'> 
+			<%= @card.getClass %> 
+		</span>
+	</div>
+
+	<div class='quick-info' id='card-mana-cost'>
+		<span class='quick-info-key'>Cost: </span>	<%= @card.cost %> <%= image_tag "icons/Mana_icon.png" %>
+	</div>
+
+	<% if @card.minion? %>
+		<div class='quick-info' id='card-health'>
+			<span class='quick-info-key'>Health: </span><%= @card.health %> <%= image_tag "icons/Health_icon.png" %>
+		</div>	
+	<% end %>
+
+	<% if @card.weapon? or @card.minion? %>
+		<div class='quick-info' id='card-attack'>
+			<span class='quick-info-key'>Attack: </span><%= @card.attack %> <%= image_tag "icons/Attack_icon.png"%>
+		</div>
+	<% end %>
+
+	<% if @card.weapon? %>
+		<div class='quick-info' id='card-durability'>
+			<span class='quick-info-key'>Durability: </span><%= @card.durability %> <%= image_tag "icons/Durability_icon.png" %>
+		</div>	
+	<% end %>
+
+</td></tr>	
+</table>
+
+</div>
+
+<div class='card-area'>
 
 </div>
 
 
-<div id='card-portrait'>
 
-	<img src='<%= "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif" %>' style="float:left;">
-
-</div>
-
-
-<div class="card-info-area">
-
-	<div class='card-info' id='card-text'>
-  		<strong>Description:</strong>  <em><%= raw @card.text %></em>	
-	</div>
-
-	<div class='card-info' id='card-flavour-text'>
-  		<strong>Flavour:</strong> <em><%= raw @card.flavour %></em>
-	</div>
-
-	<div class='card-info' id='card-set'>
-		<strong>Card set: </strong> <%= @card.getCardSetName %>
-	</div>	
-
-	<div class='card-info' id='card-type'>
-		<strong>Card type: </strong> <%= @card.card_type %>
-	</div>	
-
-	<div class='card-info' id='card-mana-cost'>
-		<strong>Cost: </strong>	<%= @card.cost %>
-	</div>	
-
-	<div class='card-info' id='card-health'>
-		<strong>Health: </strong><%= @card.health %>
-	</div>	
-
-	<div class='card-info' id='card-attack'>
-		<strong>Attack: </strong><%= @card.attack %>
-	</div>
-
-	<div class='card-info' id='card-durability'>
-		<strong>Durability: </strong><%= @card.durability %>
-	</div>	
-
-</div>

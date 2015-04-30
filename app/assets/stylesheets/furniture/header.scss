@@ -1,43 +1,30 @@
 // Utilities
 @import "utilities/variables";
 
-.header{
-	
-	height: $header-height;
-	width: 100%;
-	background-color: $dark-grey;
-
-	position: fixed;
-
+.header {
+    height: $header-height;
+    width: 100%;
+    background-color: $dark-grey;
+    position: fixed;
     border-bottom: thin solid $white;
+    .nav-item {
+        line-height: $header-height;
+        font-family: $roboto-slab;
+        font-size: 20px;
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 20px;
+        float: left;
+    }
+    .nav-item:hover {
+        background-color: $grey;
+    }
+    #nav-title {
+        color: $electric-blue;
+    }
+    .menu {
+        .menu-item {}
+    }
 
-	.nav-item {
-		line-height: $header-height;
-		font-family: $roboto-slab;
-		font-size: 20px;
-		text-align: left;
-
-		padding-left: 20px;
-		padding-right: 20px;
-
-		float:left;
-	}
-
-	.nav-item:hover{
-		background-color: $grey;
-	}
-
-
-	#nav-title {
-		color: $electric-blue;
-	}
-
-
-	.menu {
-		.menu-item{
-
-		}
-
-	}
-
+    z-index: 1000;
 }

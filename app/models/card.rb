@@ -93,6 +93,10 @@ class Card < ActiveRecord::Base
     return self.card_type == "Minion"
   end
 
+  def spell?
+    return self.card_type == "Spell"
+  end
+
   def disenchantable?
     return !self.getDisenchantValue.nil?
   end
@@ -115,6 +119,10 @@ class Card < ActiveRecord::Base
     return self.getRarity.name
   end
 
+  def getClass
+    return PlayerClass.find(self.player_class.id).name
+  end
+
   def getRarityColour
     return self.getRarity.colour
   end
@@ -122,7 +130,6 @@ class Card < ActiveRecord::Base
   def getRarityHexColour
     return self.getRarity.hexcolour
   end
-
 
   def getCardSet
     return CardSet.find(self.card_set_id)
@@ -150,6 +157,10 @@ class Card < ActiveRecord::Base
 
   def getURL
     return getIdPath 
+  end
+
+  def getShortDescription
+    return getRarityName + " " + getClass + " " + self.card_type
   end
 
 

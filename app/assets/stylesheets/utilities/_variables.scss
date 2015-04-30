@@ -1,19 +1,36 @@
+// fonts
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,400);
 
-$roboto-slab: 'Roboto Slab', serif;   
-$open-sans: 'Open Sans', sans-serif;
- 
+$roboto-slab: "Roboto Slab", serif;
+$open-sans: "Open Sans", sans-serif;
+
+// site colours
 $dark-grey: #383838;
 $grey: #484848;
 $white: #eeeeee;
 $electric-blue: #37fdfc;
 
+// furniture size
+$header-height: 50px;
+$footer-height: 30px;
+
+// quality colours
 $common-white: #eeeeee;
 $uncommon-green: #00cc00;
 $rare-blue: #0070dd;
 $epic-purple: #a335ee;
 $legendary-orange: #ff8000;
 
-$header-height: 50px;
-$footer-height: 30px;
+// class colours
+$death-knight-red: #c41f3b;
+$druid-orange: #ff7d0a;
+$hunter-green: #abd473;
+$mage-blue: #69ccf0;
+$monk-green: #00ff96;
+$paladin-pink: #f58cba;
+$priest-white: #ffffff;
+$rogue-yellow: #fff569;
+$shaman-blue: #0070de;
+$warlock-purple: #9482c9;
+$warrior-brown: #c79c6e;

@@ -1,0 +1,72 @@
+// Utilities
+@import "utilities/variables";
+
+// QUALITIES
+
+.free-text, .common-text,
+a.free-link, a.common-link,
+a.free-link:visited, a.common-link:visited {
+    color: $common-white;
+}
+
+.uncommon-text, a.uncommon-link, a.uncommon-link:visited {
+    color: $uncommon-green;
+}
+
+.rare-text, a.rare-link, a.rare-link:visited {
+    color: $rare-blue;
+}
+
+.epic-text, a.epic-link, a.epic-link:visited {
+    color: $epic-purple;
+}
+
+.legendary-text, a.legendary-link, a.legendary-link:visited {
+    color: $legendary-orange;
+}
+
+// PLAYER CLASSES
+
+.deathknight-text, a.deathknight-link, a.deathknight-link:visited {
+    color: $death-knight-red;
+}
+
+.druid-text, a.druid-link, a.druid-link:visited {
+    color: $druid-orange;
+}
+
+.hunter-text, a.hunter-link, a.hunter-link:visited {
+    color: $hunter-green;
+}
+
+.mage-text, a.mage-link, a.mage-link:visited {
+    color: $mage-blue;
+}
+
+.monk-text, a.monk-link, a.monk-link:visited {
+    color: $monk-green;
+}
+
+.paladin-text, a.paladin-link, a.paladin-link:visited {
+    color: $paladin-pink;
+}
+
+.priest-text, a.priest-link, a.priest-link:visited {
+    color: $priest-white;
+}
+
+.rogue-text, a.rogue-link, a.rogue-link:visited {
+    color: $rogue-yellow;
+}
+
+.shaman-text, a.shaman-link, a.shaman-link:visited {
+    color: $shaman-blue;
+}
+
+.warlock-text, a.warlock-link, a.warlock-link:visited {
+    color: $warlock-purple;
+}
+
+.warrior-text, a.warrior-link, a.warrior-link:visited {
+    color: $warrior-brown;
+}

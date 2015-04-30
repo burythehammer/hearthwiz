@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324174804) do
+ActiveRecord::Schema.define(version: 20150420215155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150324174804) do
     t.string   "json_id",         limit: 100
     t.integer  "player_class_id"
     t.integer  "card_set_id",                                 null: false
+    t.string   "race"
   end
 
   add_index "cards", ["json_id"], name: "index_cards_on_json_id", unique: true, using: :btree
