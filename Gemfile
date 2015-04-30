@@ -34,7 +34,9 @@ gem 'colorize'
 # gem 'bcrypt', '~> 3.1.7'
 
 
+gem 'devise'
 
+# Used for heroku
 gem 'rails_12factor', group: :production
 
 gem 'normalize-rails'
