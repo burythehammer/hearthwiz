@@ -32,11 +32,11 @@ end
 
 Given(/^the '(.+)' card has rarity '(.+)'$/) do |card_name, card_rarity|
 	card = Card.find_by!(name: card_name)
-	expect(card.getRarityName).to eq(card_rarity)
+	expect(card.rarity_name).to eq(card_rarity)
 end
 
 
 Given(/^the '(.+)' card has class '(.+)'$/) do |card_name, card_class|
 	card = Card.find_by!(name: card_name)
-	expect(card.getClass).to eq(card_class)
+	expect(card.player_class_name).to eq(card_class)
 end

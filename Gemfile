@@ -34,7 +34,8 @@ gem 'colorize'
 # gem 'bcrypt', '~> 3.1.7'
 
 
-gem 'devise'
+gem 'devise' # users
+gem 'rubocop', require: false # ruby static code analysis
 
 # Used for heroku
 gem 'rails_12factor', group: :production

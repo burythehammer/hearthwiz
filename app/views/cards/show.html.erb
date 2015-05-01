@@ -3,7 +3,7 @@
 <div class='page-title-area'>
 
 	<div class='page-title'><%= @card.name %></div>
-	<div class='page-subtitle'><span class=<%= "#{@card.getRarityName.downcase}-text" %>><%= @card.getShortDescription%></span> </div>
+	<div class='page-subtitle'><span class=<%= "#{@card.rarity_name.downcase}-text" %>><%= @card.short_description%></span> </div>
 
 </div>
 
@@ -21,13 +21,13 @@
 	</div>	
 
 	<div class='quick-info' id='card-set'>
-		<span class='quick-info-key'>Card set: </span><span> <%= @card.getCardSetName %>
+		<span class='quick-info-key'>Card set: </span><span> <%= @card.card_set_name %>
 	</div>
 
 	<div class='quick-info' id='card-class'>
 		<span class='quick-info-key'>Class: </span> 
-		<span class='<%= @card.getClass.downcase %>-text'> 
-			<%= @card.getClass %> 
+		<span class='<%= @card.player_class_name.downcase %>-text'> 
+			<%= @card.player_class_name %> 
 		</span>
 	</div>
 

@@ -17,7 +17,7 @@ def seed_cards(card_sets_wanted)
 
       begin  
         card = create_card_from_json_hash(c)
-        printCardSeed(card.getRarityColour)
+        printCardSeed(card.rarity_colour)
       rescue ActiveRecord::RecordInvalid
         puts "did not create card: #{c["name"]}" + "\n"
       end
