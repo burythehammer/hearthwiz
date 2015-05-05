@@ -13,7 +13,6 @@ set :deploy_to, '/var/www/hearthWiz'
  set :scm, :git
  set :branch, "master"
 
-
  set :user, "burytheh"
 
  set :use_sudo, false
@@ -23,7 +22,6 @@ set :deploy_to, '/var/www/hearthWiz'
 # Default value for :format is :pretty
 set :format, :pretty
 
-
 role :web, "www.burythehammer.com"
 role :app, "www.burythehammer.com"
 role :db, "www.burythehammer.com", :primary => true
@@ -31,7 +29,6 @@ role :db, "www.burythehammer.com", :primary => true
 set :rails_env, "production"
 
 default_run_options[:pty] = true
-
 
 # Default value for :log_level is :debug
 # set :log_level, :debug
@@ -52,7 +49,6 @@ default_run_options[:pty] = true
 set :keep_releases, 5
 
 namespace :deploy do
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -61,5 +57,4 @@ namespace :deploy do
       # end
     end
   end
-
 end

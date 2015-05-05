@@ -1,3 +1,6 @@
+# Controller for cards.
+# Maintains logic between views/model.
+# Cards can be viewed as a list, a single card (by id or name)
 class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json

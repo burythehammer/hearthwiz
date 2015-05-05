@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe PlayerClassesController, type: :routing do
   describe "routing" do
-
     it "routes to #index" do
       expect(:get => "/cards/classes").to route_to("player_classes#index")
     end
@@ -32,6 +31,5 @@ RSpec.describe PlayerClassesController, type: :routing do
     it "doesn't route to #destroy" do
       expect(:delete => "/player_classes/1").not_to be_routable
     end
-
   end
 end

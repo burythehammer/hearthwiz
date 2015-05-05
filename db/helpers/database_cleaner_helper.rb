@@ -1,7 +1,6 @@
 
 # ensures database is clean before starting 
 def clean_database
-
   begin
     # start off entire run with with a full truncation
     DatabaseCleaner.clean_with :truncation
@@ -11,5 +10,4 @@ def clean_database
   rescue NameError
     raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
   end
-
 end

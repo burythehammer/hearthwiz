@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe CardSetsController, type: :routing do
   describe "routing" do
-
     it "routes to #index" do
       expect(:get => "/cards/sets").to route_to("card_sets#index")
     end
@@ -32,6 +31,5 @@ RSpec.describe CardSetsController, type: :routing do
     it "doesn't route to #destroy" do
       expect(:delete => "/card_sets/1").not_to be_routable
     end
-
   end
 end

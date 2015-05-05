@@ -1,3 +1,7 @@
+# Player Class controller.
+# A player class is a type of character the player can choose.
+# e.g. Wizard (Jaina)
+# Cards are sometimes restricted by class.
 class PlayerClassesController < ApplicationController
   before_action :set_player_class, only: [:show, :edit, :update, :destroy]
 
@@ -13,13 +17,12 @@ class PlayerClassesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player_class
-      @player_class = PlayerClass.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def player_class_params
-      params[:player_class]
-    end
+  def set_player_class
+    @player_class = PlayerClass.find(params[:id])
+  end
+
+  def player_class_params
+    params[:player_class]
+  end
 end

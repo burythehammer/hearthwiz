@@ -1,3 +1,5 @@
+# Card model.
+# Represents an instance of a card and its associated data.
 class Card < ActiveRecord::Base
   self.primary_key = :json_id
 

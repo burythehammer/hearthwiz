@@ -19,7 +19,6 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe PlayerClassesController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # PlayerClass. As you add validations to PlayerClass, be sure to
   # adjust the attributes here as well.
@@ -51,5 +50,4 @@ RSpec.describe PlayerClassesController, type: :controller do
       expect(assigns(:player_class)).to eq(player_class)
     end
   end
-
 end

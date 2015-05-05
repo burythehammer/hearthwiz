@@ -19,7 +19,6 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe CardSetsController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # CardSet. As you add validations to CardSet, be sure to
   # adjust the attributes here as well.
@@ -51,5 +50,4 @@ RSpec.describe CardSetsController, type: :controller do
       expect(assigns(:card_set)).to eq(card_set)
     end
   end
-
 end

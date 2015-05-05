@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-
   devise_for :users
   get 'dashboard/index'
-  root :to => 'dashboard#index'
+  root to: 'dashboard#index'
 
   get 'cards', to: 'cards#index'
 
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
   get 'cards/name/:name', to: 'cards#show_by_name'
 
   get 'cards/sets', to: 'card_sets#index'
-  # TODO link to specific sets
+  # TODO: link to specific sets
 
   get 'cards/set/:name', to: 'card_sets#show'
 
@@ -21,5 +20,4 @@ Rails.application.routes.draw do
   get 'cards/set/:name', to: 'card_sets#show'
 
   resources :users, only: [:show, :index]
-
 end

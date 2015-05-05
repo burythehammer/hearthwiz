@@ -1,6 +1,5 @@
 # seeds rarities from user defined list
 def seed_classes
-
   class_list = Array.new
 
   class_list << [name: "Neutral"]
