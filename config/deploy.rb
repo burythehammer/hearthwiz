@@ -11,9 +11,9 @@ set :deploy_to, '/var/www/hearthWiz'
 
 # Default value for :scm is :git
  set :scm, :git
- set :branch, "master"
+ set :branch, 'master'
 
- set :user, "burytheh"
+ set :user, 'burytheh'
 
  set :use_sudo, false
 
@@ -22,11 +22,11 @@ set :deploy_to, '/var/www/hearthWiz'
 # Default value for :format is :pretty
 set :format, :pretty
 
-role :web, "www.burythehammer.com"
-role :app, "www.burythehammer.com"
-role :db, "www.burythehammer.com", :primary => true
+role :web, 'www.burythehammer.com'
+role :app, 'www.burythehammer.com'
+role :db, 'www.burythehammer.com', primary: true
 
-set :rails_env, "production"
+set :rails_env, 'production'
 
 default_run_options[:pty] = true
 

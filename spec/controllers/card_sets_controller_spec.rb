@@ -23,11 +23,11 @@ RSpec.describe CardSetsController, type: :controller do
   # CardSet. As you add validations to CardSet, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    skip('Add a hash of attributes valid for your model')
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    skip('Add a hash of attributes invalid for your model')
   }
 
   # This should return the minimal set of values that should be in the session
@@ -35,18 +35,18 @@ RSpec.describe CardSetsController, type: :controller do
   # CardSetsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all card_sets as @card_sets" do
+  describe 'GET #index' do
+    it 'assigns all card_sets as @card_sets' do
       card_set = CardSet.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:card_sets)).to eq([card_set])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested card_set as @card_set" do
+  describe 'GET #show' do
+    it 'assigns the requested card_set as @card_set' do
       card_set = CardSet.create! valid_attributes
-      get :show, {:id => card_set.to_param}, valid_session
+      get :show, { id: card_set.to_param }, valid_session
       expect(assigns(:card_set)).to eq(card_set)
     end
   end

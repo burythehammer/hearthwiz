@@ -23,11 +23,11 @@ RSpec.describe PlayerClassesController, type: :controller do
   # PlayerClass. As you add validations to PlayerClass, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    skip('Add a hash of attributes valid for your model')
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    skip('Add a hash of attributes invalid for your model')
   }
 
   # This should return the minimal set of values that should be in the session
@@ -35,18 +35,18 @@ RSpec.describe PlayerClassesController, type: :controller do
   # PlayerClassesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all player_classes as @player_classes" do
+  describe 'GET #index' do
+    it 'assigns all player_classes as @player_classes' do
       player_class = PlayerClass.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:player_classes)).to eq([player_class])
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested player_class as @player_class" do
+  describe 'GET #show' do
+    it 'assigns the requested player_class as @player_class' do
       player_class = PlayerClass.create! valid_attributes
-      get :show, {:id => player_class.to_param}, valid_session
+      get :show, { id: player_class.to_param }, valid_session
       expect(assigns(:player_class)).to eq(player_class)
     end
   end

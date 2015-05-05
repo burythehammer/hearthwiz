@@ -14,15 +14,15 @@ require 'capybara/poltergeist'
 # copypasta: https://blog.codecentric.de/en/2013/08/cucumber-capybara-poltergeist/
 if ENV['IN_BROWSER']
   # On demand: non-headless tests via Selenium/WebDriver
-  # To run the scenarios in browser (default: Firefox), use 
+  # To run the scenarios in browser (default: Firefox), use
   # the following command line:
   # IN_BROWSER=true bundle exec cucumber
-  
+
   # or (to have a pause of 1 second between each step):
   # IN_BROWSER=true PAUSE=1 bundle exec cucumber
   Capybara.default_driver = :selenium
   AfterStep do
-    sleep (ENV['PAUSE'] || 0).to_i
+    sleep((ENV['PAUSE'] || 0).to_i)
   end
 else
   # DEFAULT: headless tests with poltergeist/PhantomJS
@@ -67,7 +67,7 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise "Add database_cleaner to your Gemfile (:test) if you wish to use it."
+  raise 'Add database_cleaner to your Gemfile (:test) if you wish to use it.'
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies
