@@ -1,0 +1,3 @@
+<div class='quick-info' id='card-<%= attribute %>'>
+	<span class='quick-info-key'><%= attribute.capitalize %>: </span>	<%= @card.send(attribute) %> <%= image_tag "icons/#{attribute}.png" %>
+</div>

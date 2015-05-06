@@ -38,7 +38,7 @@ Feature: Card Page
 		And the quick info says the card class is 'Neutral'
 		And the quick info says it costs '3' mana
 		And the quick info says it has '8' health
-		And the quick info says it has '3' attack
+		And the quick info says it has '2' attack
 
 	@complete	
 	Scenario: Card page shows weapon information

@@ -1,15 +1,10 @@
-
-# ensures database is clean before starting 
+# ensures database is clean before starting
 def clean_database
+  # start off entire run with with a full truncation
+  DatabaseCleaner.clean_with :truncation
 
-  begin
-    # start off entire run with with a full truncation
-    DatabaseCleaner.clean_with :truncation
-
-    # continue with the :transaction strategy to be faster while running tests.
-    DatabaseCleaner.strategy = :transaction
-  rescue NameError
-    raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
-  end
-
+  # continue with the :transaction strategy to be faster while running tests.
+  DatabaseCleaner.strategy = :transaction
+rescue NameError
+  raise 'Add database_cleaner to your Gemfile (:test group) if you wish to use it.'
 end

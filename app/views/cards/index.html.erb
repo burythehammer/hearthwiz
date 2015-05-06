@@ -6,25 +6,19 @@
 
 </div>
 
-<% if flash[:error]  %>
-  <div id="error"><%= flash[:error] %></div>
-<% end %>
 
-<% if flash[:notice]  %>
-  <div id="notice"><%= flash[:notice] %></div>
-<% end %>
 
 <div class="card-area">
 <ul class="cards">
 
 <% @cards.each do |card|%>
-   <li class="card-block" id='<%=card.name%>-block' onclick="location.href='<%= root_url + card.getPath %>';" style="cursor: pointer;">
+   <li class="card-block" id='<%=card.name%>-block' onclick="location.href='<%= root_url + card.path %>';" style="cursor: pointer;">
             <div class='card-block-name'>
-            		<%= link_to card.name, root_url + card.getPath %>
+            		<%= link_to card.name, root_url + card.path %>
             </div>
 
             <div class='card-block-info' id='<%=card.name%>-info'>	
-            		<span class=<%= "#{card.getRarityName.downcase}-text" %>><%= card.getShortDescription %></span>
+            		<span class=<%= "#{card.rarity_name.downcase}-text" %>><%= card.short_description %></span>
             </div>
 
             <div class='card-block-stats'>

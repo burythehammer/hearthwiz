@@ -33,8 +33,9 @@ gem 'colorize'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'devise' # users
 
-
+# Used for heroku
 gem 'rails_12factor', group: :production
 
 gem 'normalize-rails'
@@ -51,6 +52,10 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'haml-lint', require: false
+  gem 'flog', require: false
+  gem 'flay', require: false
 end
 
 group :test do

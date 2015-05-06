@@ -1,179 +1,123 @@
+# Card model.
+# Represents an instance of a card and its associated data.
 class Card < ActiveRecord::Base
-
   self.primary_key = :json_id
-
-  belongs_to :rarity, :class_name => "Rarity", :foreign_key => "rarity_id"
+  belongs_to :rarity, class_name: 'Rarity', foreign_key: 'rarity_id'
   validates_associated :rarity
   validates :rarity, presence: true
-
-  belongs_to :player_class, :class_name => "PlayerClass", :foreign_key => "player_class_id"
+  belongs_to :player_class,
+             class_name: 'PlayerClass',
+             foreign_key: 'player_class_id'
   validates_associated :player_class
   validates :player_class, presence: true
-
-  belongs_to :card_set, :class_name => "CardSet", :foreign_key => "card_card_id"
+  belongs_to :card_set, class_name: 'CardSet', foreign_key: 'card_card_id'
   validates_associated :card_set
-
-  #	validates :mechanics
-  #	validates :flavour
-  #	validates :artist
-  #	validates :how_to_get_gold
-
   validates :json_id,
-    presence: true,
-    uniqueness: true
-
+            presence: true,
+            uniqueness: true
   validates :name,
-    presence: true
-
+            presence: true
   validates :card_type,
-    presence: true,
-    :inclusion => { in: ["Minion", "Spell", "Weapon", "Enchantment", "Hero", "Hero Power"] }
-
+            presence: true,
+            inclusion: { in: ['Minion',
+                              'Spell',
+                              'Weapon',
+                              'Enchantment',
+                              'Hero',
+                              'Hero Power'] }
   validates :rarity_id,
-    presence: true,
-    :numericality => { only_integer: true }
-
+            presence: true,
+            numericality: { only_integer: true }
   validates :player_class_id,
-    presence: true,
-    :numericality => { only_integer: true }
-
+            presence: true,
+            numericality: { only_integer: true }
   validates :collectible,
-    :inclusion => { in: [true, false]}
-
+            inclusion: { in: [true, false] }
   validates :card_set_id,
-    presence: true,
-    :numericality => { only_integer: true }
-
-
+            presence: true,
+            numericality: { only_integer: true }
   case :card_type
-
-  when "Weapon"
+  when 'Weapon'
     validates :durability, :cost,
-      presence: true,
-      :numericality => { only_integer: true, greater_than_or_equal_to: 0 }
-
-  when "Minion"
+              presence: true,
+              numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  when 'Minion'
     validates :health, :attack, :cost,
-      presence: true,
-      :numericality => { only_integer: true, greater_than_or_equal_to: 0 }
+              presence: true,
+              numericality: { only_integer: true, greater_than_or_equal_to: 0 }
     validates :elite,
-      presence: true,
-      :inclusion => {in: [true, false]}
-
-  when "Spell"
+              presence: true,
+              inclusion: { in: [true, false] }
+  when 'Spell'
     validates :cost,
-      presence: true,
-      :numericality => { only_integer: true, greater_than_or_equal_to: 0 }
-
-
-  when "Enchantment"
+              presence: true,
+              numericality: {
+                only_integer: true,
+                greater_than_or_equal_to: 0 }
+  when 'Enchantment'
     validates :collectible,
-      presence: true,
-      :inclusion => {in: [false]}
-
+              presence: true,
+              inclusion: { in: [false] }
   end
-
-
   validates :faction,
-    :inclusion => { in: ["Horde","Alliance","Neutral"] },
-    allow_nil: true
-
-
-  # QUERIES #
+            inclusion: { in: %w(Horde Alliance Neutral) },
+            allow_nil: true
 
   def collectible?
-    return :collectible
+    :collectible
   end
 
   def weapon?
-    return self.card_type == "Weapon"
+    card_type == 'Weapon'
   end
 
   def minion?
-    return self.card_type == "Minion"
+    card_type == 'Minion'
   end
 
   def spell?
-    return self.card_type == "Spell"
+    card_type == 'Spell'
   end
 
   def disenchantable?
-    return !self.getDisenchantValue.nil?
+    !disenchant_value.nil?
   end
 
   def craftable?
-    return !self.getCraftCost.nil?
+    !craft_cost.nil?
   end
 
   def faction?
-    return !self.faction.nil?
+    !faction.nil?
   end
 
   # GETTERS #
+  delegate :name, :colour, :colour, to: :rarity, prefix: true
+  delegate :disenchant_value, :craft_cost, to: :rarity, prefix: false
+  delegate :name, to: :card_set, prefix: true
+  alias_attribute :mana, :cost
 
-  def getRarity
-    return Rarity.find(self.rarity_id)
+  def rarity
+    Rarity.find(rarity_id)
   end
 
-  def getRarityName
-    return self.getRarity.name
+  def player_class_name
+    PlayerClass.find(player_class.id).name
   end
 
-  def getClass
-    return PlayerClass.find(self.player_class.id).name
+  def card_set
+    CardSet.find(card_set_id)
   end
 
-  def getRarityColour
-    return self.getRarity.colour
+  def path
+    'cards/id/' + json_id
   end
 
-  def getRarityHexColour
-    return self.getRarity.hexcolour
+  def name_path
+    'cards/name/' + name
   end
 
-  def getCardSet
-    return CardSet.find(self.card_set_id)
+  def short_description
+    rarity_name + ' ' + player_class_name + ' ' + card_type
   end
-
-  def getCardSetName
-    return self.getCardSet.name
-  end
-
-  def getDisenchantValue
-    return self.getRarity.disenchant_reward
-  end
-
-  def getCraftCost
-    return self.getRarity.craft_cost
-  end
-
-  def getPath
-    return "cards/id/" + self.json_id
-  end
-
-  def getNamePath
-    return "cards/name/" + self.name
-  end
-
-  def getURL
-    return getIdPath 
-  end
-
-  def getShortDescription
-    return getRarityName + " " + getClass + " " + self.card_type
-  end
-
-
-  def getCardQuickInfo
-    quickInfo = Hash.new
-
-    quickInfo[:cost] = self[:cost]
-    quickInfo[:health] = self[:health] if minion?
-    quickInfo[:attack] = self[:attack] if minion?
-    quickInfo[:rarity] = self.getRarityName
-    quickInfo[:disenchant] = self.getDisenchantValue if disenchantable?
-    quickInfo[:craft] = self.getCraftCost if craftable?
-    quickInfo[:durability] = self.durability if weapon?
-  end
-
 end

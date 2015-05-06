@@ -24,6 +24,6 @@ Feature: Card List Page
 			And the 'Deathlord' card has class 'Neutral'
 		When I open the card list page
 		Then I should see a card element for 'Deathlord'
-		And the card element should tell me that 'Deathlord' has type 'Minion'
-		And the card element should tell me that 'Deathlord' has rarity 'Rare'
-		And the card element should tell me that 'Deathlord' has class 'Neutral'
+			And the card element says 'Deathlord' has type 'Minion'
+			And the card element says 'Deathlord' has rarity 'Rare'
+			And the card element says 'Deathlord' has class 'Neutral'

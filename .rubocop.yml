@@ -1,0 +1,36 @@
+inherit_from: .rubocop_todo.yml
+
+Documentation:
+  Enabled: false
+
+Metrics/ClassLength:
+  CountComments: false
+
+Metrics/LineLength:
+  AllowURI: true
+
+# Agree with but unavoidable sometimes
+Metrics/AbcSize:
+  Max: 34
+
+# Some of the files are very large 
+Metrics/ClassLength:
+  Max: 106
+
+# Offense count: 34
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 112
+
+# Offense count: 3
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 18
+
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - db/schema.rb
+    - bin/*
