@@ -31,26 +31,16 @@
 		</span>
 	</div>
 
-	<div class='quick-info' id='card-mana-cost'>
-		<span class='quick-info-key'>Cost: </span>	<%= @card.cost %> <%= image_tag "icons/Mana_icon.png" %>
-	</div>
+	<%= render partial: 'layouts/quickinfo', locals: { attribute: 'mana' } %>
 
 	<% if @card.minion? %>
-		<div class='quick-info' id='card-health'>
-			<span class='quick-info-key'>Health: </span><%= @card.health %> <%= image_tag "icons/Health_icon.png" %>
-		</div>	
-	<% end %>
-
-	<% if @card.weapon? or @card.minion? %>
-		<div class='quick-info' id='card-attack'>
-			<span class='quick-info-key'>Attack: </span><%= @card.attack %> <%= image_tag "icons/Attack_icon.png"%>
-		</div>
+		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'health' } %>	
+		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'attack' } %>
 	<% end %>
 
 	<% if @card.weapon? %>
-		<div class='quick-info' id='card-durability'>
-			<span class='quick-info-key'>Durability: </span><%= @card.durability %> <%= image_tag "icons/Durability_icon.png" %>
-		</div>	
+		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'attack' } %>
+		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'durability' } %>
 	<% end %>
 
 </td></tr>	

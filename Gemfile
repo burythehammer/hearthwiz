@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'haml-lint', require: false
   gem 'flog', require: false
+  gem 'flay', require: false
 end
 
 group :test do

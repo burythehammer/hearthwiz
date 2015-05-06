@@ -23,8 +23,7 @@ end
 def parse_cards_json
   filepath = File.join(Rails.root, 'db', 'json', 'AllSets.enUS.json')
   file_contents = File.open(filepath).read
-  card_sets = JSON.parse(file_contents)
-  card_sets
+  JSON.parse(file_contents)
 end
 
 def set_card_details(card, c)
@@ -44,7 +43,7 @@ def set_card_details(card, c)
   card[:race] = c['race']
   card[:rarity_id] = rarity_id(c)
   card[:collectible] = card_collectibility(c)
-  card[:player_class_id] = card_player_class(c)
+  card[:player_class_id] = player_class_id(c)
   card
 end
 
@@ -60,12 +59,12 @@ rescue NoMethodError
   Rarity.find_by(name: 'Common').id
 end
 
-def card_collectibility(c)
-  !c['collectible'].nil?
-end
-
-def card_player_class(c)
-  PlayerClass.find_by(name: c['player_class']).id
+def player_class_id(c)
+  PlayerClass.find_by(name: c['playerClass']).id
 rescue NoMethodError
   PlayerClass.find_by(name: 'Neutral').id
+end
+
+def card_collectibility(c)
+  !c['collectible'].nil?
 end
