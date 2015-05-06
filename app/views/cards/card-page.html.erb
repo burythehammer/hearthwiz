@@ -31,16 +31,18 @@
 		</span>
 	</div>
 
-	<%= render partial: 'layouts/quickinfo', locals: { attribute: 'mana' } %>
+	<%= render_quickinfo('mana') %>
 
 	<% if @card.minion? %>
-		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'health' } %>	
-		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'attack' } %>
+		<%= render_quickinfo('health') %>
+	<% end %>
+
+	<% if @card.minion? || @card.weapon? %>
+		<%= render_quickinfo('attack') %>
 	<% end %>
 
 	<% if @card.weapon? %>
-		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'attack' } %>
-		<%= render partial: 'layouts/quickinfo', locals: { attribute: 'durability' } %>
+		<%= render_quickinfo('durability') %>
 	<% end %>
 
 </td></tr>	

@@ -7,13 +7,14 @@ class CardsController < ApplicationController
   def index
     @cards = Card.where(collectible: true).where.not('cards.cost' => nil)
     @cards = @cards.sort_by { |c| [c.cost, c.name] }
+    render 'card-list'
   end
 
   # GET /cards/1
   # GET /cards/1.json
   def show_by_id
     set_card
-    render 'show'
+    render 'card-page'
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'That card ID could not be found!'
     redirect_to action: 'index'
@@ -21,7 +22,7 @@ class CardsController < ApplicationController
 
   def show_by_name
     set_card_by_name
-    render 'show'
+    render 'card-page'
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'That card name could not be found!'
     redirect_to action: 'index'

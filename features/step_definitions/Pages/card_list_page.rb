@@ -4,15 +4,11 @@ end
 
 Then(/^I should be on the card list page$/) do
   step "I should be on the path '#{cards_path}'"
-  within(:css, 'div#all_cards_title') do
-    expect(page).to have_content('All Cards')
-  end
+  within(:css, 'div#all_cards_title') { expect(page).to have_text('All Cards') }
 end
 
 Then(/^I should see a card element for '(.*?)'$/) do |name|
-  within(:css, "li.card-block##{name}-block") do
-    expect(page).to have_content(name)
-  end
+  within(:css, "li.card-block##{name}-block") { expect(page).to have_text(name) }
 end
 
 When(/^I click the link to the card '(.*?)'$/) do |name|
@@ -25,19 +21,17 @@ Then(/^I should see a link to the card '(.*?)'$/) do |name|
 end
 
 Then(/^the card element says '(.*?)' has type '(.*?)'$/) do |name, type|
-  within(:css, "div.card-block-info##{name}-info") do
-    expect(page).to have_content(type)
-  end
+  step "the card block info for '#{name}' has value '#{type}'"
 end
 
 Then(/^the card element says '(.*?)' has rarity '(.*?)'$/) do |name, rarity|
-  within(:css, "div.card-block-info##{name}-info") do
-    expect(page).to have_content(rarity)
-  end
+  step "the card block info for '#{name}' has value '#{rarity}'"
 end
 
 Then(/^the card element says '(.*?)' has class '(.*?)'$/) do |name, pclass|
-  within(:css, "div.card-block-info##{name}-info") do
-    expect(page).to have_content(pclass)
-  end
+  step "the card block info for '#{name}' has value '#{pclass}'"
+end
+
+Then(/^the card block info for '(.*?)' has value '(.*?)'$/) do |info, value|
+  within(:css, "div.card-block-info##{info}-info") { expect(page).to have_text(value) }
 end

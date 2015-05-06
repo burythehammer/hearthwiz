@@ -1,0 +1,13 @@
+<div class="page-title-area">
+  <div class="page-title" id="all_cards_title">
+    All Cards
+  </div>
+</div>
+
+<div class="card-area">
+  <ul class="cards">
+  <% @cards.each do |c|%>
+    <%= render partial: 'layouts/card_element', locals: { card: c } %>
+  <% end %>
+  </ul>
+</div>
