@@ -30,7 +30,7 @@ else
     Capybara::Poltergeist::Driver.new(
       app,
       window_size: [1280, 1024]
-      #debug:       true
+    # debug:       true
     )
   end
   Capybara.default_driver    = :poltergeist

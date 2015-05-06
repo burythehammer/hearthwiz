@@ -13,13 +13,14 @@ class CardSetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_card_set
-      @card_set = CardSet.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def card_set_params
-      params[:card_set]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_card_set
+    @card_set = CardSet.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def card_set_params
+    params[:card_set]
+  end
 end

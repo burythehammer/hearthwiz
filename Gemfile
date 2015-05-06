@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'haml-lint', require: false
+  gem 'flog', require: false
 end
 
 group :test do

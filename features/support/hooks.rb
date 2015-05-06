@@ -3,7 +3,5 @@ AfterConfiguration do # |config|
 end
 
 After do |scenario|
-  if scenario.failed?
-    save_page
-  end
+  save_page if scenario.failed?
 end

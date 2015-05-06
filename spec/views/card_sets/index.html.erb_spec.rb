@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'card_sets/index', type: :view do
   before(:each) do
     assign(:card_sets, [
-      CardSet.create!(),
-      CardSet.create!()
+      CardSet.create!,
+      CardSet.create!
     ])
   end
 
