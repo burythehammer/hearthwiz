@@ -5,27 +5,16 @@ def seed_cards(card_sets_wanted)
 
   # iterates over card sets, then over each card in that set
   card_sets_wanted.each do |card_set|
-    print "\n" + "#{card_set} cards: total #{card_sets[card_set].size}" + "\n"
     card_sets["#{card_set}"].each do |c|
       c['card_set'] = card_set
-      create_cards_in_card_set(c)
+      create_card_from_hash(c)
     end
-
-    print "\n"
   end
-end
-
-def create_cards_in_card_set(c)
-  card = create_card_from_hash(c)
-  print_card_seed(card.rarity_colour)
-rescue ActiveRecord::RecordInvalid
-  puts "did not create card: #{c['name']}" + "\n"
 end
 
 # create a card from the json hash
 def create_card_from_hash(c)
   card = set_card_details(Card.new, c)
-  print_card_errors(card)
   card.save!
   card
 end
@@ -36,21 +25,6 @@ def parse_cards_json
   file_contents = File.open(filepath).read
   card_sets = JSON.parse(file_contents)
   card_sets
-end
-
-def print_card_seed(colour)
-  print 'C'.colorize(color: :white) if colour == 'White'
-  print 'R'.colorize(color: :blue) if colour == 'Blue'
-  print 'E'.colorize(color: :purple) if colour == 'Purple'
-  print 'L'.colorize(color: :orange) if colour == 'Orange'
-end
-
-def print_card_errors(card)
-  return false if card.valid?
-  card.errors.each do |key, value|
-    puts c['name']
-    puts "#{key} not valid, error: #{value}"
-  end
 end
 
 def set_card_details(card, c)

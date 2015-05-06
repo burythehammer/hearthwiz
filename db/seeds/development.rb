@@ -1,5 +1,3 @@
-print 'Loading development seeds'
-
 # loads entire helpers directory
 Dir[File.join(Rails.root, 'db', 'helpers', '*.rb')].each { |file| require file }
 

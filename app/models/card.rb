@@ -113,20 +113,11 @@ class Card < ActiveRecord::Base
 
   # GETTERS #
 
+  delegate :name, :colour, :colour, to: :rarity, prefix: true
+  delegate :disenchant_value, :craft_cost, to: :rarity, prefix: false
+
   def rarity
     Rarity.find(rarity_id)
-  end
-
-  def rarity_name
-    rarity.name
-  end
-
-  def rarity_colour
-    rarity.colour
-  end
-
-  def rarity_hex_colour
-    rarity.hexcolour
   end
 
   def player_class_name
@@ -137,17 +128,7 @@ class Card < ActiveRecord::Base
     CardSet.find(card_set_id)
   end
 
-  def card_set_name
-    card_set.name
-  end
-
-  def disenchant_value
-    rarity.disenchant_reward
-  end
-
-  def craft_cost
-    rarity.craft_cost
-  end
+  delegate :name, to: :card_set, prefix: true
 
   def path
     'cards/id/' + json_id
