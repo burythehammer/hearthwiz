@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe CardsController, type: :routing do
   describe 'Card Routing' do
-
     it 'routes card list page' do
       expect(get: '/cards').to route_to(
         controller: 'cards',

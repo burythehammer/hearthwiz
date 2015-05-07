@@ -4,4 +4,6 @@
 # Blizzard release different sets periodically with expansions and adventures.
 
 class CardSet < ActiveRecord::Base
+  has_many :cards
+  validates :name, presence: true, uniqueness: true
 end
