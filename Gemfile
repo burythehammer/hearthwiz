@@ -56,6 +56,7 @@ group :development, :test do
   gem 'haml-lint', require: false
   gem 'flog', require: false
   gem 'flay', require: false
+  gem 'flay-actionpack', require: false
 end
 
 group :test do
