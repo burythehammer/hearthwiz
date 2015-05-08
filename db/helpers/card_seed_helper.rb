@@ -29,7 +29,7 @@ end
 def set_card_details(card, c)
   card[:name] = c['name']
   card[:card_type] = c['type']
-  card[:card_set_id] = card_set(c)
+  card[:card_set_id] = card_set_id(c)
   card[:faction] = c['faction']
   card[:cost] = c['cost']
   card[:durability] = c['durability']
@@ -49,16 +49,18 @@ end
 
 # HELPER METHODS - these set the various fields
 
-def card_set(c)
+def card_set_id(c)
   CardSet.find_by(name: c['card_set']).id
 end
 
+# TODO: improve this with database default
 def rarity_id(c)
   Rarity.find_by(name: c['rarity']).id
 rescue NoMethodError
   Rarity.find_by(name: 'Common').id
 end
 
+# TODO: improve this with database default
 def player_class_id(c)
   PlayerClass.find_by(name: c['playerClass']).id
 rescue NoMethodError

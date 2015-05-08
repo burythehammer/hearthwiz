@@ -6,4 +6,6 @@ RSpec.describe Card, type: :model do
     card.collectible = true
     card.should be_collectible
   end
+
+  it 'should have a rarity'
 end
