@@ -19,5 +19,5 @@ Rails.application.routes.draw do
 
   get 'cards/set/:name', to: 'card_sets#show'
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :new]
 end

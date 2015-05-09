@@ -2,6 +2,10 @@
 # Maintains logic between views/model.
 # Cards can be viewed as a list, a single card (by id or name)
 class CardsController < ApplicationController
+
+  before_action :set_card_by_name, only: [:show_by_name]
+  before_action :set_card, only: [:show_by_id]
+
   # GET /cards
   # GET /cards.json
   def index
@@ -13,7 +17,6 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show_by_id
-    set_card
     render 'card-page'
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'That card ID could not be found!'
@@ -21,7 +24,6 @@ class CardsController < ApplicationController
   end
 
   def show_by_name
-    set_card_by_name
     render 'card-page'
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'That card name could not be found!'
