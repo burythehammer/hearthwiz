@@ -1,6 +1,6 @@
-.quick-info{:id => "card-#{attribute}"}
+.quick-info{ id: "card-#{attribute}" }
   %span.quick-info-key
     = attribute.capitalize
     \:
   = @card.send(attribute)
-  = image_tag "icons/#{attribute}.png"
+  = image_tag "icons/#{ attribute }.png"

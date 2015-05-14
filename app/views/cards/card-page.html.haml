@@ -2,24 +2,24 @@
 .page-title-area
   .page-title= @card.name
   .page-subtitle
-    %span{:class => "#{@card.rarity_name.downcase}-text"}
-      #{@card.short_description}
+    %span{ class: "#{ @card.rarity_name.downcase }-text" }
+      #{ @card.short_description }
 .quick-info-area
   %table
     %tr
-      %td{:align => "center"}
-        %img.card-portrait{:alt => "#{@card.text}", :id => "#{@card.name}-portrait", :src => "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif", :style => "text-align:center;"}/
+      %td{ align: 'center' }
+        %img.card-portrait{ alt: "#{@card.text}", id: "#{@card.name}-portrait", src: "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif", style: 'text-align:center;' }/
     %tr
       %td
-        #card-flavour-text.quick-info
-          "#{raw @card.flavour}"
-        #card-set.quick-info
+        .quick-info#card-flavour-text
+          "#{ raw @card.flavour }"
+        .quick-info#card-set
           %span.quick-info-key Card set:
           %span
             = @card.card_set_name
-        #card-class.quick-info
+        .quick-info#card-class
           %span.quick-info-key Class:
-          %span{:class => "#{@card.player_class_name.downcase}-text"}
+          %span{ class: "#{@card.player_class_name.downcase}-text" }
             = @card.player_class_name
         = render_quickinfo('mana')
         - if @card.minion?
