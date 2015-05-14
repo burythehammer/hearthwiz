@@ -1,8 +1,8 @@
-When(/^I open the card list page$/) do
+When(/^I open the card list$/) do
   step "I open the page with url '/cards'"
 end
 
-Then(/^I should be on the card list page$/) do
+Then(/^I should be on the card list$/) do
   step "I should be on the path '#{cards_path}'"
   within(:css, 'div#all_cards_title') { expect(page).to have_text('All Cards') }
 end
@@ -11,7 +11,7 @@ Then(/^I should see a card element for '(.*?)'$/) do |name|
   within(:css, "li.card-block##{name}-block") { expect(page).to have_text(name) }
 end
 
-When(/^I click the link to the card '(.*?)'$/) do |name|
+When(/^I open the card '(.*?)' from the card list$/) do |name|
   step "I should see the link '#{name}'"
   click_link(name)
 end
@@ -28,7 +28,7 @@ Then(/^the card element says '(.*?)' has rarity '(.*?)'$/) do |name, rarity|
   step "the card block info for '#{name}' has value '#{rarity}'"
 end
 
-Then(/^the card element says '(.*?)' has class '(.*?)'$/) do |name, pclass|
+Then(/^the card element says '(.*?)' has player class '(.*?)'$/) do |name, pclass|
   step "the card block info for '#{name}' has value '#{pclass}'"
 end
 

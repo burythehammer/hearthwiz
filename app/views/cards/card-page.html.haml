@@ -1,0 +1,31 @@
+%p.notice= notice
+.page-title-area
+  .page-title= @card.name
+  .page-subtitle
+    %span{:class => "#{@card.rarity_name.downcase}-text"}
+      #{@card.short_description}
+.quick-info-area
+  %table
+    %tr
+      %td{:align => "center"}
+        %img.card-portrait{:alt => "#{@card.text}", :id => "#{@card.name}-portrait", :src => "http://wow.zamimg.com/images/hearthstone/cards/enus/animated/#{@card.json_id}_premium.gif", :style => "text-align:center;"}/
+    %tr
+      %td
+        #card-flavour-text.quick-info
+          "#{raw @card.flavour}"
+        #card-set.quick-info
+          %span.quick-info-key Card set:
+          %span
+            = @card.card_set_name
+        #card-class.quick-info
+          %span.quick-info-key Class:
+          %span{:class => "#{@card.player_class_name.downcase}-text"}
+            = @card.player_class_name
+        = render_quickinfo('mana')
+        - if @card.minion?
+          = render_quickinfo('health')
+        - if @card.minion? || @card.weapon?
+          = render_quickinfo('attack')
+        - if @card.weapon?
+          = render_quickinfo('durability')
+.card-area

@@ -1,0 +1,7 @@
+.page-title-area
+  #all_cards_title.page-title
+    All Cards
+.card-area
+  %ul.cards
+    - @cards.each do |c|
+      = render partial: 'layouts/card_element', locals: { card: c }
