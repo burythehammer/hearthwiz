@@ -2,7 +2,10 @@
 # Represents an instance of a card and its associated data.
 class Card < ActiveRecord::Base
   self.primary_key = :json_id
-  belongs_to :rarity, class_name: 'Rarity', foreign_key: 'rarity_id'
+  default_scope { includes(:rarity, :player_class).order('cost').where(collectible: true).where.not(cost: nil) }
+  belongs_to :rarity,
+             class_name: 'Rarity',
+             foreign_key: 'rarity_id'
   validates_associated :rarity
   validates :rarity, presence: true
   belongs_to :player_class,
@@ -10,7 +13,9 @@ class Card < ActiveRecord::Base
              foreign_key: 'player_class_id'
   validates_associated :player_class
   validates :player_class, presence: true
-  belongs_to :card_set, class_name: 'CardSet', foreign_key: 'card_card_id'
+  belongs_to :card_set,
+             class_name: 'CardSet',
+             foreign_key: 'card_set_id'
   validates_associated :card_set
   validates :json_id,
             presence: true,
@@ -93,21 +98,12 @@ class Card < ActiveRecord::Base
 
   # GETTERS #
   delegate :name, :colour, :colour, to: :rarity, prefix: true
-  delegate :disenchant_value, :craft_cost, to: :rarity, prefix: false
+  delegate :disenchant_reward, :craft_cost, to: :rarity, prefix: false
   delegate :name, to: :card_set, prefix: true
+  delegate :name, :hero, :colour, :hexcolour, to: :player_class, prefix: true
   alias_attribute :mana, :cost
-
-  def rarity
-    Rarity.find(rarity_id)
-  end
-
-  def player_class_name
-    PlayerClass.find(player_class.id).name
-  end
-
-  def card_set
-    CardSet.find(card_set_id)
-  end
+  alias_attribute :disenchant_value, :disenchant_reward
+  alias_attribute :type, :card_type
 
   def path
     'cards/id/' + json_id

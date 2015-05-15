@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   get 'dashboard/index'
   root to: 'dashboard#index'
 
@@ -19,5 +18,5 @@ Rails.application.routes.draw do
 
   get 'cards/set/:name', to: 'card_sets#show'
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :new]
 end

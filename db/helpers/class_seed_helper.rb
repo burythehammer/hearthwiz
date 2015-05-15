@@ -13,7 +13,9 @@ def seed_classes
 end
 
 def neutral
-  [name: 'Neutral']
+  [name: 'Neutral',
+   colour: 'White',
+   hexcolour: '#FFFFFF']
 end
 
 def druid

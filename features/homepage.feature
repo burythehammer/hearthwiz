@@ -1,9 +1,9 @@
-Feature: Homepage
+@ready
+Feature: Home
 	
-	User should be able to view the main page of the website.
+	User should be able to view home.
 	
-	@complete
 	Scenario: Homepage title
-		When I open the homepage
-		Then I should be on the homepage
-			And I should see the text 'HearthWiz' on the page
+		When I open home
+		Then I should be on home
+			And I should see the text 'HearthWiz'
