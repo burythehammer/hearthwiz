@@ -4,4 +4,4 @@
 .card-area
   %ul.cards
     - @cards.each do |c|
-      = render partial: 'layouts/card_element', locals: { card: c }
+      = render partial: 'layouts/card_element', locals: { card: c, rarity: c.rarity }

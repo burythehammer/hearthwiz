@@ -2,6 +2,7 @@
 # Represents an instance of a card and its associated data.
 class Card < ActiveRecord::Base
   self.primary_key = :json_id
+  default_scope { includes(:rarity, :player_class).order('cost').where(collectible: true).where.not(cost: nil) }
   belongs_to :rarity,
              class_name: 'Rarity',
              foreign_key: 'rarity_id'

@@ -8,8 +8,7 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.where(collectible: true).where.not('cards.cost' => nil)
-    @cards = @cards.sort_by { |c| [c.cost, c.name] }
+    @cards = Card.all
     render 'card-list'
   end
 
