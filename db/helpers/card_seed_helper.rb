@@ -27,23 +27,23 @@ def parse_cards_json
 end
 
 def set_card_details(card, c)
-  card[:name] = c['name']
-  card[:card_type] = c['type']
-  card[:card_set_id] = card_set_id(c)
-  card[:faction] = c['faction']
-  card[:cost] = c['cost']
-  card[:durability] = c['durability']
-  card[:attack] = c['attack']
-  card[:health] = c['health']
-  card[:text] = c['text']
-  card[:flavour] = c['flavor']
-  card[:artist] = c['artist']
-  card[:json_id] = c['id']
-  card[:how_to_get_gold] = c['howToGetGold']
-  card[:race] = c['race']
-  card[:rarity_id] = rarity_id(c)
-  card[:collectible] = card_collectibility(c)
-  card[:player_class_id] = player_class_id(c)
+  card.name = c['name']
+  card.card_type = c['type']
+  card.card_set_id = card_set_id(c)
+  card.faction = c['faction']
+  card.cost = c['cost']
+  card.durability = c['durability']
+  card.attack = c['attack']
+  card.health = c['health']
+  card.text = c['text']
+  card.flavour = c['flavor']
+  card.artist = c['artist']
+  card.json_id = c['id']
+  card.how_to_get_gold = c['howToGetGold']
+  card.race = c['race']
+  card.rarity_id = rarity_id(c)
+  card.collectible = card_collectibility(c)
+  card.player_class_id = player_class_id(c)
   card
 end
 

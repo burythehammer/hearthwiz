@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'json'
-gem 'factory_girl_rails'
+
 
 # prettifies seeding
 gem 'colorize'
@@ -48,33 +48,35 @@ gem 'normalize-rails'
 
 
 group :development do
-  gem 'cuke_sniffer', require: false
-  gem 'rubocop', require: false
-  gem 'haml-lint', require: false
-  gem 'flog', require: false
-  gem 'flay', require: false
-  gem 'flay-actionpack', require: false
+  gem 'cuke_sniffer', require: false # cucumber linting
+  gem 'rubocop', require: false # ruby linting
+  gem 'haml-lint', require: false # haml linting
+  gem 'flog', require: false # ABC analysis
+  gem 'flay', require: false # finds duplicate code
+  gem 'flay-actionpack', require: false # stops errors with flay
 end
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  #  gem 'debugger'
+  # gem 'debugger'
   gem 'database_cleaner'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails'
+  gem 'factory_girl_rails' # generates fake records
 end
 
 group :test do
-
   gem 'capybara', require: false
+  gem 'faker' # generates fake data for factories
   gem 'poltergeist'  # Capybara driver for phantom.js
   gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver', require: false
   gem 'rspec-expectations'
-
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 

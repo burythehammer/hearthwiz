@@ -9,7 +9,6 @@ class PlayerClass < ActiveRecord::Base
 
   validates :hexcolour,
             presence: true,
-            length: { is: 7 }
-
-  validates_format_of :hexcolour, with: /\A(#[A-Fa-f0-9]{6})\z/
+            length: { is: 7 },
+            format: /\A(#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/
 end

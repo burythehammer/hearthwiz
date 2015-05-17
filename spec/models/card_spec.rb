@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 RSpec.describe Card, type: :model do
+  it 'has valid factories' do
+    expect(FactoryGirl.create(:minion_card)).to be_valid
+    expect(FactoryGirl.create(:weapon_card)).to be_valid
+    expect(FactoryGirl.create(:spell_card)).to be_valid
+  end
+
   context ':json_id' do
     it 'should have a json id'
   end
@@ -42,5 +48,4 @@ RSpec.describe Card, type: :model do
   context ':collectible' do
     it 'should be collectible'
   end
-
 end
