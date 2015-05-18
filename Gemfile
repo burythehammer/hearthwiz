@@ -66,13 +66,13 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'factory_girl_rails' # generates fake records
+  gem 'shoulda-matchers'
 end
 
 group :test do
   gem 'capybara', require: false
   gem 'faker' # generates fake data for factories
   gem 'poltergeist'  # Capybara driver for phantom.js
-  gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver', require: false
   gem 'rspec-expectations'
