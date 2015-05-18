@@ -14,7 +14,8 @@ FactoryGirl.define do
       attack { Faker::Number.digit }
       health { Faker::Number.digit }
       durability nil
-      race ['Beast', 'Demon', 'Dragon', 'Mech', 'Murloc', 'Pirate', 'Totem', nil].sample
+      race %w(Beast Demon Dragon Mech Murloc Pirate Totem).sample
+      elite [true, false].sample
     end
 
     trait :spell do
@@ -23,6 +24,7 @@ FactoryGirl.define do
       health nil
       durability nil
       race nil
+      elite nil
     end
 
     trait :weapon do
@@ -31,6 +33,7 @@ FactoryGirl.define do
       health nil
       durability { Faker::Number.digit }
       race nil
+      elite nil
     end
 
     text { Faker::Lorem.sentence }

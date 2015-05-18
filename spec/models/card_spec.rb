@@ -11,43 +11,54 @@ RSpec.describe Card, type: :model do
     subject { FactoryGirl.build(:card) }
 
     it { should validate_presence_of :json_id }
+    it { should validate_uniqueness_of :json_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :rarity }
     it { should validate_presence_of :rarity_id }
     it { should validate_presence_of :card_type }
+    it { should validate_presence_of :player_class_id }
+    it { should validate_presence_of :player_class }
+    it { should validate_presence_of :card_set_id }
+    it { should validate_presence_of :card_set }
   end
 
-  # HAPPY PATHS
+  describe 'associations' do
+    subject { FactoryGirl.build(:card) }
+
+    it { should belong_to :rarity }
+    it { should belong_to :card_set }
+    it { should belong_to :player_class }
+  end
+
+  describe 'numericality' do
+    subject { FactoryGirl.build(:card) }
+
+    it { should validate_numericality_of :rarity_id }
+    it { should validate_numericality_of :player_class_id }
+    it { should validate_numericality_of :card_set_id }
+  end
+
   describe 'column types' do
     let(:card) { FactoryGirl.build(:card, :minion) }
-    subject { :card }
 
-    it 'should have a name' do
+    it 'should have a String name' do
       expect(card.name).to be_a(String)
     end
 
-    it 'should have a cost' do
+    it 'should have an Integer cost' do
       expect(card.cost).to be_an(Integer)
     end
 
-    it 'should have a rarity id' do
+    it 'should have an Integer rarity id' do
       expect(card.rarity_id).to be_an(Integer)
     end
 
-    it 'should belong to a rarity' do
-      expect(card).to belong_to(:rarity)
-    end
-
-    it 'should have a card type' do
+    it 'should have a String card type' do
       expect(card.card_type).to be_a(String)
     end
 
     it 'should have a collectible boolean' do
       expect(card.collectible).to be_boolean
-    end
-
-    it 'should have a elite boolean' do
-      expect(card.elite).to be_boolean
     end
 
     it 'should have a string describing how to get gold' do
@@ -65,17 +76,9 @@ RSpec.describe Card, type: :model do
     it 'should have a card set id' do
       expect(card.card_set_id).to be_an(Integer)
     end
-
-    it 'should belong to a rarity' do
-      expect(card).to belong_to(:card_set)
-    end
-
-    it 'should have a race string' do
-      expect(card.race).to be_a(String)
-    end
   end
 
-  context 'which is a minion' do
+  describe 'minion' do
     let(:card) { FactoryGirl.build(:card, :minion) }
 
     it 'should have a positive numeric mana cost' do
@@ -96,9 +99,17 @@ RSpec.describe Card, type: :model do
     it 'should not have a durability value' do
       expect(card.durability).to be_nil
     end
+
+    it 'should have a elite boolean' do
+      expect(card.elite).to be_boolean
+    end
+
+    it 'should have a race string' do
+      expect(card.race).to be_a(String)
+    end
   end
 
-  context 'which is a spell' do
+  describe 'spell' do
     let(:card) { FactoryGirl.build(:card, :spell) }
 
     it 'should be valid' do
@@ -121,9 +132,13 @@ RSpec.describe Card, type: :model do
     it 'should not have a durability value' do
       expect(card.durability).to be_nil
     end
+
+    it 'should not have a elite boolean' do
+      expect(card.elite).to be_nil
+    end
   end
 
-  context 'which is a weapon' do
+  describe 'weapon' do
     let(:card) { FactoryGirl.build(:card, :weapon) }
 
     it 'should have a positive numeric mana cost' do
@@ -144,32 +159,42 @@ RSpec.describe Card, type: :model do
     it 'should not have a health value' do
       expect(card.health).to be_nil
     end
-  end
 
-  # UNHAPPY PATHS
-  context 'which has an empty json_id' do
-    let(:card) { FactoryGirl.build(:card, :minion, json_id: nil) }
-    it 'should be invalid' do
-      expect(card).to_not be_valid
+    it 'should not have a elite boolean' do
+      expect(card.elite).to be_nil
     end
   end
 
-  context 'which has an empty player class' do
-    let(:card) { FactoryGirl.build(:card, :minion, player_class_id: nil) }
-    it 'should default to neutral player class' do
-      # expect(card.player_class.name).to eq('Neutral')
+  describe 'empty' do
+    describe 'json id' do
+      let(:card) { FactoryGirl.build(:card, :minion, json_id: nil) }
+      it 'should be invalid' do
+        expect(card).to_not be_valid
+      end
     end
-    it 'should be a valid card'
-    # expect(card).to be_valid
-  end
-end
 
-context 'which has an empty rarity' do
-  let(:card) { FactoryGirl.build(:card, :minion, rarity_id: nil) }
-  it 'should default to common rarity' do
-    # expect(card.rarity.name).to eq('Common')
+    describe 'name' do
+      let(:card) { FactoryGirl.build(:card, :minion, name: nil) }
+      it 'should be invalid' do
+        expect(card).to_not be_valid
+      end
+    end
+
+    describe 'player class' do
+      let(:card) { FactoryGirl.build(:card, :minion, player_class_id: nil) }
+      it 'should be invalid' do
+        expect(card).to_not be_valid
+      end
+    end
+
+    describe 'rarity' do
+      let(:card) { FactoryGirl.build(:card, :minion, rarity_id: nil) }
+      it 'should be invalid' do
+        expect(card).to_not be_valid
+      end
+    end
   end
-  it 'should be a valid card' do
-    # expect(card).to be_valid
+
+  describe 'invalid input' do
   end
 end
