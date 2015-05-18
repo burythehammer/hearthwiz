@@ -22,6 +22,7 @@ FactoryGirl.define do
     c.how_to_get_gold { Faker::Lorem.sentence }
     c.race ['Beast', 'Demon', 'Dragon', 'Mech', 'Murloc', 'Pirate', 'Totem', nil].sample
     c.collectible [true, false].sample
+    c.elite [true, false].sample
 
     c.player_class_id PlayerClass.order('RANDOM()').first.id
   end
