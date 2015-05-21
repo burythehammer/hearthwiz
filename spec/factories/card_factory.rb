@@ -1,11 +1,12 @@
-# spec/factories/contacts.rb
+# spec/factories/card_factory.rb
+
 FactoryGirl.define do
   factory :card do
     name { Faker::Name.name }
     json_id { 'TST' + Faker::Number.number(3) }
     cost { Faker::Number.digit }
 
-    rarity_id Rarity.order('RANDOM()').first.id
+    rarity_id 1
     card_set_id CardSet.order('RANDOM()').first.id
     player_class_id PlayerClass.order('RANDOM()').first.id
 
