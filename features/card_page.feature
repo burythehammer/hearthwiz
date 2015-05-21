@@ -36,18 +36,18 @@ Feature: Card details
 
 	Scenario Outline: Card quick info text
 
-	Given the 'Reincarnate' card exists
-		And the 'Reincarnate' card has type 'Spell'
-	When I navigate to the 'Reincarnate' card
-	Then the card portrait displays the alt text 'Destroy a minion, then return it to life with full Health.'
-		And the quick info displays the flavour text 'It's like birth, except you're an adult and you were just dead a second ago.'
-		And the quick info says the card class is 'Shaman'
+	Given the '<card-name>' card exists
+		And the '<card-name>' card has type '<type>'
+	When I navigate to the '<card-name>' card
+	Then the card portrait displays the alt text '<alt-text>'
+		And the quick info displays the flavour text '<flavour-text>'
+		And the quick info says the card class is '<class>'
 
 	Examples:
-    | card-name      | type      | Class    |  alt-text   																			| flavour-text   |
+    | card-name      | type      | class    |  alt-text   																																					| flavour-text   |
     |  Deathlord     |  Minion   |  Neutral | Taunt. Deathrattle: Your opponent puts a minion from their deck into the battlefield. | "Rise from your grave!" - Kel'Thuzad |
-    |  Death's Bite  |  Weapon   |  Warrior | Deathrattle: Deal 1 damage to all minions. 											| "Take a bite outta Death." - McScruff the Deathlord |
-    |  Reincarnate   |  Spell    |  Shaman  | Destroy a minion, then return it to life with full Health. 							| It's like birth, except you're an adult and you were just dead a second ago. |
+    |  Death's Bite  |  Weapon   |  Warrior | Deathrattle: Deal 1 damage to all minions. 																						| "Take a bite outta Death." - McScruff the Deathlord |
+    |  Reincarnate   |  Spell    |  Shaman  | Destroy a minion, then return it to life with full Health. 														| It's like birth, except you're an adult and you were just dead a second ago. |
 
 	Scenario: Card spell stats
 
