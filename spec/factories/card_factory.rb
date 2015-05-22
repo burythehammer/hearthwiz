@@ -7,8 +7,8 @@ FactoryGirl.define do
     cost { Faker::Number.digit }
 
     rarity_id 1
-    card_set_id CardSet.order('RANDOM()').first.id
-    player_class_id PlayerClass.order('RANDOM()').first.id
+    card_set_id 1
+    player_class_id 1
 
     trait :minion do
       card_type 'Minion'

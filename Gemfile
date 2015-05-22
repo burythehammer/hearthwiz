@@ -7,7 +7,7 @@ gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0'
 # haml for HTML docs
 gem 'haml'
-gem "haml-rails"
+gem 'haml-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -15,12 +15,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 # server
-gem 'puma' 
+gem 'puma'
 
 # postgres database
 gem 'pg'
-
-
 
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks' # Turbolinks makes following links in your web application faster.
@@ -31,21 +29,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'json'
 
-
 # prettifies seeding
 gem 'colorize'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Used for heroku
-gem 'rails_12factor', group: :production
-
 gem 'normalize-rails'
 
-# Use Capistrano for deployment
-#gem 'capistrano-rails', group: :development
-
+group :production do
+  gem 'rails_12factor' # Used for heroku
+end
 
 group :development do
   gem 'cuke_sniffer', require: false # cucumber linting
@@ -65,7 +59,7 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails'
-  gem 'factory_girl_rails' # generates fake records
+  gem 'factory_girl_rails', require: false # generates fake records
   gem 'shoulda-matchers'
 end
 
@@ -79,4 +73,3 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
 end
-

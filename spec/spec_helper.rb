@@ -20,7 +20,6 @@
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
 
 require 'factory_girl_rails'
-FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
