@@ -1,9 +1,5 @@
 AfterConfiguration do
-  begin
-    require File.join(Rails.root, 'db', 'seeds.rb')
-   rescue
-     Rails.logger 'Cucumber hook issue: Could not load seeds file'
-  end
+  require File.join(Rails.root, 'db', 'seeds.rb')
 end
 
 After do |scenario|

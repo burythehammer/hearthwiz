@@ -41,6 +41,13 @@ class Card < ActiveRecord::Base
   validates :card_set, :player_class, :rarity,
             presence: true
 
+  validates :cost,
+            presence: true,
+            numericality: {
+              only_integer: true,
+              greater_than_or_equal_to: 0 },
+            allow_nil: true
+
   validates_associated :player_class, :rarity, :card_set
 
   case :card_type
@@ -58,9 +65,8 @@ class Card < ActiveRecord::Base
   when 'Spell'
     validates :cost,
               presence: true,
-              numericality: {
-                only_integer: true,
-                greater_than_or_equal_to: 0 }
+              numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
   when 'Enchantment'
     validates :collectible,
               presence: true,
