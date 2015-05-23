@@ -3,25 +3,26 @@
 class Card < ActiveRecord::Base
   self.primary_key = :json_id
   default_scope { includes(:rarity, :player_class).order('cost').where(collectible: true).where.not(cost: nil) }
+
   belongs_to :rarity,
              class_name: 'Rarity',
              foreign_key: 'rarity_id'
-  validates_associated :rarity
-  validates :rarity, presence: true
+
   belongs_to :player_class,
              class_name: 'PlayerClass',
              foreign_key: 'player_class_id'
-  validates_associated :player_class
-  validates :player_class, presence: true
+
   belongs_to :card_set,
              class_name: 'CardSet',
              foreign_key: 'card_set_id'
-  validates_associated :card_set
+
   validates :json_id,
             presence: true,
             uniqueness: true
+
   validates :name,
             presence: true
+
   validates :card_type,
             presence: true,
             inclusion: { in: ['Minion',
@@ -30,17 +31,18 @@ class Card < ActiveRecord::Base
                               'Enchantment',
                               'Hero',
                               'Hero Power'] }
-  validates :rarity_id,
+  validates :rarity_id, :player_class_id, :card_set_id,
             presence: true,
             numericality: { only_integer: true }
-  validates :player_class_id,
-            presence: true,
-            numericality: { only_integer: true }
+
   validates :collectible,
             inclusion: { in: [true, false] }
-  validates :card_set_id,
-            presence: true,
-            numericality: { only_integer: true }
+
+  validates :card_set, :player_class, :rarity,
+            presence: true
+
+  validates_associated :player_class, :rarity, :card_set
+
   case :card_type
   when 'Weapon'
     validates :durability, :cost,

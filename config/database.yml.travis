@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: hearthwiz_dev
+  pool: 5
+  username: tester
+  password: test
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: travis_ci_test
+  username: postgres
+  encoding: unicode
+  pool: 5
+
+production:
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
