@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/burythehammer/hearthwiz.svg?branch=master)](https://travis-ci.org/burythehammer/hearthwiz)
+
 # hearthWiz
 
 A light website for tracking and managing Hearthstone card collections, written in Ruby on Rails.
