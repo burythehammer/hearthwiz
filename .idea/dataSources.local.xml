@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails hearthwiz: development" uuid="829ebf2d-bbf4-4e3d-ad3a-2750217cc4b3">
+      <user-name>tester</user-name>
+      <user-password>dfdedfcfdfd9dfde</user-password>
+      <schema-pattern>hearthwiz_dev.pg_catalog hearthwiz_dev.public</schema-pattern>
+      <default-schemas>hearthwiz_dev.pg_catalog hearthwiz_dev.public</default-schemas>
+    </data-source>
+    <data-source name="Rails hearthwiz: test" uuid="6840c420-7db2-43dc-bf62-bff65af3b04c">
+      <user-name>tester</user-name>
+      <user-password>dfdedfcfdfd9dfde</user-password>
+      <schema-pattern>hearthwiz_test.pg_catalog hearthwiz_test.public</schema-pattern>
+      <default-schemas>hearthwiz_test.pg_catalog hearthwiz_test.public</default-schemas>
+    </data-source>
+    <data-source name="Rails hearthwiz: production" uuid="1bf110d1-441f-4451-b026-775f6f5d45ec">
+      <first-sync>true</first-sync>
+      <user-name>user</user-name>
+    </data-source>
+  </component>
+</project>
