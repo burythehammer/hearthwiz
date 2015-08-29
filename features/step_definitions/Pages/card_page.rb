@@ -1,3 +1,5 @@
+testWorld = TestWorld.new
+
 When(/^I navigate to the card with id '(.+)'$/) do |card_id|
   step "I open the page with url '/cards/id/#{card_id}'"
 end

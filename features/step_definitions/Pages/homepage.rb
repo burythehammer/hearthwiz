@@ -1,7 +1,9 @@
+homePageObject = HomePageObject.new
+
 When(/^I open home$/) do
-  step "I open the page with url '#{root_path}'"
+  homePageObject.load
 end
 
 Then(/^I should be on home$/) do
-  step "I should be on the path '#{root_path}'"
+  expect(current_path).to eq(homePageObject.url)
 end

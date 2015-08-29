@@ -12,13 +12,3 @@ Given(/^the server is running$/) do
 
   expect(server_running).to be_true
 end
-
-When(/^I open the page with url '(.*?)'$/) do |url|
-  #	Capybara.default_driver = :selenium
-  Capybara.default_driver = :poltergeist
-  visit url
-end
-
-Then(/^I should be on the path '(.*)'$/) do |path|
-  expect(current_path).to eq(path)
-end

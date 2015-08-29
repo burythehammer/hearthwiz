@@ -1,9 +1,11 @@
+cardListPageObject = CardListPageObject.new
+
 When(/^I open the card list$/) do
-  step "I open the page with url '/cards'"
+  cardListPageObject.load
 end
 
 Then(/^I should be on the card list$/) do
-  step "I should be on the path '#{cards_path}'"
+  expect(current_path).to eq(cardListPageObject.url)
   within(:css, 'div#all_cards_title') { expect(page).to have_text('All Cards') }
 end
 

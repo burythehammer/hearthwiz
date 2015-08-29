@@ -65,6 +65,7 @@ end
 
 group :test do
   gem 'capybara', require: false
+  gem 'site_prism'
   gem 'faker' # generates fake data for factories
   gem 'poltergeist'  # Capybara driver for phantom.js
   gem 'cucumber-rails', require: false
