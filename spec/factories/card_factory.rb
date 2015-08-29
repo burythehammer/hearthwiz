@@ -6,9 +6,10 @@ FactoryGirl.define do
     json_id { 'TST' + Faker::Number.number(3) }
     cost { Faker::Number.digit }
 
-    rarity_id 1
-    card_set_id 1
-    player_class_id 1
+    # pulls from other factories
+    rarity
+    card_set
+    player_class
 
     trait :minion do
       card_type 'Minion'

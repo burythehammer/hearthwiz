@@ -1,6 +1,6 @@
 # spec/factories/rarity_factory.rb
 FactoryGirl.define do
-  factory :rarity do
+  factory :rarity, aliases: [:fake_rarity] do
     name { Faker::Lorem.word }
     colour { Faker::Lorem.word }
     hexcolour { '#' + Faker::Number.number(6) }
