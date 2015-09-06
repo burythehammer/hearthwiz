@@ -25,18 +25,18 @@ class Card < ActiveRecord::Base
 
   validates :card_type,
             presence: true,
-            inclusion: { in: ['Minion',
-                              'Spell',
-                              'Weapon',
-                              'Enchantment',
-                              'Hero',
-                              'Hero Power'] }
+            inclusion: {in: ['Minion',
+                             'Spell',
+                             'Weapon',
+                             'Enchantment',
+                             'Hero',
+                             'Hero Power']}
   validates :rarity_id, :player_class_id, :card_set_id,
             presence: true,
-            numericality: { only_integer: true }
+            numericality: {only_integer: true}
 
   validates :collectible,
-            inclusion: { in: [true, false] }
+            inclusion: {in: [true, false]}
 
   validates :card_set, :player_class, :rarity,
             presence: true
@@ -44,36 +44,36 @@ class Card < ActiveRecord::Base
   validates :cost,
             presence: true,
             numericality: {
-              only_integer: true,
-              greater_than_or_equal_to: 0 },
+                only_integer: true,
+                greater_than_or_equal_to: 0},
             allow_nil: true
 
   validates_associated :player_class, :rarity, :card_set
 
   case :card_type
-  when 'Weapon'
-    validates :durability, :cost,
-              presence: true,
-              numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  when 'Minion'
-    validates :health, :attack, :cost,
-              presence: true,
-              numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-    validates :elite,
-              presence: true,
-              inclusion: { in: [true, false] }
-  when 'Spell'
-    validates :cost,
-              presence: true,
-              numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    when 'Weapon'
+      validates :durability, :cost,
+                presence: true,
+                numericality: {only_integer: true, greater_than_or_equal_to: 0}
+    when 'Minion'
+      validates :health, :attack, :cost,
+                presence: true,
+                numericality: {only_integer: true, greater_than_or_equal_to: 0}
+      validates :elite,
+                presence: true,
+                inclusion: {in: [true, false]}
+    when 'Spell'
+      validates :cost,
+                presence: true,
+                numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
-  when 'Enchantment'
-    validates :collectible,
-              presence: true,
-              inclusion: { in: [false] }
+    when 'Enchantment'
+      validates :collectible,
+                presence: true,
+                inclusion: {in: [false]}
   end
   validates :faction,
-            inclusion: { in: %w(Horde Alliance Neutral) },
+            inclusion: {in: %w(Horde Alliance Neutral)},
             allow_nil: true
 
   def collectible?

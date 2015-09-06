@@ -4,7 +4,5 @@ rvm: "2.2.0"
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
+  - CODECLIMATE_REPO_TOKEN=f7ddda9b3257ff35e7223ff656b12859436f6bbc6b51e5a5c197b3b3e2866cea
   - bundle exec rake db:setup
-
-notifications:
-  slack: infuse-consulting:fngKv3lGTrh4dzKVDqUGcMBX

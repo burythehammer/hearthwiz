@@ -1,23 +1,32 @@
 # spec/factories/card_factory.rb
 
+require 'ffaker'
+
 FactoryGirl.define do
   factory :card do
-    name { Faker::Name.name }
+    name { FFaker::Name.name }
     json_id { 'TST' + Faker::Number.number(3) }
-    cost { Faker::Number.digit }
+    cost { rand(10) }
 
     # pulls from other factories
     rarity
     card_set
     player_class
 
+    # default trait is minion
+    card_type 'Minion'
+    attack { rand(10) }
+    health { rand(10) }
+    durability nil
+    race %w(Beast Demon Dragon Mech Murloc Pirate Totem).sample
+    elite [true, false].sample
+
     trait :minion do
       card_type 'Minion'
-      attack { Faker::Number.digit }
-      health { Faker::Number.digit }
+      attack { rand(10) }
+      health { rand(10) }
       durability nil
       race %w(Beast Demon Dragon Mech Murloc Pirate Totem).sample
-      elite [true, false].sample
     end
 
     trait :spell do
@@ -31,20 +40,19 @@ FactoryGirl.define do
 
     trait :weapon do
       card_type 'Weapon'
-      attack { Faker::Number.digit }
+      attack { rand(10) }
       health nil
-      durability { Faker::Number.digit }
+      durability { rand(10) }
       race nil
       elite nil
     end
 
-    text { Faker::Lorem.sentence }
-    flavour { Faker::Lorem.sentence }
-    artist { Faker::Lorem.sentence }
+    text { FFaker::Lorem.sentence }
+    flavour { FFaker::Lorem.sentence }
+    artist { FFaker::Lorem.sentence }
 
-    how_to_get_gold { Faker::Lorem.sentence }
+    how_to_get_gold { FFaker::Lorem.sentence }
     collectible [true, false].sample
-    elite [true, false].sample
     faction ['Alliance', 'Horde', nil].sample
   end
 end

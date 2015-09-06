@@ -4,6 +4,9 @@ end
 
 Given(/^the card with id '(.+)' exists$/) do |id|
   expect { Card.find(id) }.to_not raise_error
+
+  Card.exists?
+
 end
 
 Given(/^the '(.+)' card exists$/) do |name|
