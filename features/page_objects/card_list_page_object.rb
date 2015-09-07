@@ -1,3 +1,6 @@
+require_relative 'page_object'
+
+
 class CardListPageObject < PageObject
 
   PATH = '/cards'

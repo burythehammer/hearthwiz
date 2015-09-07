@@ -1,6 +1,6 @@
 class HomePageObject < PageObject
 
-  set_url('/')
+  url = '/'
 
 
   # div(:title, id: 'hearthwiz-title')

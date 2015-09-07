@@ -16,4 +16,8 @@ class App
     CardPageObject.new
   end
 
+  def page_object
+    PageObject.new
+  end
+
 end
