@@ -17,7 +17,5 @@ Then(/^I should see the title '(.*)'$/) do |title_text|
 end
 
 Then(/^the subtitle contains the text '(.+)'$/) do |text|
-  within(:css, 'div.page-subtitle') do
-    expect(page).to have_text(text)
-  end
+
 end

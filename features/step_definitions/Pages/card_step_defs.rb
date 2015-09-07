@@ -1,16 +1,17 @@
-testWorld = TestWorld.new
-
-When(/^I navigate to the card with id '(.+)'$/) do |card_id|
-  step "I open the page with url '/cards/id/#{card_id}'"
+Given(/^the following cards exist:$/) do |cards|
+  cards.each do |c|
+    test_world.new_card(c[:alias], c[:type])
+  end
 end
 
-When(/^I navigate to the '(.+)' card$/) do |card_name|
-  url = URI.encode("/cards/name/#{card_name}")
-  step "I open the page with url '#{url}'"
+When(/^I navigate to the card page for '(.+)'$/) do |card_alias|
+  card = test_world.get_card(card_alias)
+  card_page.go_to(card.id)
 end
 
-Then(/^I should be on the path for the card with the id '(.+)'$/) do |card_id|
-  expect(current_path).to match("/cards/id/#{card_id}")
+Then(/^I should be on the card page for '(.+)'$/) do |card_alias|
+  card = test_world.get_card(card_alias)
+  card_page.ensure_is_current(card.id)
 end
 
 Then(/^the subtitle says it is the type '(.+)'$/) do |card_type|
@@ -36,23 +37,23 @@ Then(/^the quick info says the card class is '(.*)'$/) do |card_class|
 end
 
 Then(/^the quick info says it has '(\d+)' (.*)$/) do |amount, attribute|
-  within(:css, "div#card-#{attribute}") do
-    expect(page).to have_text(amount)
-  end
+  card_page.ensure_quick_info_attribute(amount, attribute)
 end
 
 Then(/^the quick info says it costs '(\d+)' mana$/) do |mana_cost|
-  step "the quick info says it has '#{mana_cost}' mana"
+  card_page.ensure_quick_info_attribute(mana_cost, 'mana')
 end
 
 Then(/^the quick info says it costs '(\d+)' mana, '(\d+)' health and '(\d+)' attack$/) do |m, h, a|
-  step "the quick info says it costs '#{m}' mana"
-  step "the quick info says it has '#{h}' health"
-  step "the quick info says it has '#{a}' attack"
+  card_page.ensure_quick_info_attribute(m, 'mana')
+  card_page.ensure_quick_info_attribute(h, 'health')
+  card_page.ensure_quick_info_attribute(a, 'attack')
 end
 
 Then(/^the quick info says it costs '(\d+)' mana, '(\d+)' durability and '(\d+)' attack$/) do |m, d, a|
-  step "the quick info says it costs '#{m}' mana"
-  step "the quick info says it has '#{d}' durability"
-  step "the quick info says it has '#{a}' attack"
+  card_page.ensure_quick_info_attribute(m, 'mana')
+  card_page.ensure_quick_info_attribute(d, 'durability')
+  card_page.ensure_quick_info_attribute(a, 'attack')
 end
+
+

@@ -1,4 +1,4 @@
-class HomePageObject < SitePrism::Page
+class HomePageObject < PageObject
 
   set_url('/')
 

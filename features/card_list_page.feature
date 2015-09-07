@@ -5,32 +5,20 @@ Feature: Card List
 
   Background:
     Given the following cards exist:
-      | alias     | type   |
-      | Deathlord | Minion |
+      | alias  | type   |
+      | Card A | Minion |
 
   Scenario: Title of card list
     When I open the card list
     Then I should see the title 'All Cards'
 
   Scenario: Card can be navigated to from the card list
-    Given the 'Deathlord' card exists
     When I open the card list
-    And I open the card 'Deathlord' from the card list
-    Then I should see the title 'Deathlord'
+    And I open the card 'Card A' from the card list
+    Then I should be on the card page for 'Card A'
 
-  @debug
-  Scenario: Card links are present on card list
-    Given the 'Deathlord' card exists
+  @smoke
+  Scenario: Card information is displayed on the card list
     When I open the card list
-    Then I should see a link to the card 'Deathlord'
-
-  Scenario: Card information is shown underneath a card
-    Given the 'Deathlord' card exists
-    And the 'Deathlord' card has type 'Minion'
-    And the 'Deathlord' card has rarity 'Rare'
-    And the 'Deathlord' card has player class 'Neutral'
-    When I open the card list
-    Then I should see a card element for 'Deathlord'
-    And the card element says 'Deathlord' has type 'Minion'
-    And the card element says 'Deathlord' has rarity 'Rare'
-    And the card element says 'Deathlord' has player class 'Neutral'
+    Then I should see the card 'Card A' on the card list
+    And the details for "Card A" should be shown on the card list

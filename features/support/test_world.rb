@@ -14,19 +14,32 @@ module TestWorld
     @cards.clear
   end
 
-  def add_card (card_alias, card)
-    @cards[card_alias] = card
+  def new_card (card_alias, card_type)
+    case card_type
+      when 'minion' then
+        return new_minion_card(card_alias)
+      when 'spell' then
+        return new_spell_card(card_alias)
+      when 'weapon' then
+        return new_weapon_card(card_alias)
+      else
+        throw new Exception
+    end
   end
 
-  def new_random_card(card_alias)
-    Factory(:card)
+  def new_minion_card(card_alias)
+    @cards[card_alias] = FactoryGirl.create(:card, :minion)
   end
 
-  def new_spell_card()
-    Facto
+  def new_spell_card(card_alias)
+    @cards[card_alias] = FactoryGirl.create(:card, :spell)
   end
 
-  def get_card_by_alias(card_alias)
+  def new_weapon_card(card_alias)
+    @cards[card_alias] = FactoryGirl.create(:card, :weapon)
+  end
+
+  def get_card(card_alias)
     @cards.get(card_alias)
   end
 

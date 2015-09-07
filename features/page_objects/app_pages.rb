@@ -1,15 +1,19 @@
 class App
 
-  def home
-    HomePage.new
+  def test_world
+    test_world = TestWorld.get
   end
 
-  def card_list
-    CardListPage.new
+  def home_page
+    HomePageObject.new
   end
 
-  def card
-    CardPage.new
+  def card_list_page
+    CardListPageObject.new
+  end
+
+  def card_page
+    CardPageObject.new
   end
 
 end

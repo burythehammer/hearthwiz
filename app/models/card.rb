@@ -1,5 +1,6 @@
 # Card model.
 # Represents an instance of a card and its associated data.
+# noinspection RailsParamDefResolve,RubyResolve
 class Card < ActiveRecord::Base
   self.primary_key = :json_id
   default_scope { includes(:rarity, :player_class).order('cost').where(collectible: true).where.not(cost: nil) }
@@ -71,6 +72,8 @@ class Card < ActiveRecord::Base
       validates :collectible,
                 presence: true,
                 inclusion: {in: [false]}
+    else
+      #todo type code here
   end
   validates :faction,
             inclusion: {in: %w(Horde Alliance Neutral)},
@@ -122,6 +125,49 @@ class Card < ActiveRecord::Base
   end
 
   def short_description
-    rarity_name + ' ' + player_class_name + ' ' + card_type
+    "#{rarity_name} #{player_class_name} #{card_type}"
   end
+
+  def set_details_from_hash(c)
+    self.name = c['name']
+    self.card_type = c['type']
+    self.faction = c['faction']
+    self.cost = c['cost']
+    self.durability = c['durability']
+    self.attack = c['attack']
+    self.health = c['health']
+    self.text = c['text']
+    self.flavour = c['flavor']
+    self.artist = c['artist']
+    self.json_id = c['id']
+    self.how_to_get_gold = c['howToGetGold']
+    self.race = c['race']
+    self.set_card_set_id(c)
+    self.set_rarity_id(c)
+    self.set_collectibility(c)
+    self.set_player_class_id(c)
+  end
+
+  def set_card_set_id(c)
+    self.card_set_id = CardSet.find_by(name: c['card_set']).id
+  end
+
+  # TODO: improve this with database default
+  def set_rarity_id(c)
+    self.rarity_id = Rarity.find_by(name: c['rarity']).id
+  rescue NoMethodError
+    self.rarity_id = Rarity.find_by(name: 'Common').id
+  end
+
+  # TODO: improve this with database default
+  def set_player_class_id(c)
+    self.player_class_id = PlayerClass.find_by(name: c['playerClass']).id
+  rescue NoMethodError
+    self.player_class_id = PlayerClass.find_by(name: 'Neutral').id
+  end
+
+  def set_collectibility(c)
+    self.collectible = !c['collectible'].nil?
+  end
+
 end

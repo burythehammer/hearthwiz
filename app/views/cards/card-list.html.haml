@@ -4,10 +4,10 @@
 .card-area
   %ul.cards
     - @cards.each do |card|
-      %li.card-block{ id: "#{ card.name }-block", onclick: "location.href='#{ root_url + card.path }';", style: 'cursor: pointer;' }
-        .card-block-name
+      %li.card-box{ id: "#{ card.id }-box", onclick: "location.href='#{ root_url + card.path }';", style: 'cursor: pointer;' }
+        .card-box-name
           = link_to card.name, root_url + card.path
-        .card-block-info{ id: "#{ card.name }-info" }
-          %span{ class: "#{ card.rarity_name.downcase }-text" }
+        .card-box-info{ id: "#{ card.id }-info" }
+          %span{ class: "#{ card.rarity.name.downcase }-text" }
             #{ card.short_description }
-        .card-block-stats
+        .card-box-stats
