@@ -9,9 +9,9 @@ body {
 }
 
 html {
-    background-color: $dark-grey;
+    background-color: $grey-dark;
     .container {
-        background-color: $dark-grey;
+        background-color: $grey-dark;
         font-family: $open-sans;
         color: $white;
         a, a:visited, a:active {
@@ -19,7 +19,7 @@ html {
             text-decoration: none;
         }
         a:not([class]), a:visited:not([class]), a:active:not([class]) {
-            color: $electric-blue;
+            color: $blue-electric;
         }
     }
 }
@@ -38,7 +38,7 @@ html {
 .page-title-area {
     width: 50%;
     margin: 0 auto;
-    color: $electric-blue;
+    color: $blue-electric;
     padding-bottom: 10px;
     .page-title {
         font-family: $roboto-slab;

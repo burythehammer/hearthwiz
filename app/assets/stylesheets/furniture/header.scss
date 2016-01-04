@@ -4,7 +4,7 @@
 .header {
     height: $header-height;
     width: 100%;
-    background-color: $dark-grey;
+    background-color: $grey-dark;
     position: fixed;
     border-bottom: thin solid $white;
     z-index: 1000;
@@ -21,6 +21,6 @@
         background-color: $grey;
     }
     #nav-homepage {
-        color: $electric-blue;
+        color: $blue-electric;
     }
 }
