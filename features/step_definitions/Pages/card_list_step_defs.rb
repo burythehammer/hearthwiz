@@ -16,7 +16,7 @@ end
 
 Then(/^I should see a card element for '(.*?)'$/) do |card_alias|
   card = test_world.get_card(card_alias)
-  card_list_page_object.is_card_listed(card.name)
+  expect(card_list_page_object.is_card_listed(card.name)).to eq(true)
 end
 
 
